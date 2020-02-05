@@ -226,9 +226,8 @@ export default {
     tempUploadVar: {}
   }),
   methods: {
-    getFile(e){
+    getFile(e) {
       console.log("EVENT:", e);
-      
     },
     addConfig() {
       this.model.configuration.push({});
