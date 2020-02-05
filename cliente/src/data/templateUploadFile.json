@@ -1,0 +1,60 @@
+{
+    "files": [],
+    "configuration": {
+       "values": [
+          {
+             "type": "text",
+             "title": "titulo",
+             "model": "titulo",
+             "icono": "mdi-high-definition",
+             "label": "Título",
+             "requiered": true,
+             "values": ""
+          },
+          {
+             "type": "radioGroup",
+             "title": "definition",
+             "model": "definition",
+             "icono": "mdi-high-definition",
+             "label": [
+                "16:9",
+                "4:3"
+             ],
+             "values": [
+                "HD",
+                "SD"
+             ]
+          },
+          {
+             "type": "radioGroup",
+             "title": "format",
+             "model": "format",
+             "icono": "mdi-high-definition",
+             "label": [
+                "XDCAM",
+                "DIVCPRO",
+                "DV 25"
+             ],
+             "values": [
+                "XDCAM",
+                "DIVCPRO",
+                "DV 25"
+             ]
+          },
+          {
+             "type": "radioGroup",
+             "title": "volumen",
+             "model": "volumen",
+             "icono": "mdi-volume-high",
+             "label": [
+                "-12",
+                "-14"
+             ],
+             "values": [
+                "-12",
+                "-14"
+             ]
+          }
+       ]
+    }
+ }

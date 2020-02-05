@@ -1,0 +1,38 @@
+{
+    "files": [],
+    "configuration": [
+       {
+          "titulo": "Facebook HD",
+          "definition": "HD",
+          "format": "XDCAM",
+          "volumen": "-12",
+          "videoCodec": "",
+          "audioCodec": "",
+          "extension": ".mxf",
+          "dimension": "1920x1080",
+          "tiempo": "0 min"
+       },
+       {
+          "titulo": "Youtube HD",
+          "definition": "HD",
+          "format": "XDCAM",
+          "volumen": "-12",
+          "videoCodec": "H264",
+          "audioCodec": "PCM",
+          "extension": ".mxf",
+          "dimension": "1920x1080",
+          "tiempo": "0 min"
+       },
+       {
+          "titulo": "Whatsapp HD",
+          "definition": "HD",
+          "format": "XDCAM",
+          "volumen": "-12",
+          "videoCodec": "",
+          "audioCodec": "",
+          "extension": ".mxf",
+          "dimension": "720x486",
+          "tiempo": "0 min"
+       }
+    ]
+ }

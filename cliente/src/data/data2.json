@@ -1,0 +1,38 @@
+{
+    "files": [],
+    "configuration": [
+       {
+          "titulo": "Instragram HD",
+          "definition": "HD",
+          "format": "XDCAM",
+          "volumen": "-12",
+          "videoCodec": "",
+          "audioCodec": "",
+          "extension": ".mxf",
+          "dimension": "1920x1080",
+          "tiempo": "1:37 min"
+       },
+       {
+          "titulo": "Telegram HD",
+          "definition": "HD",
+          "format": "XDCAM",
+          "volumen": "-12",
+          "videoCodec": "H264",
+          "audioCodec": "PCM",
+          "extension": ".mxf",
+          "dimension": "1920x1080",
+          "tiempo": "1:57 min"
+       },
+       {
+          "titulo": "Twitter HD",
+          "definition": "HD",
+          "format": "DV 25",
+          "volumen": "-12",
+          "videoCodec": "",
+          "audioCodec": "",
+          "extension": ".mxf",
+          "dimension": "720x486",
+          "tiempo": "0:56 min"
+       }
+    ]
+ }
