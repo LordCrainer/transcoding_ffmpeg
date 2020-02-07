@@ -267,7 +267,15 @@ export default {
     },
     async uploadFile() {
       if (this.$refs.formSubida.validate()) {
-        this.uploadVar = this.tempUploadVar;
+        this.uploadVar = {
+          uploadPercentFile: 0,
+          configurationPercent: [],
+          configurationDuration: [],
+          totalDuration: "",
+          uploadTime: "",
+          timeMode: "seg",
+          indexConfiguration: 0
+        };
         let formData = new FormData();
         const { files, configuration } = this.model;
         console.log(files);

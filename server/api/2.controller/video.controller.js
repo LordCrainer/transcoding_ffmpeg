@@ -19,14 +19,14 @@ const transcoding = io => async (req, res) => {
       indexProcess
     );
     indexProcess++;
-    const { titulo, extension } = configuration[index];
+    const { titulo, extension, volumen } = configuration[index];
     const regex = / /gi;
     const nameTypeConversion = titulo.replace(regex, "_");
     const urlDestinyVolumen = `${pathRelative.destino}${nameFile}_${nameTypeConversion}${extension}`;
     await Conversion.changeVolumen(
       pathDestiny,
       urlDestinyVolumen,
-      -12,
+      volumen,
       indexProcess
     );
 
