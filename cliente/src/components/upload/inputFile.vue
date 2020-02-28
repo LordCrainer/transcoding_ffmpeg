@@ -5,14 +5,13 @@
       :rules="[v => !!v || 'Escoga un archivo para subir']"
       required
       counter
-      :label="label"
+      label="File input"
       placeholder="Seleccione un archivo"
       prepend-icon="mdi-paperclip"
+      outlined
       :show-size="1000"
-      v-bind="option"
       @change="fileData"
     >
-      {{ field }}
       <template v-slot:selection="{ index, text }">
         <v-chip
           v-if="index < 2"
@@ -34,7 +33,7 @@
 <script>
 export default {
   name: "file",
-  props: ["value", "field", "label", "option"],
+  props: ["value", "field"],
   methods: {
     fileData(event) {
       console.log("Files:", event);

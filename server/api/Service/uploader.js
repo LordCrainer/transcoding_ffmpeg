@@ -6,7 +6,7 @@ const path = require("path"),
 
 //FORMIDABLE
 
-const uploadFilesFormidable = req => {
+exports.uploadFilesFormidable = req => {
   const uploadedFiles = [];
   var initTime = "";
   var porcentajeAnterior = 0;
@@ -65,8 +65,6 @@ const uploadFilesFormidable = req => {
   //console.log(`Upload complete: ${JSON.stringify(uploadedFiles)}`);
   return promise;
 };
-
-module.exports = {uploadFilesFormidable}
 
 function renombrarArchivo(data, filename, directPath, processPath) {
   let [nombreSubida, extension] = filename.split("."),

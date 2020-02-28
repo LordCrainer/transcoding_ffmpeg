@@ -6,45 +6,20 @@
           <v-col cols="12">
             <v-row justify="space-around" align="center">
               <v-card width="450">
-                <v-form
-                  ref="formSubida"
-                  v-model="activeFlag.dataForm"
-                  lazy-validation
-                >
+                <v-form ref="formSubida" v-model="dataForm" lazy-validation>
                   <v-card-text class="title">
                     <h4 class="text-center">SUBIR ARCHIVOS</h4>
                   </v-card-text>
                   <v-card-text>
-                    <input-file
-                      :option="inputFileOption.upload"
-                      v-model="model.files"
-                      @input="getFile"
-                      label="Subir Archivo"
-                    ></input-file>
+                    <input-file v-model="model.files"></input-file>
                   </v-card-text>
                   <v-card flat class="pa-3">
-                    <h3 class="text-center">CARGAR PLANTILLA</h3>
-                    <v-card-text class="pa-0"> </v-card-text>
                     <v-card-text>
-                      <v-row>
-                        <v-col cols="2">
-                          <v-btn
-                            fab
-                            color="success"
-                            small=""
-                            @click="addConfig"
-                          >
-                            <v-icon>mdi-plus</v-icon>
-                          </v-btn>
-                        </v-col>
-                        <v-col cols="8">
-                          <input-file
-                            v-model="model2"
-                            label="Importar Plantilla"
-                            v-on:input="importData"
-                          ></input-file>
-                        </v-col>
-                      </v-row>
+                      <div class="pb-2">
+                        <v-btn fab color="success" small="" @click="addConfig">
+                          <v-icon>mdi-plus</v-icon>
+                        </v-btn>
+                      </div>
                       <v-expansion-panels flat>
                         <v-expansion-panel
                           v-for="(config, i) in model.configuration"
@@ -98,13 +73,13 @@
                   <v-card-actions>
                     <v-btn
                       color="primary"
-                      :disabled="!activeFlag.valid"
+                      :disabled="!valid"
                       @click="uploadFile"
                       >Subir</v-btn
                     >
                     <v-btn
                       color="primary"
-                      :disabled="!activeFlag.valid"
+                      :disabled="!valid"
                       @click="uploadFile"
                       >Guardar Plantilla</v-btn
                     >
@@ -116,7 +91,7 @@
                       medium
                       dark=""
                       color="red"
-                      @click="activeFlag.monitoring = !activeFlag.monitoring"
+                      @click="activeMonitoring = !activeMonitoring"
                       ><v-icon dark>mdi-playlist-check</v-icon>
                     </v-btn>
                   </v-card-actions>
@@ -124,7 +99,7 @@
               </v-card>
             </v-row>
           </v-col>
-          <v-col cols="12" v-if="activeFlag.monitoring">
+          <v-col cols="12" v-if="activeMonitoring">
             <v-row justify="space-around" align="center">
               <v-card width="450">
                 <v-card-text class="title">
@@ -137,7 +112,7 @@
                       <v-progress-linear
                         color="deep-orange"
                         height="20"
-                        :value="uploadVar.uploadPercentFile"
+                        :value="uploadPercentage"
                         rounded=""
                         reactive
                       >
@@ -145,7 +120,7 @@
                           <strong>{{ Math.ceil(value) }}%</strong>
                         </template>
                       </v-progress-linear>
-                      <h3>{{ uploadVar.uploadTime }}</h3>
+                      <h3>{{ uploadTime }}</h3>
                     </v-col>
                     <v-col>
                       <v-icon color="success">mdi-check-outline</v-icon>
@@ -154,7 +129,7 @@
                 </v-card-text>
                 <v-card-text
                   class="py-0"
-                  v-for="(conversion, index) in model.configuration"
+                  v-for="conversion in model.configuration"
                   :key="conversion.titulo"
                 >
                   <v-row>
@@ -163,7 +138,7 @@
                       <v-progress-linear
                         color="blue"
                         height="20"
-                        :value="uploadVar.configurationPercent[index]"
+                        value="100"
                         rounded=""
                         reactive
                       >
@@ -171,17 +146,12 @@
                           <strong>{{ Math.ceil(value) }}%</strong>
                         </template>
                       </v-progress-linear>
-                      <h3>{{ uploadVar.configurationDuration[index] }}</h3>
+                      <h3>{{ conversion.tiempo }}</h3>
                     </v-col>
                     <v-col>
                       <v-icon color="success">mdi-check-outline</v-icon>
                     </v-col>
                   </v-row>
-                </v-card-text>
-                <v-card-text>
-                  <h4 class="text-left">
-                    DURACIÓN TOTAL: {{ uploadVar.totalDuration }}
-                  </h4>
                 </v-card-text>
               </v-card>
             </v-row>
@@ -193,11 +163,9 @@
 </template>
 <script>
 import axios from "axios";
-
+import { mdiHighDefinition, mdiVolumeHigh } from "@mdi/js";
 import inputFile from "../../components/upload/inputFile";
 import inputRadioGroup from "../../components/form/RadioGroup";
-import dataUpload from "../../data/data.json";
-import template from "../../data/templateUploadFile.json";
 //import generatorForm from "../../components/form/generatorForm";
 export default {
   components: {
@@ -206,29 +174,98 @@ export default {
     //generatorForm
   },
   data: () => ({
-    apiUrl: "http://localhost:3000/",
-    inputFileOption: { upload: { outlined: true }, template: {} },
-    activeFlag: { monitoring: true, valid: true, dataForm: true },
-    uploadVar: {
-      uploadPercentFile: 0,
-      configurationPercent: [],
-      configurationDuration: [],
-      totalDuration: "",
-      uploadTime: "",
-      timeMode: "seg",
-      indexConfiguration: 0
-    },
+    activeMonitoring: true,
+    uploadPercentage: "",
+    uploadTime: "",
+    modoTiempo: "seg",
     intervalFunction: "",
-    model: dataUpload,
-    model2: "",
-    Plantilla: template,
-    porcentajeConversion: "",
-    tempUploadVar: {}
-  }),
-  methods: {
-    getFile(e) {
-      console.log("EVENT:", e);
+    apiUrl: "http://localhost:3000/",
+    model: {
+      files: [],
+      configuration: [
+        {
+          titulo: "Facebook HD",
+          definition: "HD",
+          format: "XDCAM",
+          volumen: "-12",
+          videoCodec: "",
+          audioCodec: "",
+          extension: ".mp4",
+          dimension: "1920x1080",
+          tiempo: "1:37 min"
+        },
+        {
+          titulo: "Youtube HD",
+          definition: "HD",
+          format: "XDCAM",
+          volumen: "-12",
+          videoCodec: "H264",
+          audioCodec: "PCM",
+          extension: ".mxf",
+          dimension: "1920x1080",
+          tiempo: "1:57 min"
+        },
+        {
+          titulo: "Whatsapp HD",
+          definition: "HD",
+          format: "DV 25",
+          volumen: "-12",
+          videoCodec: "",
+          audioCodec: "",
+          extension: ".mxf",
+          dimension: "720x486",
+          tiempo: "0:56 min"
+        }
+      ]
     },
+    Plantilla: {
+      files: [],
+      configuration: {
+        values: [
+          {
+            type: "text",
+            title: "titulo",
+            model: "titulo",
+            icono: mdiHighDefinition,
+            label: "Título",
+            requiered: true,
+            values: ""
+          },
+          {
+            type: "radioGroup",
+            title: "definition",
+            model: "definition",
+            icono: mdiHighDefinition,
+            label: ["16:9", "4:3"],
+            values: ["HD", "SD"]
+          },
+          {
+            type: "radioGroup",
+            title: "format",
+            model: "format",
+            icono: mdiHighDefinition,
+            label: ["XDCAM", "DIVCPRO", "DV 25"],
+            values: ["XDCAM", "DIVCPRO", "DV 25"]
+          },
+          {
+            type: "radioGroup",
+            title: "volumen",
+            model: "volumen",
+            icono: mdiVolumeHigh,
+            label: ["-12", "-14"],
+            values: ["-12", "-14"]
+          }
+        ]
+      }
+    },
+    valid: true,
+    dataForm: true
+  }),
+  created() {
+    //this.sendData();
+    //this.getData();
+  },
+  methods: {
     addConfig() {
       this.model.configuration.push({});
     },
@@ -236,24 +273,22 @@ export default {
       console.log(index);
       this.model.configuration.splice(index, 1);
     },
-    getDurationProcess(timeBefore, timeNow) {
-      const duracion = new Date(timeNow - timeBefore);
-      let timeMode = "";
-      const segundos =
-        duracion.getSeconds() < 10
-          ? "0" + duracion.getSeconds()
-          : duracion.getSeconds();
-      const minutos = duracion.getMinutes();
-      if (minutos !== 0) timeMode = "min";
-      else timeMode = "seg";
-      const durationProceso = `${minutos}:${segundos} ${timeMode}`;
-      return durationProceso;
-    },
     sendData(ruta, data, option) {
+      const timeBefore = new Date();
+
       let metadata = axios
         .post(this.apiUrl + ruta, data, option)
         .then(res => {
           console.log("Response on Server:", res);
+          const timeNow = new Date();
+          const duracion = new Date(timeNow - timeBefore);
+          const segundos =
+            duracion.getSeconds() < 10
+              ? "0" + duracion.getSeconds()
+              : duracion.getSeconds();
+          const minutos = duracion.getMinutes();
+          if (minutos !== 0) this.modoTiempo = "min";
+          this.uploadTime = `${minutos}:${segundos} ${this.modoTiempo}`;
           return res;
         })
         .catch(error => console.log("Error sendData:", error));
@@ -267,41 +302,28 @@ export default {
     },
     async uploadFile() {
       if (this.$refs.formSubida.validate()) {
-        this.uploadVar = {
-          uploadPercentFile: 0,
-          configurationPercent: [],
-          configurationDuration: [],
-          totalDuration: "",
-          uploadTime: "",
-          timeMode: "seg",
-          indexConfiguration: 0
-        };
         let formData = new FormData();
-        const { files, configuration } = this.model;
-        console.log(files);
-
-        formData.append("file", files);
-        const uploadOption = {
+        console.log(this.model);
+        formData.append("file", this.model.files);
+        const option = {
           headers: {
             "Content-Type": "multipart/form-data"
           },
           onUploadProgress: function(progressEvent) {
-            this.uploadVar.uploadPercentFile = parseInt(
+            /* this.intervalFunction = setInterval(() => {
+              this.uploadTime = this.uploadTime + 1;
+            }, 1000); */
+            this.uploadPercentage = parseInt(
               Math.round((progressEvent.loaded / progressEvent.total) * 100)
             );
           }.bind(this)
         };
-        const time = new Date();
-        const { data } = await this.sendData("videos", formData, uploadOption);
-        this.uploadVar.uploadTime = this.getDurationProcess(time, new Date());
-        await this.sendData("videos/transcoding", {
-          configuration: configuration,
+        const { data } = await this.sendData("videos", formData, option);
+        let metada = {
+          configuration: this.model.configuration,
           path: data.path
-        });
-        this.uploadVar.totalDuration = this.getDurationProcess(
-          time,
-          new Date()
-        );
+        };
+        await this.sendData("videos/transcoding", metada);
       }
     },
     resetForm() {
@@ -309,62 +331,6 @@ export default {
     },
     resetValidation() {
       this.$refs.formSubida.resetValidation();
-    },
-    importData(e) {
-      if (e) {
-        let reader = new FileReader();
-        reader.readAsText(e, "UTF-8");
-        reader.onload = evt => {
-          this.model2 = evt.target.result;
-          this.model = JSON.parse(this.model2);
-        };
-        reader.onerror = evt => {
-          console.error(evt);
-        };
-      }
-    },
-    getDataBySockect() {
-      this.sockets.subscribe("conversionVideoIndex", data => {
-        this.uploadVar.configurationPercent.splice(data.index, 1, 0);
-        this.uploadVar.indexConfiguration = data.index;
-      });
-      this.sockets.subscribe("conversionVideo", data => {
-        this.uploadVar.configurationPercent.splice(
-          this.uploadVar.indexConfiguration,
-          this.uploadVar.indexConfiguration + 1,
-          data.percentage
-        );
-      });
-      this.sockets.subscribe("durationProcess", data => {
-        this.uploadVar.configurationDuration.splice(
-          this.uploadVar.indexConfiguration,
-          this.uploadVar.indexConfiguration + 1,
-          this.getDurationProcess(
-            new Date(data.timeInit),
-            new Date(data.timeFinal)
-          )
-        );
-      });
-    },
-    sendMessage() {
-      console.log("Enviando Mensaje");
-      this.$socket.emit("message", "DATA"); // send the content of the message bar to the server
-      this.message = ""; // empty the message bar
-    }
-  },
-  mounted() {
-    this.getDataBySockect();
-    this.tempUploadVar = this.uploadVar;
-  },
-  sockets: {
-    connect: function() {
-      console.log("socket connected");
-    },
-    customEmit: function(data) {
-      console.log("DATA:", data);
-      console.log(
-        'this method was fired by the socket server. eg: io.emit("customEmit", data)'
-      );
     }
   }
 };
