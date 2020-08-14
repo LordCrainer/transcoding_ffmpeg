@@ -6,7 +6,7 @@ const morgan = require('morgan');               //Gestor de logging
 const bodyParser = require('body-parser');
 const cors = require("cors");
 
-const videoRoutes = require('./api/routes/videos');             //Aquí importamos router de videos.js
+const videoRoutes = require('../api/routes/videos');             //Aquí importamos router de videos.js
 
 var corsOptions = {
     origin: '*',

@@ -1,5 +1,7 @@
 node_modules/
-.mp4
-.mxf
-.mov
-.rar
+*.mp4
+*.mxf
+*.mov
+*.rar
+
+*.references*

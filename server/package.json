@@ -1,18 +1,18 @@
 {
-  "name": "itron",
-  "version": "1.0.0",
+  "name": "transcoding",
+  "version": "2.0.0",
   "description": "Una API RESTFUL con Node.js para manipular contenido multimedia.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon ./src/index.js"
   },
   "keywords": [
     "node",
     "restful",
     "api"
   ],
-  "author": "Jean Vera",
+  "author": "Carlos Garcia",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
