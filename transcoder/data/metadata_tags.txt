@@ -1,0 +1,201 @@
+
+D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\commands>ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov" -metadata_tags
+FFmbc version 0.7.2
+Copyright (c) 2008-2014 Baptiste Coudurier and the FFmpeg developers
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov':
+  Metadata:
+    major_brand: qt
+    minor_version: 537199360
+    compatible_brands: qt
+    timecode: 00:00:00:00
+  Duration: 00:00:30.08, bitrate: 109005 kb/s
+    Stream #0.0(eng): Video: mjpeg, yuvj422p, 1920x1080p [PAR 72:72 DAR 16:9], 107463 kb/s, 24.00 fps
+    Metadata:
+      codec_name: Photo - JPEG
+      gamma: 2.222229
+    Stream #0.1(eng): Audio: pcm_s16le, 48000 Hz, 2 channels, s16, 1536 kb/s
+    Stream #0.2(eng): Data: unknown (tmcd)
+asf format supported tags:
+    album_artist
+    album
+    artist
+    comment
+    composer
+    encoded_by
+    encoder
+    genre
+    language
+    filename
+    disc
+    publisher
+    encoder
+    track
+    track
+    service_provider
+    service_name
+    year
+    lyrics
+    cover
+avi format supported tags:
+    artist
+    comment
+    copyright
+    date
+    genre
+    language
+    title
+    album
+    track
+    encoder
+    encoded_by
+    title
+f4v format supported tags:
+    title
+    artist
+    composer
+    album
+    date
+    encoder
+    comment
+    genre
+    grouping
+    lyrics
+    album_artist
+    cover
+    copyright
+    description
+    synopsis
+    show
+    episode_id
+    network
+    track
+flac format supported tags:
+    artist
+    album
+    genre
+    date
+    album_artist
+    track
+    disc
+    comment
+ipod format supported tags:
+    title
+    artist
+    composer
+    album
+    date
+    encoder
+    comment
+    genre
+    grouping
+    lyrics
+    album_artist
+    cover
+    copyright
+    description
+    synopsis
+    show
+    episode_id
+    network
+    track
+matroska format supported tags:
+    artist
+    track
+    encoder
+    title
+mov format supported tags:
+    artist
+    title
+    author
+    album
+    date
+    encoder
+    comment
+    genre
+    copyright
+    reel_name
+mp3 format supported tags:
+    cover
+    album
+    composer
+    genre
+    copyright
+    encoded_by
+    title
+    language
+    artist
+    album_artist
+    performer
+    disc
+    publisher
+    track
+    encoder
+    year
+    lyrics
+    date
+    release_date
+    creation_time
+    album-sort
+    artist-sort
+    title-sort
+mp4 format supported tags:
+    title
+    artist
+    composer
+    album
+    date
+    encoder
+    comment
+    genre
+    grouping
+    lyrics
+    album_artist
+    cover
+    copyright
+    description
+    synopsis
+    show
+    episode_id
+    network
+    track
+nut format supported tags:
+    artist
+    date
+    date
+    filename
+    language
+    disposition
+    replaces
+    depends
+    uses
+    usesfont
+ogg format supported tags:
+    artist
+    album
+    genre
+    date
+    album_artist
+    track
+    disc
+    comment
+3g2 format supported tags:
+    title
+    author
+    genre
+    comment
+    album
+    copyright
+    year
+3gp format supported tags:
+    title
+    author
+    genre
+    comment
+    album
+    copyright
+    year
+webm format supported tags:
+    artist
+    track
+    encoder
+    title

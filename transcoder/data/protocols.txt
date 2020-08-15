@@ -1,0 +1,36 @@
+D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\commands>ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov" -protocols
+FFmbc version 0.7.2
+Copyright (c) 2008-2014 Baptiste Coudurier and the FFmpeg developers
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov':
+  Metadata:
+    major_brand: qt
+    minor_version: 537199360
+    compatible_brands: qt
+    timecode: 00:00:00:00
+  Duration: 00:00:30.08, bitrate: 109005 kb/s
+    Stream #0.0(eng): Video: mjpeg, yuvj422p, 1920x1080p [PAR 72:72 DAR 16:9], 107463 kb/s, 24.00 fps
+    Metadata:
+      codec_name: Photo - JPEG
+      gamma: 2.222229
+    Stream #0.1(eng): Audio: pcm_s16le, 48000 Hz, 2 channels, s16, 1536 kb/s
+    Stream #0.2(eng): Data: unknown (tmcd)
+Supported file protocols:
+I.. = Input  supported
+.O. = Output supported
+..S = Seek   supported
+FLAGS NAME
+-----
+I..   applehttp
+I.S   concat
+I..   crypto
+IOS   file
+IO.   gopher
+IOS   http
+I..   mmsh
+I..   mmst
+.O.   md5
+IO.   pipe
+IO.   rtmp
+IO.   rtp
+IO.   tcp
+IO.   udp

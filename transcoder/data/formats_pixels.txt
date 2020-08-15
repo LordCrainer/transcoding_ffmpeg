@@ -1,0 +1,103 @@
+D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\commands>ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov" -pix_fmts
+FFmbc version 0.7.2
+Copyright (c) 2008-2014 Baptiste Coudurier and the FFmpeg developers
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov':
+  Metadata:
+    major_brand: qt
+    minor_version: 537199360
+    compatible_brands: qt
+    timecode: 00:00:00:00
+  Duration: 00:00:30.08, bitrate: 109005 kb/s
+    Stream #0.0(eng): Video: mjpeg, yuvj422p, 1920x1080p [PAR 72:72 DAR 16:9], 107463 kb/s, 24.00 fps
+    Metadata:
+      codec_name: Photo - JPEG
+      gamma: 2.222229
+    Stream #0.1(eng): Audio: pcm_s16le, 48000 Hz, 2 channels, s16, 1536 kb/s
+    Stream #0.2(eng): Data: unknown (tmcd)
+Pixel formats:
+I.... = Supported Input  format for conversion
+.O... = Supported Output format for conversion
+..H.. = Hardware accelerated format
+...P. = Paletted format
+....B = Bitstream format
+FLAGS NAME            NB_COMPONENTS BITS_PER_PIXEL
+-----
+IO... yuv420p                3            12
+IO... yuyv422                3            16
+IO... rgb24                  3            24
+IO... bgr24                  3            24
+IO... yuv422p                3            16
+IO... yuv444p                3            24
+IO... yuv410p                3             9
+IO... yuv411p                3            12
+IO.P. gray                   1             8
+IO..B monow                  1             1
+IO..B monob                  1             1
+I..P. pal8                   1             8
+IO... yuvj420p               3            12
+IO... yuvj422p               3            16
+IO... yuvj444p               3            24
+..H.. xvmcmc                 0             0
+..H.. xvmcidct               0             0
+IO... uyvy422                3            16
+..... uyyvyy411              3            12
+IO.P. bgr8                   3             8
+.O..B bgr4                   3             4
+IO.P. bgr4_byte              3             4
+IO.P. rgb8                   3             8
+.O..B rgb4                   3             4
+IO.P. rgb4_byte              3             4
+IO... nv12                   3            12
+IO... nv21                   3            12
+IO... argb                   4            32
+IO... rgba                   4            32
+IO... abgr                   4            32
+IO... bgra                   4            32
+IO... gray16be               1            16
+IO... gray16le               1            16
+IO... yuv440p                3            16
+IO... yuvj440p               3            16
+IO... yuva420p               4            20
+..H.. vdpau_h264             0             0
+..H.. vdpau_mpeg1            0             0
+..H.. vdpau_mpeg2            0             0
+..H.. vdpau_wmv3             0             0
+..H.. vdpau_vc1              0             0
+IO... rgb48be                3            48
+IO... rgb48le                3            48
+IO... rgb565be               3            16
+IO... rgb565le               3            16
+IO... rgb555be               3            15
+IO... rgb555le               3            15
+IO... bgr565be               3            16
+IO... bgr565le               3            16
+IO... bgr555be               3            15
+IO... bgr555le               3            15
+..H.. vaapi_moco             0             0
+..H.. vaapi_idct             0             0
+..H.. vaapi_vld              0             0
+IO... yuv420p16le            3            24
+IO... yuv420p16be            3            24
+IO... yuv422p16le            3            32
+IO... yuv422p16be            3            32
+IO... yuv444p16le            3            48
+IO... yuv444p16be            3            48
+..H.. vdpau_mpeg4            0             0
+..H.. dxva2_vld              0             0
+.O... rgb444le               3            12
+.O... rgb444be               3            12
+.O... bgr444le               3            12
+.O... bgr444be               3            12
+I.... gray8a                 2            16
+IO... bgr48be                3            48
+IO... bgr48le                3            48
+IO... yuv420p9be             3            13
+IO... yuv420p9le             3            13
+IO... yuv420p10be            3            15
+IO... yuv420p10le            3            15
+IO... yuv422p10be            3            20
+IO... yuv422p10le            3            20
+IO... yuv444p9be             3            27
+IO... yuv444p9le             3            27
+IO... yuv444p10be            3            30
+IO... yuv444p10le            3            30
