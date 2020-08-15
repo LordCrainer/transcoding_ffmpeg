@@ -1,0 +1,2 @@
+ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov"  -r 29.970 -threads 1  -bff   -target dvcpro50 -cqp 0  -b 50M -minrate 50M -maxrate 50M -bufsize 8M -acodec pcm_s16le -timecode 00:00:00:00 -metadata encoder=DVCPROHD,reel_name="DVCPROHD" -y "pre_sd_dvcpro.mov"
+pause
