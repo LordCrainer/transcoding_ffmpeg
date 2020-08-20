@@ -1,0 +1,29 @@
+Input #0, mxf, from 'original_XDCAM.mxf':
+  Metadata:
+    product_uid     : d49f75ba-4965-4cfa-9d11-cd87206287e0
+    uid             : c327a584-e0d6-11ea-ab8d-24f6771b6fe6
+    generation_uid  : c327a585-e0d6-11ea-8975-24f6771b6fe6
+    company_name    : Avid Technology, Inc.
+    product_name    : Avid MediaProcessor Plug-In
+    product_version : 1.0.18.44.1
+    application_platform: MXF::SDK (4.6.40) on Mac OS X
+    modification_date: 2020-08-17T22:12:39.000000Z
+    material_package_umid: 0x060A2B340101010501010D1213B7E4FBD813C4047890058537B724F6771B6FE6
+    timecode        : 00:00:00:00
+  Duration: 00:00:30.10, start: 0.000000, bitrate: 52652 kb/s
+    Stream #0:0: Video: mpeg2video (4:2:2), yuv422p(tv, bt709, top first), 1920x1080 [SAR 1:1 DAR 16:9], 50000 kb/s, 29.97 fps, 29.97 tbr, 29.97 tbn, 59.94 tbc
+    Metadata:
+      file_package_umid: 0x060A2B340101010501010D121322084FD813C4047890058538C524F6771B6FE6
+      file_package_name: Source Package
+      track_name      : Track 1
+    Stream #0:1: Audio: pcm_s24le, 48000 Hz, mono, s32 (24 bit), 1152 kb/s
+    Metadata:
+      file_package_umid: 0x060A2B340101010501010D121322084FD813C4047890058538C524F6771B6FE6
+      file_package_name: Source Package
+      track_name      : Track 2
+    Stream #0:2: Audio: pcm_s24le, 48000 Hz, mono, s32 (24 bit), 1152 kb/s
+    Metadata:
+      file_package_umid: 0x060A2B340101010501010D121322084FD813C4047890058538C524F6771B6FE6
+      file_package_name: Source Package
+      track_name      : Track 3
+At least one output file must be specified
