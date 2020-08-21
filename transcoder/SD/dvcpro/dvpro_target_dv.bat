@@ -1,0 +1,2 @@
+ffmpeg -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\SD\pre_sd.mov" -s 720x576 -r 25 -pix_fmt yuv411p   -b 50M -minrate 50M -maxrate 50M -bufsize 8M -acodec pcm_s16le -y output.dv
+pause

@@ -1,2 +1,2 @@
-ffmbc -i "%1" -r 29.97 -target xdcamhd422 -vtag xd5c  -y "%1_XDCAM.mxf" -acodec pcm_s24le -ar 48000 -newaudio -acodec pcm_s24le -ar 48000 -newaudio -map_audio_channel 0:1:0:0:1:0 -map_audio_channel 0:1:1:0:2:0
+ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov" -r 29.97 -target xdcamhd422 -vtag xd5c  -y "ffmbc_xdcam_2.mxf" -acodec pcm_s24le -ar 48000 -newaudio -acodec pcm_s24le -ar 48000 -newaudio -map_audio_channel 0:1:0:0:1:0 -map_audio_channel 0:1:1:0:2:0
 pause

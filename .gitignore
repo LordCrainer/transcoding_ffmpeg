@@ -3,5 +3,6 @@ node_modules/
 *.mxf
 *.mov
 *.rar
+*.dv
 
 *.references*
