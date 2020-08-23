@@ -1,2 +1,2 @@
-ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\SD\pre_sd.mov"  -r 29.970 -aspect 3:2 -bff -target dvcpro -cqp 0  -b 50M -minrate 50M -maxrate 50M -bufsize 8M -acodec pcm_s16le -metadata encoder="Apple Quicktime" -y "dvcpro.mov"
+ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\SD\pre_sd_win.mov"  -r 29.970  -bff -target dvcpro -cqp 0  -b 50M -minrate 50M -maxrate 50M -bufsize 8M -acodec pcm_s16le  -metadata encoder="Apple Quicktime" -timecode 00:00:00:00 -y "prueba_dvcpro_v1.mov"
 pause
