@@ -1,2 +1,0 @@
-ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov" -r 29.97 -target xdcamhd422 -b 50M -minrate 50M -maxrate 50M -bufsize 8M -y "ffmbc_xdcam.mov"
-pause
