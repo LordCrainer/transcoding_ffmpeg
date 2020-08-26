@@ -1,2 +1,0 @@
-ffmbc.exe -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov" -r 29.970 -vcodec libx264 -vtag mp2v -b 50M -minrate 50M -maxrate 50M -bufsize 8M -profile high -qscale 1 -qmin 1 -acodec pcm_s16le -strict experimental -ar 48000 -ab 384k -threads 8 -y "prueba_dvcpro_v2.dv"
-pause

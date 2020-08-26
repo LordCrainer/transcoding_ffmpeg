@@ -1,0 +1,2 @@
+ffmbc.exe -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\SD/pre_sd.mov" -r 29.97 -s 720x480 -vcodec dvvideo -pix_fmt yuv411p   -acodec pcm_s16le -y "prueba_dv_v2.dv" -ar 48000 -acodec pcm_s16le -ac 1 -newaudio -map_audio_channel  0:1:0:0:1:0  -timecode 00:00:00:00
+pause
