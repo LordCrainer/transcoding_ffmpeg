@@ -1,1 +1,2 @@
-ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\SD\pre_sd.mov" 
+ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\SD\pre_sd.mov" -b 25M -minrate 25M -maxrate 25M -bufsize 4M -timecode 00:00:00:00 -ar 44.1K -ab 128K -y "prueba_sd.mpg"
+pause
