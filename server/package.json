@@ -1,6 +1,6 @@
 {
   "name": "transcoding",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Una API RESTFUL con Node.js para manipular contenido multimedia.",
   "main": "index.js",
   "scripts": {
@@ -25,11 +25,13 @@
     "debug": "^4.1.1",
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
+    "ffmpeg-cli": "^2.5.2",
     "fluent-ffmpeg": "^2.1.2",
     "formidable": "^1.2.1",
     "helmet": "^4.1.1",
     "method-override": "^3.0.0",
     "morgan": "^1.10.0",
+    "mz": "^2.7.0",
     "socket.io": "^2.3.0",
     "winston": "^3.3.3"
   },

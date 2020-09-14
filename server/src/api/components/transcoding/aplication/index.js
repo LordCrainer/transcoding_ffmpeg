@@ -1,41 +1,9 @@
 const ffmpeg = require("fluent-ffmpeg");
+const cli = require("ffmpeg-cli");
 const spawn = require("child_process").spawn;
+const { fileSystem, eventFunction } = require("../../../components/service/index");
 
-const getVolumen = (streamUrlOrigin, streamUrlDestiny) => {
-  let promise = new Promise((resolve, reject) => {
-    let cmd = new ffmpeg({ source: streamUrlOrigin })
-      .withAudioFilter("volumedetect")
-      .addOption("-f", "null")
-      //.addOption("-t", "10") // duration
-      //.noVideo()
-      .on("start", function (ffmpegCommand) {
-        //console.log("Output the ffmpeg command: ", ffmpegCommand);
-      })
-      .on("progress", function (progreso) {
-        // console.log("Progreso GETVOLUMEN:", `${progreso.percent.toFixed(2)}%`);
-      })
-      .on("end", function (stdout, stderr) {
-        // find the mean_volume in the output
-        let mean_volume = stderr.match(/mean_volume:\s(-?[0-9]\d*\.\d+)/);
-        let max_volume = stderr.match(/max_volume:\s(-?[0-9]\d*\.\d+)/);
-        if (mean_volume && max_volume) {
-          /* console.log({
-              mean: parseFloat(mean_volume[1]),
-              max: parseFloat(max_volume[1])
-            }); */
-          resolve({
-            mean: parseFloat(mean_volume[1]),
-            max: parseFloat(max_volume[1]),
-          });
-        }
-        if (stderr.match(/Server returned 404 Not Found/)) {
-          return callback(false);
-        }
-      })
-      .saveToFile(streamUrlDestiny);
-  });
-  return promise;
-};
+
 function bajarVolumen(streamUrlOrigin, streamUrlDestiny, factorVolumen) {
   let promise = new Promise((resolve, reject) => {
     new ffmpeg({ source: streamUrlOrigin })
@@ -65,9 +33,42 @@ function bajarVolumen(streamUrlOrigin, streamUrlDestiny, factorVolumen) {
   });
   return promise;
 }
+
 function getFactorVolumen(volumenDBInicial, volumenDBFinal) {
   return (volumenDBFinal - volumenDBInicial) / 1;
 }
+
+
+const getVolumen = (path) => {
+  const promise = new Promise((resolve, reject) => {
+    let output;
+    const ffmpeg = spawn("ffmpeg", [
+      "-i",
+      `${path}`,
+      "-af",
+      "'volumedetect'",
+      "-vn",
+      "-sn",
+      "-dn",
+      "-f",
+      "null",
+      "/dev/null",
+    ]);
+    ffmpeg.stderr.on("data", (data) => {
+      output += data.toString();
+    });
+    ffmpeg.on("close", (code) => {
+      resolve(getMaxAndMean(output));
+    });
+  });
+  return promise;
+};
+
+const getMaxAndMean = (data) => {
+  let [, max] = data.match(/max_volume:\s(-?[0-9]\d*\.\d+)/);
+  let [, mean] = data.match(/mean_volume:\s(-?[0-9]\d*\.\d+)/);
+  return { max, mean };
+};
 
 const convertVideo = async (configuration, pathOrigin, pathDestiny) => {
   const { extension } = configuration;

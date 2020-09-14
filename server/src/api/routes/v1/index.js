@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const transcoding = require("../../components/transcoding/transcoding.router");
+const transcoding = require("../../components/transcoding/Infrastructure/router");
 
 router.use("transcoding", transcoding(router));
 
