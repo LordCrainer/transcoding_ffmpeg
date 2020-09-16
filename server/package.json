@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "comment": "Windows set DEBUG, Linux DEBUG",
+    "test:custom": "jest",
     "test:unit": "cross-env NODE_ENV=test jest --detectOpenHandles ./src/api/testing/unit/*",
     "start": "nodemon ./src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon ./src/index.js --watch ./"
@@ -17,6 +18,7 @@
   "author": "Carlos Garcia",
   "license": "ISC",
   "dependencies": {
+    "@expo/spawn-async": "^1.5.0",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",

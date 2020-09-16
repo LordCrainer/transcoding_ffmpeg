@@ -1,14 +1,20 @@
 const ffmpeg = require("fluent-ffmpeg");
-const cli = require("ffmpeg-cli");
+const asyncSpawn = require("@expo/spawn-async");
 const spawn = require("child_process").spawn;
-const { fileSystem, eventFunction } = require("../../../components/service/index");
 
+const handledData = require("./handled-data");
+const commands = require("./commads");
+const regexs = require("./regexs");
+const {
+  fileSystem,
+  eventFunction,
+} = require("../../../components/service/index");
 
-function bajarVolumen(streamUrlOrigin, streamUrlDestiny, factorVolumen) {
+function bajarVolumen({ origin, destiny }, { factor }, callBack = () => {}) {
   let promise = new Promise((resolve, reject) => {
-    new ffmpeg({ source: streamUrlOrigin })
+    new ffmpeg({ source: origin })
       .videoCodec("copy")
-      .withAudioFilter("volume=" + factorVolumen + "dB")
+      .withAudioFilter(`volume=${factor}${unit}`)
       .addOption("-strict", "-2")
       //.addOption("-t", "10") // duration
       //.noVideo()
@@ -16,20 +22,16 @@ function bajarVolumen(streamUrlOrigin, streamUrlDestiny, factorVolumen) {
         //console.log("Output the ffmpeg command: ", ffmpegCommand);
       })
       .on("progress", function (progreso) {
-        console.log(
-          "Progreso BAJARVOLUMEN:",
-          `${progreso.percent.toFixed(2)}%`
-        );
+        const output = `${progreso.percent.toFixed(2)}%`;
+        callBack(output);
       })
       .on("end", function (stdout, stderr) {
-        //console.log("Bajar Volumen: ", stderr);
         resolve();
         if (stderr == "data") {
           reject(new Error("FALLO"));
         }
-        // return the mean volume
       })
-      .saveToFile(streamUrlDestiny);
+      .saveToFile(destiny);
   });
   return promise;
 }
@@ -38,36 +40,57 @@ function getFactorVolumen(volumenDBInicial, volumenDBFinal) {
   return (volumenDBFinal - volumenDBInicial) / 1;
 }
 
-
-const getVolumen = (path) => {
+const getVolumen = (data) => {
   const promise = new Promise((resolve, reject) => {
     let output;
-    const ffmpeg = spawn("ffmpeg", [
-      "-i",
-      `${path}`,
-      "-af",
-      "'volumedetect'",
-      "-vn",
-      "-sn",
-      "-dn",
-      "-f",
-      "null",
-      "/dev/null",
-    ]);
+    const args = handledData.splitString(commands.volumeDetect(data));
+    const ffmpeg = spawn("ffmpeg", args);
     ffmpeg.stderr.on("data", (data) => {
       output += data.toString();
     });
     ffmpeg.on("close", (code) => {
-      resolve(getMaxAndMean(output));
+      const { max, mean } = handledData.getMaxAndMean(output, regexs.volume);
+      resolve({ max, mean });
     });
   });
   return promise;
 };
 
-const getMaxAndMean = (data) => {
-  let [, max] = data.match(/max_volume:\s(-?[0-9]\d*\.\d+)/);
-  let [, mean] = data.match(/mean_volume:\s(-?[0-9]\d*\.\d+)/);
-  return { max, mean };
+const asyncSpawnExec = async ({ program, commands }, cb = () => {}) => {
+  let process = asyncSpawn(program, commands);
+  let childProcess = process.child;
+  let data;
+  try {
+    childProcess.stdout.on("data", (data) => {
+      console.log(`ffmpeg stdout: ${data}`);
+    });
+    childProcess.stderr.on("data", (data) => {
+      cb(handledData.getParamsFromVolume(data.toString(), regexs.editVolume));
+    });
+    data = await process;
+    // const outputOut = handledData.getParamsFromVolume(stderr, regexs.editVolume)
+  } catch (err) {
+    console.log(err);
+    throw new Error(err);
+  }
+  return true;
+};
+
+const asyncFfmpeg = (data, options, cb = () => {}) => {
+  const promise = new Promise((resolve, reject) => {
+    let output;
+    const args = handledData.splitString(commands.dv25(data));
+    const ffmpeg = spawn("ffmbc", args);
+    ffmpeg.stderr.on("data", (data) => {
+      cb(handledData.getParamsFromVolume(data.toString(), regexs.editVolume));
+    });
+    ffmpeg.on("close", (code) => {
+      if (handledData.getError(output)) reject(new Error("CONVERSION FAILED"));
+      //const { max, mean } = handledData.getMaxAndMean(output);
+      resolve(true);
+    });
+  });
+  return promise;
 };
 
 const convertVideo = async (configuration, pathOrigin, pathDestiny) => {
@@ -160,4 +183,6 @@ module.exports = {
   getFactorVolumen,
   changeVolumen,
   convertVideo,
+  asyncFfmpeg,
+  asyncSpawnExec,
 };
