@@ -20,7 +20,19 @@ const statSync = async (path, options) => {
   });
 };
 
+const existFile = async (path, mode = fs.constants.F_OK) => {
+  let result;
+  try {
+    result = await fs.access(path, mode);
+  } catch (err) {
+    throw err;
+  }
+  return true;
+};
+
 module.exports = {
   createReadStream,
   statSync,
+  existFile,
+  fs,
 };
