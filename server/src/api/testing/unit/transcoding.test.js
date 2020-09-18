@@ -11,6 +11,7 @@ const {
 } = require("../../components/transcoding/aplication/commads");
 const {
   splitString,
+  getOutputFromExec,
 } = require("../../components/transcoding/aplication/handled-data");
 
 const data = {
@@ -23,27 +24,43 @@ const data = {
   volume: { factor: -6, unit: "dB" },
 };
 jest.setTimeout(20000);
-describe("Transcoding files", () => {
+describe("Ejecutar programas con async Spawn", () => {
   /* test("Get Volume from file using child process", async (done) => {
     const volume = await getVolumen(data.properties);
     expect(volume.mean).toBe("-15.3");
     done();
   });
   */
-  test("Function Async for FFMPEG", async (done) => {
+  /* test("Function Async for FFMPEG", async (done) => {
     const volume = await asyncFfmpeg(data.properties, data.volume, (data) =>
       console.log(data)
     );
     expect(volume).toBe(true);
     done();
-  });
-  test("Exec programs with async Spawn", async (done) => {
+  }); */
+  /* test("Proceso de conversión con éxito", async (done) => {
     const commands = splitString(dv25(data.properties));
     const volume = await asyncSpawnExec(
       { program: "ffmbc", commands },
       (data) => console.log(data)
     );
-    expect(volume).toStrictEqual(true);
+    expect(volume).toStrictEqual(0);
     done();
-  });
+  }); */
+  /*   test("Error al colocar un programa invalido", (done) => {
+    const [program, ...args] = splitString(dv25(data.properties));
+    const volume = asyncSpawnExec({ program, args }).catch((e) => {
+      getOutputFromExec();
+      expect(e.status).toBe(1);
+      done();
+    });
+  }); */
+  /*   test("Error al colocar un path invalido", (done) => {
+    const data = { origin: "origin.mov", destiny: "destiny.mpv" };
+    const [program, ...commands] = splitString(dv25(data));
+    const volume = asyncSpawnExec({ program, commands }).catch((e) => {
+      expect(e.status).toBe(1);
+      done();
+    });
+  }); */
 });

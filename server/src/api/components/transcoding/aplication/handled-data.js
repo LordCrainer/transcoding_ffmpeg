@@ -23,9 +23,9 @@ const splitString = (string = "", splitter = /\s+/) => {
   return string.split(splitter);
 };
 
-const getParamsFromVolume = (string, regex) => {
-  const arrayMatch = matching(string, regex);
-  const arrayEntries = mapGeneric(arrayMatch, stringToEntries("="));
+const getOutputFromExec = (regexMatch, regexString) => (string) => {
+  const arrayMatch = matching(string, regexMatch);
+  const arrayEntries = mapGeneric(arrayMatch, stringToEntries(regexString));
   return entriesToObj(arrayEntries);
 };
 
@@ -33,7 +33,7 @@ module.exports = {
   getMaxAndMean,
   splitString,
   getError,
-  getParamsFromVolume,
+  getOutputFromExec,
   mapGeneric,
   stringToEntries,
 };

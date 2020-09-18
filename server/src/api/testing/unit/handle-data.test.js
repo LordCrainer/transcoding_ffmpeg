@@ -27,6 +27,7 @@ describe("Converting text plain commands in array", () => {
   };
   test("GET VOLUME", () => {
     const result = [
+      "ffmpeg",
       "-i",
       "origin.mov",
       "-af",
@@ -42,6 +43,7 @@ describe("Converting text plain commands in array", () => {
   });
   test("CHANGE VOLUME", () => {
     const result = [
+      "ffmpeg",
       "-i",
       "origin.mov",
       "-vcodec",
@@ -57,6 +59,7 @@ describe("Converting text plain commands in array", () => {
   });
   test("TRANSCODING DVCPRO SD", () => {
     const result = [
+      "ffmbc",
       "-i",
       "origin.mov",
       "-r",

@@ -2,78 +2,73 @@ const ffmpeg = require("fluent-ffmpeg");
 const asyncSpawn = require("@expo/spawn-async");
 const spawn = require("child_process").spawn;
 
-const handledData = require("./handled-data");
-const commands = require("./commads");
+const { splitString } = require("./handled-data");
+const { volumeDetect } = require("./commads");
 const regexs = require("./regexs");
 const {
   fileSystem,
   eventFunction,
 } = require("../../../components/service/index");
+const handledData = require("./handled-data");
 
-function bajarVolumen({ origin, destiny }, { factor }, callBack = () => {}) {
-  let promise = new Promise((resolve, reject) => {
-    new ffmpeg({ source: origin })
-      .videoCodec("copy")
-      .withAudioFilter(`volume=${factor}${unit}`)
-      .addOption("-strict", "-2")
-      //.addOption("-t", "10") // duration
-      //.noVideo()
-      .on("start", function (ffmpegCommand) {
-        //console.log("Output the ffmpeg command: ", ffmpegCommand);
-      })
-      .on("progress", function (progreso) {
-        const output = `${progreso.percent.toFixed(2)}%`;
-        callBack(output);
-      })
-      .on("end", function (stdout, stderr) {
-        resolve();
-        if (stderr == "data") {
-          reject(new Error("FALLO"));
-        }
-      })
-      .saveToFile(destiny);
-  });
-  return promise;
-}
-
-function getFactorVolumen(volumenDBInicial, volumenDBFinal) {
-  return (volumenDBFinal - volumenDBInicial) / 1;
-}
-
-const getVolumen = (data) => {
-  const promise = new Promise((resolve, reject) => {
-    let output;
-    const args = handledData.splitString(commands.volumeDetect(data));
-    const ffmpeg = spawn("ffmpeg", args);
-    ffmpeg.stderr.on("data", (data) => {
-      output += data.toString();
-    });
-    ffmpeg.on("close", (code) => {
-      const { max, mean } = handledData.getMaxAndMean(output, regexs.volume);
-      resolve({ max, mean });
-    });
-  });
-  return promise;
-};
-
-const asyncSpawnExec = async ({ program, commands }, cb = () => {}) => {
-  let process = asyncSpawn(program, commands);
+const asyncSpawnExec = async (
+  { program = "ffmpeg", args = [] },
+  cb = (output) => {}
+) => {
+  let process = asyncSpawn(program, args);
   let childProcess = process.child;
-  let data;
+  let status, stderr, pid;
   try {
     childProcess.stdout.on("data", (data) => {
       console.log(`ffmpeg stdout: ${data}`);
     });
     childProcess.stderr.on("data", (data) => {
-      cb(handledData.getParamsFromVolume(data.toString(), regexs.editVolume));
+      cb(data.toString());
     });
-    data = await process;
+    ({ status, stderr, pid } = await process);
     // const outputOut = handledData.getParamsFromVolume(stderr, regexs.editVolume)
   } catch (err) {
-    console.log(err);
-    throw new Error(err);
+    throw err;
   }
-  return true;
+  return { status, stderr, pid };
+};
+
+const getVolumen = async ({ origin }) => {
+  let status, stderr, pid;
+  try {
+    const [program, ...args] = splitString(volumeDetect({ origin }));
+    ({ status, stderr, pid } = await asyncSpawnExec({
+      program,
+      args,
+    }));
+  } catch (err) {
+    throw err;
+  }
+  return { status, stderr, pid };
+};
+
+const editVolume = async ({ origin, destiny }) => {};
+
+const transcodingVideo = async (
+  { origin, destiny },
+  { commands },
+  callFunction = () => {}
+) => {
+  let status, stderr, pid;
+  try {
+    const [program, ...args] = splitString(commands({ origin, destiny }));
+    ({ status, stderr, pid } = await asyncSpawnExec(
+      {
+        program,
+        args,
+      },
+      (output) =>
+        callFunction(handledData.getOutputFromExec(regexs.editVolume, /\s+/))
+    ));
+  } catch (err) {
+    throw err;
+  }
+  return { status, stderr, pid };
 };
 
 const asyncFfmpeg = (data, options, cb = () => {}) => {
@@ -179,10 +174,9 @@ const changeVolumen = async (urlVideo, urlDestiny, volumenDB) => {
 };
 module.exports = {
   getVolumen,
-  bajarVolumen,
-  getFactorVolumen,
-  changeVolumen,
+  asyncSpawnExec,
+  transcodingVideo,
+  editVolume,
   convertVideo,
   asyncFfmpeg,
-  asyncSpawnExec,
 };
