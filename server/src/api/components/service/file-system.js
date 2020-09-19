@@ -1,3 +1,5 @@
+const error = require("debug")("server:error:file-system");
+
 const fs = require("mz/fs");
 
 const createReadStream = async (path, options) => {
