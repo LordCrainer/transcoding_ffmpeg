@@ -1,3 +1,5 @@
+jest.setTimeout(20000);
+
 const {
   getVolumen,
   asyncFfmpeg,
@@ -9,25 +11,22 @@ const {
 const commands = require("../../components/transcoding/aplication/commads");
 const handledData = require("../../components/transcoding/aplication/handled-data");
 const regexs = require("../../components/transcoding/aplication/regexs");
-const { log } = require("debug");
 
 const file = {
   origin:
-    "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/transcoder/Original.mov",
+    "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/api/testing/unit/NewVideo.mov",
   destiny:
-    "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/api/testing/unit/-12_NewVideo.mov",
+    "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/api/testing/unit/-12_NewVideo.mxf",
 };
 const fields = {
   name: "Ecuavisa",
   audio: {
     volume: -12,
-    unit: "dB",
   },
   video: {},
   format: "dvcpro25",
 };
 
-jest.setTimeout(20000);
 describe("Ejecutar programas con async Spawn", () => {
   /* test("Get Volume from file using child process", async (done) => {
     const volume = await getVolumen(data.properties);
@@ -76,14 +75,15 @@ describe("FUNCIONES DEL TRANSCODING", () => {
     expect(volume).toStrictEqual({ max: "-6.0", mean: "-15.3" });
     done();
   });
+   */
   test("Editando el volumen de un video", async (done) => {
-    const newFile = await editVolume(file, fields.audio);
-    expect(newFile.status).toStrictEqual(0);
-    done();
-  }); */
-  test("Transcodificando el video pasando el comando como parámetro", async (done) => {
-    const newFile = await transcodingVideo(file, { commands: commands.dv25 });
+    const newFile = await editVolume(file, { volume: -6 });
     expect(newFile.status).toStrictEqual(0);
     done();
   });
+  /* test("Transcodificando el video pasando el comando como parámetro", async (done) => {
+    const newFile = await transcodingVideo(file, { commands: commands.dv25 });
+    expect(newFile.status).toStrictEqual(0);
+    done();
+  }); */
 });

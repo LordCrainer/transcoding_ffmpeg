@@ -49,12 +49,17 @@ const getVolumen = async ({ origin }) => {
   return { max, mean };
 };
 
-const editVolume = async ({ origin, destiny }, audio, cb = (output) => {}) => {
+const editVolume = async (
+  { origin, destiny },
+  { volume },
+  cb = (output) => {}
+) => {
   let stderr, status;
   try {
     const [program, ...args] = handledData.splitString(
-      commands.editVolume({ origin, destiny }, audio, {})
+      commands.editVolume({ origin, destiny }, { volume }, {})
     );
+    console.log("ARGUMENTOS", args);
     ({ stderr, status } = await asyncSpawnExec(
       {
         program,
@@ -65,7 +70,7 @@ const editVolume = async ({ origin, destiny }, audio, cb = (output) => {}) => {
   } catch (err) {
     throw err;
   }
-  return { status };
+  return { status, stderr };
 };
 
 const transcodingVideo = async (

@@ -1,16 +1,15 @@
+jest.setTimeout(30000);
+
 const transcodingController = require("../../components/transcoding/Infrastructure/transcoding.controller");
 
 describe("Transcoding to media", () => {
-  test("should ", () => {
+  test("Transcodigicación de un a muchos archivos ", async (done) => {
     const file = {
-      path: "http://localhost",
-      originalName: "videoParaunMedio",
-      originalExtension: ".mov",
+      origin:
+        "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/api/testing/unit/NewVideo.mov",
+      fieldName: "ragnarok",
+      extension: ".mxf",
     };
-    const fields = [
-      { id: 8, nombre: "Ecuavisa" },
-      { id: 19, nombre: "TC_Television" },
-    ];
     const listMedia = [
       {
         id: 8,
@@ -35,5 +34,10 @@ describe("Transcoding to media", () => {
         quality: "HD",
       },
     ];
+    let body = Object.assign({}, { file });
+    body = Object.assign(body, { fields: listMedia });
+    const result = await transcodingController.transcodingToMedia({ body });
+    expect(result).toStrictEqual(true);
+    done();
   });
 });

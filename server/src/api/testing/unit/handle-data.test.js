@@ -18,12 +18,14 @@ describe("Function to handle data", () => {
 });
 
 describe("Converting text plain commands in array", () => {
-  const data = {
-    properties: {
-      origin: "origin.mov",
-      destiny: "destiny.mov",
+  const fields = {
+    audio: {
+      volume: -6,
     },
-    volume: { factor: -6, unit: "dB" },
+  };
+  const data = {
+    origin: "origin.mov",
+    destiny: "destiny.mov",
   };
   test("GET VOLUME", () => {
     const result = [
@@ -39,9 +41,9 @@ describe("Converting text plain commands in array", () => {
       "null",
       "/dev/null",
     ];
-    expect(splitString(volumeDetect(data.properties))).toStrictEqual(result);
+    expect(splitString(volumeDetect(data))).toStrictEqual(result);
   });
-  test("CHANGE VOLUME", () => {
+  test("EDIT VOLUME", () => {
     const result = [
       "ffmpeg",
       "-i",
@@ -53,9 +55,7 @@ describe("Converting text plain commands in array", () => {
       "-y",
       "destiny.mov",
     ];
-    expect(splitString(editVolume(data.properties, data.volume))).toStrictEqual(
-      result
-    );
+    expect(splitString(editVolume(data, fields.audio))).toStrictEqual(result);
   });
   test("TRANSCODING DVCPRO SD", () => {
     const result = [
@@ -82,8 +82,6 @@ describe("Converting text plain commands in array", () => {
       "-y",
       "destiny.mov",
     ];
-    expect(
-      splitString(dv25(data.properties, data.volume), /\s+/)
-    ).toStrictEqual(result);
+    expect(splitString(dv25(data), /\s+/)).toStrictEqual(result);
   });
 });

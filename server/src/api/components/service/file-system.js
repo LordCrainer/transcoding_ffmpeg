@@ -23,13 +23,13 @@ const statSync = async (path, options) => {
 };
 
 const existFile = async (path, mode = fs.constants.F_OK) => {
-  let result;
+  let result, status;
   try {
     result = await fs.access(path, mode);
   } catch (err) {
-    throw err;
+    return { err, status: false };
   }
-  return true;
+  return { status: true };
 };
 
 module.exports = {

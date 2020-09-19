@@ -5,8 +5,10 @@ const path =
 describe("Funciones del sistema de archivos", () => {
   test("No existe el archivo ", () => {
     const path = "noExisteEsteArchivo.mov";
-    const result = existFile(path, fs.constants.F_OK).catch((err) =>
-      expect(err instanceof TypeError).toEqual(false)
+    const result = existFile(path, fs.constants.F_OK).catch((error) =>
+      expect(error.err instanceof TypeError && error.status === false).toEqual(
+        false
+      )
     );
   });
   test("Existencia del archivo ", async (done) => {
