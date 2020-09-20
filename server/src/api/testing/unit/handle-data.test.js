@@ -63,7 +63,7 @@ describe("Converting text plain commands in array", () => {
       "-i",
       "origin.mov",
       "-r",
-      "29.970",
+      "29970/1000",
       "-aspect",
       "3:2",
       "-bff",

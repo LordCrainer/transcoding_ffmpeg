@@ -59,7 +59,6 @@ const editVolume = async (
     const [program, ...args] = handledData.splitString(
       commands.editVolume({ origin, destiny }, { volume }, {})
     );
-    console.log("ARGUMENTOS", args);
     ({ stderr, status } = await asyncSpawnExec(
       {
         program,

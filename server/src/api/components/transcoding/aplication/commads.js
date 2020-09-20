@@ -9,7 +9,7 @@ const editVolume = (
 };
 
 const dv25 = ({ origin, destiny }) => {
-  return `ffmbc -i ${origin}  -r 29.970 -aspect 3:2 -bff -target dvcpro -b 50M -minrate 50M -maxrate 50M -bufsize 8M  -timecode 00:00:00:00  -y ${destiny}`;
+  return `ffmbc -i ${origin}  -r 29970/1000 -aspect 3:2 -bff -target dvcpro -b 50M -minrate 50M -maxrate 50M -bufsize 8M  -timecode 00:00:00:00  -y ${destiny}`;
 };
 
 module.exports = {

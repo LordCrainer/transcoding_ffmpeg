@@ -6,9 +6,9 @@ describe("Transcoding to media", () => {
   test("Transcodigicación de un a muchos archivos ", async (done) => {
     const file = {
       origin:
-        "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/api/testing/unit/NewVideo.mov",
+        "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/files/upload/NewVideo.mov",
       fieldName: "ragnarok",
-      extension: ".mxf",
+      extension: ".mov",
     };
     const listMedia = [
       {
@@ -17,9 +17,9 @@ describe("Transcoding to media", () => {
         name: "Ecuavisa",
         audio: { volume: -12 },
         video: {
-          format: "dv25",
           contanaier: ".mov",
         },
+        format: "dv25",
         quality: "SD",
       },
       {
@@ -28,9 +28,9 @@ describe("Transcoding to media", () => {
         name: "TC_Television",
         audio: { volume: -12 },
         video: {
-          format: "xdcam",
           contanaier: ".mxf",
         },
+        format: "xdcam",
         quality: "HD",
       },
     ];
