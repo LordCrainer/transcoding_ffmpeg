@@ -1,2 +1,0 @@
-ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov" -r 29.97  -vcodec libx264  -pix_fmt yuv420p -vf pad=720:576:0:72:black:aspect=4:3 -qscale 1 -color_primaries bt709   -b 50M -minrate 50M -maxrate 50M -bufsize 8M   -acodec pcm_s16le -sameq  -vol 128   -timecode 00:00:00:00 -y "pre_sd_v1.mov"
-pause

@@ -1,0 +1,2 @@
+ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\SD\pre_sd_sd.mov"  -r 29.970 -aspect 3:2 -bff -target dvcpro  -b 50M -minrate 50M -maxrate 50M -bufsize 8M  -timecode 00:00:00:00  -y "prueba_dv_v3_sd.mov"
+pause

@@ -1,0 +1,2 @@
+ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\SD\dvcpro\prueba_dv_v3_sd.mov" -r 29970/1000 -bff  -vcodec copy -acodec pcm_s24le -ac 1 -y "mux-to-mxf.mxf" -newaudio -ac 1 -acodec pcm_s24le 
+pause
