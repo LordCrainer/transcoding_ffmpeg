@@ -3,6 +3,8 @@ const transcodingService = require("../aplication/index");
 const { not } = require("../../service/fp-function");
 const fileSystem = require("../../service/file-system");
 const commands = require("../aplication/commads");
+const handledData = require("../aplication/handled-data");
+const utils = require("../aplication/utils");
 
 const transcodingToMedia = async (req, res) => {
   try {
@@ -13,17 +15,23 @@ const transcodingToMedia = async (req, res) => {
       "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/files/video/";
     const { max, mean } = await transcodingService.getVolumen(file);
     const media = fields[0];
-    const volumenFinal = media.audio.volume;
-    const factor = volumenFinal - Number(max);
-    console.log(Number(max), mean, factor);
-    const tempfieldName = `${volumenFinal}-${file.fieldName}.mxf`;
-    const tempDestiny = `${destinationTemporal}${tempfieldName}`;
+    const factor = utils.minus(Number(max), media.audio.volume);
+    const tempDestiny = handledData.setTemporalDestinationFile({
+      volume: media.audio.volume,
+      fieldName: file.fieldName,
+      destination: destinationTemporal,
+    });
     // const existFile = (await fileSystem.existFile(tempDestiny)).status;
     const changedVolume = await transcodingService.editVolume(
       { origin: file.origin, destiny: tempDestiny },
       { volume: factor }
     );
-    const destiny = `${destination}${file.fieldName}_${media.name}${file.extension}`;
+    const destiny = handledData.setDestinationFile({
+      destination,
+      fieldName: file.fieldName,
+      suffix: media.name,
+      extension: file.extension,
+    });
     const conversion = await transcodingService.transcodingVideo(
       {
         origin: tempDestiny,

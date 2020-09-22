@@ -19,7 +19,7 @@ describe("Transcoding to media", () => {
         video: {
           contanaier: ".mov",
         },
-        format: "dv25",
+        format: "dv25Mov",
         quality: "SD",
       },
       {

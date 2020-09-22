@@ -1,12 +1,12 @@
+const fileSystem = require("../../service/file-system");
 const {
   mapGeneric,
   matching,
   entriesToObj,
   stringToEntries,
+  unlessOneElement,
+  splitString,
 } = require("./utils");
-
-const unlessOneElement = (array = [], arg) =>
-  [...array].some((item) => item === arg);
 
 const getMaxAndMean = (data, { max, mean }) => {
   let [, maxVolume] = data.match(max);
@@ -19,21 +19,22 @@ const getError = (data = "") => {
   return unlessOneElement(array, "Error");
 };
 
-const splitString = (string = "", splitter = /\s+/) => {
-  return string.split(splitter);
-};
-
 const getOutputFromExec = (regexMatch, regexString) => (string) => {
   const arrayMatch = matching(string, regexMatch);
   const arrayEntries = mapGeneric(arrayMatch, stringToEntries(regexString));
   return entriesToObj(arrayEntries);
 };
 
+const setTemporalDestinationFile = ({ volume, fieldName, destination }) =>
+  `${destination}${volume}-${fieldName}.mxf`;
+
+const setDestinationFile = ({ destination, fieldName, suffix, extension }) =>
+  `${destination}${fieldName}_${suffix}${extension}`;
+
 module.exports = {
   getMaxAndMean,
-  splitString,
   getError,
   getOutputFromExec,
-  mapGeneric,
-  stringToEntries,
+  setTemporalDestinationFile,
+  setDestinationFile,
 };

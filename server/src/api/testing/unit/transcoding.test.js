@@ -42,7 +42,7 @@ describe("Ejecutar programas con async Spawn", () => {
     done();
   }); */
   /* test("Proceso de conversión con éxito", async (done) => {
-    const commands = splitString(dv25(data.properties));
+    const commands = splitString(dv25Mov(data.properties));
     const volume = await asyncSpawnExec(
       { program: "ffmbc", commands },
       (data) => console.log(data)
@@ -51,7 +51,7 @@ describe("Ejecutar programas con async Spawn", () => {
     done();
   }); */
   /*   test("Error al colocar un programa invalido", (done) => {
-    const [program, ...args] = splitString(dv25(data.properties));
+    const [program, ...args] = splitString(dv25Mov(data.properties));
     const volume = asyncSpawnExec({ program, args }).catch((e) => {
       getOutputFromExec();
       expect(e.status).toBe(1);
@@ -60,7 +60,7 @@ describe("Ejecutar programas con async Spawn", () => {
   }); */
   /*   test("Error al colocar un path invalido", (done) => {
     const data = { origin: "origin.mov", destiny: "destiny.mpv" };
-    const [program, ...commands] = splitString(dv25(data));
+    const [program, ...commands] = splitString(dv25Mov(data));
     const volume = asyncSpawnExec({ program, commands }).catch((e) => {
       expect(e.status).toBe(1);
       done();
@@ -82,7 +82,7 @@ describe("FUNCIONES DEL TRANSCODING", () => {
     done();
   });
   /* test("Transcodificando el video pasando el comando como parámetro", async (done) => {
-    const newFile = await transcodingVideo(file, { commands: commands.dv25 });
+    const newFile = await transcodingVideo(file, { commands: commands.dv25Mov });
     expect(newFile.status).toStrictEqual(0);
     done();
   }); */

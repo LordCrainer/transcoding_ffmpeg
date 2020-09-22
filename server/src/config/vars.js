@@ -17,6 +17,11 @@ const server = {
   logs: process.env.NODE_ENV === "production" ? "combined" : "dev",
 };
 
+const file = {
+  directory: process.env.DIRECTORY
+}
+
 module.exports = {
   server,
+  file
 };

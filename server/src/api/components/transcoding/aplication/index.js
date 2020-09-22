@@ -3,6 +3,7 @@ const asyncSpawn = require("@expo/spawn-async");
 const spawn = require("child_process").spawn;
 
 const handledData = require("./handled-data");
+const utilsTranscoder = require("./utils");
 const commands = require("./commads");
 const regexs = require("./regexs");
 const {
@@ -12,7 +13,7 @@ const {
 
 const asyncSpawnExec = async (
   { program = "ffmpeg", args = [] },
-  cb = (output) => {}
+  cb = (output="") => output
 ) => {
   let process = asyncSpawn(program, args);
   let childProcess = process.child;
@@ -35,7 +36,7 @@ const asyncSpawnExec = async (
 const getVolumen = async ({ origin }) => {
   let stderr, max, mean;
   try {
-    const [program, ...args] = handledData.splitString(
+    const [program, ...args] = utilsTranscoder.splitString(
       commands.volumeDetect({ origin })
     );
     ({ stderr } = await asyncSpawnExec({
@@ -56,7 +57,7 @@ const editVolume = async (
 ) => {
   let stderr, status;
   try {
-    const [program, ...args] = handledData.splitString(
+    const [program, ...args] = utilsTranscoder.splitString(
       commands.editVolume({ origin, destiny }, { volume }, {})
     );
     ({ stderr, status } = await asyncSpawnExec(
@@ -79,7 +80,7 @@ const transcodingVideo = async (
 ) => {
   let status, stderr, pid;
   try {
-    const [program, ...args] = handledData.splitString(
+    const [program, ...args] = utilsTranscoder.splitString(
       commands({ origin, destiny })
     );
     ({ status, stderr, pid } = await asyncSpawnExec(

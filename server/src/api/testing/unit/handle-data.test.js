@@ -6,7 +6,7 @@ const {
 const {
   volumeDetect,
   editVolume,
-  dv25,
+  dv25Mov,
 } = require("../../components/transcoding/aplication/commads");
 
 describe("Function to handle data", () => {
@@ -82,6 +82,6 @@ describe("Converting text plain commands in array", () => {
       "-y",
       "destiny.mov",
     ];
-    expect(splitString(dv25(data), /\s+/)).toStrictEqual(result);
+    expect(splitString(dv25Mov(data), /\s+/)).toStrictEqual(result);
   });
 });
