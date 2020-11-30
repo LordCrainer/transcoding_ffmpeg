@@ -37,7 +37,7 @@ const transcodingToMedia = async (req, res) => {
         origin: tempDestiny,
         destiny,
       },
-      { commands: commands[media.format] }
+      { commands: commands[media.process[1]] }
     );
     /*     if (not(existFile))
       await transcodingService.editVolume(

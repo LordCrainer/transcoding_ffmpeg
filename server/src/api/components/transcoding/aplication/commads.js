@@ -3,9 +3,9 @@ const volumeDetect = ({ origin = "prueba.mov" }) =>
 
 const editVolume = (
   { origin = "origin.mov", destiny = "destiny.mov" },
-  { volume = 0, unit = "dB" }
+  { volume = 0, unit = "dB", audiocodec = "pcm_s24le" }
 ) => {
-  return `ffmpeg -i ${origin} -vcodec copy -af volume=${volume}${unit} -y ${destiny}`;
+  return `ffmpeg -i ${origin} -vcodec copy -af volume=${volume}${unit} -acodec ${audiocodec} -y ${destiny}`;
 };
 
 const dv25Mov = ({ origin, destiny }) => {

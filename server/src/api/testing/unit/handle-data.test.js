@@ -53,7 +53,7 @@ describe("Converting text plain commands in array", () => {
       "-af",
       "volume=-6dB",
       "-y",
-      "destiny.mov",
+      "editVolumen.mov",
     ];
     expect(splitString(editVolume(data, fields.audio))).toStrictEqual(result);
   });
@@ -80,7 +80,7 @@ describe("Converting text plain commands in array", () => {
       "-timecode",
       "00:00:00:00",
       "-y",
-      "destiny.mov",
+      "dvcpro.mov",
     ];
     expect(splitString(dv25Mov(data), /\s+/)).toStrictEqual(result);
   });

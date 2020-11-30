@@ -14,24 +14,13 @@ describe("Transcoding to media", () => {
       {
         id: 8,
         type: "canal",
-        name: "Ecuavisa",
+        name: "DVCPRO",
         audio: { volume: -12 },
         video: {
           contanaier: ".mov",
         },
-        format: "dv25Mov",
+        process: ["preAjust", "dv25Mov"],
         quality: "SD",
-      },
-      {
-        id: 19,
-        type: "canal",
-        name: "TC_Television",
-        audio: { volume: -12 },
-        video: {
-          contanaier: ".mxf",
-        },
-        format: "xdcam",
-        quality: "HD",
       },
     ];
     let body = Object.assign({}, { file });
