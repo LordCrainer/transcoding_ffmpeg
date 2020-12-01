@@ -16,7 +16,7 @@ const file = {
   origin:
     "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/files/upload/NewVideo.mov",
   destiny:
-    "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/files/temporal/-12_NewVideo.mxf",
+    "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/data/converted/-12_NewVideo.mxf",
 };
 const fields = {
   name: "Ecuavisa",

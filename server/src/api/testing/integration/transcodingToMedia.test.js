@@ -6,7 +6,7 @@ describe("Transcoding to media", () => {
   test("Transcodigicación de un a muchos archivos ", async (done) => {
     const file = {
       origin:
-        "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/files/upload/NewVideo.mov",
+        "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/data/input/NewVideo.mov",
       fieldName: "ragnarok",
       extension: ".mov",
     };
