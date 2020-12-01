@@ -8,7 +8,7 @@ const regexs = require("./regexs");
 const {
   fileSystem,
   eventFunction,
-} = require("../../../components/service/index");
+} = require("../../share/index");
 
 const asyncSpawnExec = async (
   { program = "ffmpeg", args = [] },

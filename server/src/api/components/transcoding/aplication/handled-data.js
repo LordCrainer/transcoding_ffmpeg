@@ -1,4 +1,4 @@
-const fileSystem = require("../../service/file-system");
+const fileSystem = require("../../share/file-system");
 const {
   mapGeneric,
   matching,

@@ -1,16 +1,21 @@
 const transcodingService = require("../aplication/index");
 
-const { not } = require("../../service/fp-function");
-const fileSystem = require("../../service/file-system");
+const { not } = require("../../share/fp-function");
+const fileSystem = require("../../share/file-system");
 const commands = require("../Domain/commads");
 const handledData = require("../aplication/handled-data");
 const utils = require("../aplication/utils");
 
 const transcodingMedia = async (req, res) => {
   try {
-    const response = transcodingService.
+    // const response = transcodingService.
+    res.status(202).json({
+      success: true,
+    });
   } catch (error) {
-    
+    res.status(500).json({
+      success: false,
+    });
   }
 };
 
