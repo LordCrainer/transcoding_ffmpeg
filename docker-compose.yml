@@ -1,0 +1,45 @@
+version: "3"
+services:
+ api-transcoding:
+    build:
+      context: ./server
+      dockerfile: dockerfile
+    container_name: api-transcoding
+    image: lntv-api-transcoding:1.1.0
+    networks: 
+      - submain-net
+    environment:
+      PORT: 3000
+      UPLOAD_DESTINATION: "./upload"
+      CORS_ORIGIN: "*"
+      NODE_ENV: "production"
+    volumes:
+      - ./server/:/app
+      - /var/www/LNTV_PLATAFORMA/data/main/media/:/app/
+    ports:
+      - "5000:3000"
+    restart: unless-stopped
+
+ client-transcoding:
+    build:
+      context: ./cliente
+      dockerfile: dockerfile
+    container_name: client-transcoding
+    image: lntv-client-transcoding:1.1.0
+    networks: 
+      - submain-net
+    environment:
+      PORT: 3000
+      UPLOAD_DESTINATION: "./upload"
+      CORS_ORIGIN: "*"
+      NODE_ENV: "production"
+    volumes:
+      - ./cliente/:/app
+      - /var/www/LNTV_PLATAFORMA/data/main/media/:/app/
+    ports:
+      - "5000:3000"
+    restart: unless-stopped
+
+networks: 
+  submain-net:
+    driver: brigde
