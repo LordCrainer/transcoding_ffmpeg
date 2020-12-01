@@ -1,10 +1,9 @@
-const ffmpeg = require("fluent-ffmpeg");
 const asyncSpawn = require("@expo/spawn-async");
 const spawn = require("child_process").spawn;
 
 const handledData = require("./handled-data");
 const utilsTranscoder = require("./utils");
-const commands = require("./commads");
+const commands = require("../Domain/commads");
 const regexs = require("./regexs");
 const {
   fileSystem,

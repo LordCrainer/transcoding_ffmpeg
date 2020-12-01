@@ -2,9 +2,17 @@ const transcodingService = require("../aplication/index");
 
 const { not } = require("../../service/fp-function");
 const fileSystem = require("../../service/file-system");
-const commands = require("../aplication/commads");
+const commands = require("../Domain/commads");
 const handledData = require("../aplication/handled-data");
 const utils = require("../aplication/utils");
+
+const transcodingMedia = async (req, res) => {
+  try {
+    const response = transcodingService.
+  } catch (error) {
+    
+  }
+};
 
 const transcodingToMedia = async (req, res) => {
   try {
@@ -54,4 +62,5 @@ const transcodingToMedia = async (req, res) => {
 
 module.exports = {
   transcodingToMedia,
+  transcodingMedia,
 };

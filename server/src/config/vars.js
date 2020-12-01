@@ -8,7 +8,7 @@ require("dotenv-safe").config({
 
 const server = {
   env: process.env.NODE_ENV,
-  port: process.env.PORT,
+  port: process.env.PORT || 3000,
   host: process.env.HOST,
   corsOptions: {
     origin: process.env.CORS_ORIGIN,

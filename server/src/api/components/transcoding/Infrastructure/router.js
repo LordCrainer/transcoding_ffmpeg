@@ -1,7 +1,8 @@
 const transcodingController = require("./transcoding.controller");
 
 const transcodingRouter = (router) => {
-  router.get("/", transcodingController.transcodingToMedia);
+  router.post("/", transcodingController.transcodingToMedia);
+  router.post("/", transcodingController.transcodingMedia);
 
   return router;
 };
