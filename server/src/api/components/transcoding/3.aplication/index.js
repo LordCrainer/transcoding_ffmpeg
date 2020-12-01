@@ -3,8 +3,8 @@ const spawn = require("child_process").spawn;
 
 const handledData = require("./handled-data");
 const utilsTranscoder = require("./utils");
-const commands = require("../Domain/commads");
-const regexs = require("./regexs");
+const commands = require("../4.domain/commads");
+const regexs = require("../4.domain/regexs");
 const {
   fileSystem,
   eventFunction,

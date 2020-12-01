@@ -1,10 +1,10 @@
-const transcodingService = require("../aplication/index");
+const transcodingService = require("../3.aplication/index");
 
 const { not } = require("../../share/fp-function");
 const fileSystem = require("../../share/file-system");
-const commands = require("../Domain/commads");
-const handledData = require("../aplication/handled-data");
-const utils = require("../aplication/utils");
+const commands = require("../4.domain/commads");
+const handledData = require("../3.aplication/handled-data");
+const utils = require("../3.aplication/utils");
 
 const transcodingMedia = async (req, res) => {
   try {
