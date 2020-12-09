@@ -1,7 +1,10 @@
 import express from "express";
-const router = express.Router();
 import transcodingRouter from "./transcoding";
+import testingRoute from './test';
 
-router.use("transcoding", transcodingRouter(router));
+const router = express.Router();
 
-module.exports = router;
+router.use("/transcoding", transcodingRouter(router));
+router.use("/test", testingRoute(router));
+
+export default router;
