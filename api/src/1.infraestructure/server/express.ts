@@ -1,4 +1,6 @@
-import express from "express";
+import { IexpressConfig } from "types/IServer";
+
+import express, { Router } from "express";
 import http from "http";
 import morgan from "morgan";
 //import compress from "compression"
@@ -6,10 +8,8 @@ import methodOverride from "method-override";
 import cors from "cors";
 //import helmet from "helmet"
 import bodyParser from "body-parser";
-import { IexpressConfig } from "types/IServer";
-import apiRouter from "../../2.adapter/routes/v1";
 
-export default async (config: IexpressConfig) => {
+export default async (config: IexpressConfig, apiRouter: Router) => {
   const app = express();
   const server = http.createServer(app);
   //app.use(compress());

@@ -4,12 +4,13 @@ declare global {
 }
 
 import app from "./1.infraestructure/server/express";
+import apiRouter from "./2.adapter/routes/v1/index";
 
 import config from "./config";
 import appConfig from "./config/app";
 
 const main = async () => {
-  await (await app(appConfig)).listen(config.server.port);
+  await (await app(appConfig, apiRouter)).listen(config.server.port);
   console.log(
     `SERVER START: http://${config.server.host}:${config.server.port}`
   );
