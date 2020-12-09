@@ -4,11 +4,12 @@
   "description": "Una API RESTFUL con Node.js para manipular contenido multimedia.",
   "main": "index.js",
   "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon ./src/index.js --watch ./",
+    "build": "tsc",
+    "start": "npm run build && node ./dist/index.js",
     "comment": "Windows set DEBUG, Linux DEBUG",
     "test:custom": "jest",
-    "test:unit": "cross-env NODE_ENV=test jest --detectOpenHandles ./src/api/testing/unit/*",
-    "start": "nodemon ./src/index.js",
-    "dev": "cross-env NODE_ENV=development nodemon ./src/index.js --watch ./"
+    "test:unit": "cross-env NODE_ENV=test jest --detectOpenHandles ./src/api/testing/unit/*"
   },
   "keywords": [
     "node",
@@ -38,6 +39,15 @@
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
+    "@types/bluebird-global": "^3.5.12",
+    "@types/cors": "^2.8.8",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.9",
+    "@types/helmet": "^4.0.0",
+    "@types/jest": "^26.0.15",
+    "@types/method-override": "0.0.31",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^14.14.9",
     "babel-jest": "^26.3.0",
     "jest": "^26.4.2",
     "nodemon": "^2.0.4",
