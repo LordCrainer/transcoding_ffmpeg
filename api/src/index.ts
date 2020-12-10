@@ -4,7 +4,7 @@ declare global {
 }
 
 import app from "./1.infraestructure/server/express";
-import apiRouter from "./2.adapter/routes/v1/index";
+import apiRouter from "./2.adapter/routes/index";
 
 import config from "./config";
 import appConfig from "./config/app";
