@@ -9,7 +9,7 @@ import cors from "cors";
 //import helmet from "helmet"
 import bodyParser from "body-parser";
 
-export default async (config: IexpressConfig, apiRouter: Router) => {
+export default async (config: IexpressConfig, apiRouter: () => Router) => {
   const app = express();
   const server = http.createServer(app);
   //app.use(compress());
@@ -18,7 +18,7 @@ export default async (config: IexpressConfig, apiRouter: Router) => {
   //app.use(helmet());
   app.use(cors(config.cors));
   // ROUTES
-  app.use("/api", apiRouter);
+  app.use("/api", apiRouter());
   app.use("*", (req, res, next) => {
     res.status(404);
     res.type("txt").send("API SERVICE: NOT FOUND PATH!!");

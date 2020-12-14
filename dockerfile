@@ -1,22 +1,7 @@
-
-# FROM node:12.18.4-alpine3.9 as api
-# RUN mkdir -p /app
-# WORKDIR /app
-# COPY package.json /app/
-# COPY package-lock.json /app/
-# RUN npm install
-# # Bundle app source
-# COPY . /app/
-#
-# EXPOSE 3000
-#
-# CMD [ "npm", "start" ]
-
 FROM lsiobase/ffmpeg:bin as binstage
 FROM lsiobase/ubuntu:bionic
 
 # Add files from binstage
-COPY --from=api /app /app
 COPY --from=binstage / /
 # set version label
 ARG BUILD_DATE

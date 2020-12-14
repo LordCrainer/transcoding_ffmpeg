@@ -2,23 +2,23 @@ version: "3"
 services:
  api-transcoding:
     build:
-      context: ./server
+      context: ./api
       dockerfile: dockerfile
     command: npm run dev
     container_name: api-transcoding
-    image: lntv-api-transcoding:1.1.0
+    image: lntv-api-transcoding:1.1.5
     networks: 
       - submain-net
     environment:
       PORT: 3000
       UPLOAD_DESTINATION: "./upload"
       CORS_ORIGIN: "*"
-      NODE_ENV: "production"
+      NODE_ENV: "development"
     volumes:
-      - ./server/:/app
+      - ./api/:/app
       - ./data/converted:/app/src/files
     ports:
-      - "5000:3000"
+      - "5001:3000"
     restart: unless-stopped
 
 # client-transcoding:
