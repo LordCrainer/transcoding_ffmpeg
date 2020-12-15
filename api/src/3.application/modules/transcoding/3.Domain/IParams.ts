@@ -39,7 +39,17 @@ export interface IVideoFilter {
     right: number;
   };
 }
-
+export interface ISourceData {
+  origin: {
+    path: string;
+    originalName: string;
+  };
+  destiny: {
+    path: string;
+    fieldName: string;
+    extension: string;
+  };
+}
 export interface IMetada {
   audio: IAudio;
   video: IVideo;

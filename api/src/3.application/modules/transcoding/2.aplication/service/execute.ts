@@ -1,12 +1,8 @@
 import asyncSpawn from "@expo/spawn-async";
-// import childProcess from "child_process";
 import { IProgram, ISpawnCallBack } from "./../../3.Domain/IExecute";
 
-const asyncSpawnExec = async (
-  { program = "ffmpeg", args = [] },
-  cb = (output = "") => output
-) => {
-  let process = asyncSpawn(program, args);
+const asyncSpawnExec = async (program: IProgram, cb: ISpawnCallBack) => {
+  let process = asyncSpawn(program.application, program.arguments);
   let childProcess = process.child;
   let status, stderr, pid;
   try {
@@ -22,4 +18,21 @@ const asyncSpawnExec = async (
     throw err;
   }
   return { status, stderr, pid };
+};
+
+const getVolumen = async ({ origin }) => {
+  let stderr, max, mean;
+  try {
+    const [program, ...args] = utilsTranscoder.splitString(
+      commands.volumeDetect({ origin })
+    );
+    ({ stderr } = await asyncSpawnExec({
+      program,
+      args,
+    }));
+    ({ max, mean } = handledData.getMaxAndMean(stderr, regexs.volume));
+  } catch (err) {
+    throw err;
+  }
+  return { max, mean };
 };

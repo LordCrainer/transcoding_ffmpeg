@@ -5,9 +5,9 @@ import transcodingService from "../../2.aplication/use-case/transcoding";
 
 const transcoding: IController = async (req, res) => {
   const { body } = req;
-  const { metadata } = body;
+  const { source, metadata } = body;
   try {
-    const data = await transcodingService.transcoding(metadata);
+    const data = await transcodingService.transcoding(source, metadata);
     await apiResponse.result(res, {}, httpStatusCodes.OK);
   } catch (error) {
     apiResponse.error(res, 400, error);
