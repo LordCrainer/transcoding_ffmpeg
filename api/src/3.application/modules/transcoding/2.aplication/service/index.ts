@@ -1,5 +1,4 @@
-import executeProcess from "./executeProcess";
+import executeProcess from "./execute-process";
+import handleData from "./handler-data";
 
-export const transcodingService = {
-  executeProcess,
-};
+export { executeProcess, handleData };

@@ -45,6 +45,8 @@ export interface ISourceData {
     originalName: string;
   };
   destiny: {
+    suffix: string;
+    prefix: string;
     path: string;
     fieldName: string;
     extension: string;
