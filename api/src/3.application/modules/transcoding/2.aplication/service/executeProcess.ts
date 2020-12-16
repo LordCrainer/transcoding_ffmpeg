@@ -1,5 +1,5 @@
 import asyncSpawn from "@expo/spawn-async";
-import { IProgram, ISpawnCallBack } from "./../../3.Domain/IExecute";
+import { IProgram, ISpawnCallBack } from "../../3.Domain/IExecute";
 
 const asyncSpawnExec = async (program: IProgram, cb: ISpawnCallBack) => {
   let process = asyncSpawn(program.application, program.arguments);
@@ -7,11 +7,9 @@ const asyncSpawnExec = async (program: IProgram, cb: ISpawnCallBack) => {
   let status, stderr, pid;
   try {
     childProcess.stdout?.on("data", (data) => {
-      console.log(`ffmpeg stdout: ${data}`);
+      console.log(`stdout: ${data}`);
     });
-    childProcess.stderr?.on("data", (data) => {
-      cb(data.toString());
-    });
+    childProcess.stderr?.on("data", (data) => cb(data.toString()));
     ({ status, stderr, pid } = await process);
     // const outputOut = handledData.getParamsFromVolume(stderr, regexs.editVolume)
   } catch (err) {
@@ -20,7 +18,11 @@ const asyncSpawnExec = async (program: IProgram, cb: ISpawnCallBack) => {
   return { status, stderr, pid };
 };
 
-const getVolumen = async ({ origin }) => {
+export default {
+  asyncSpawnExec,
+};
+
+/* const getVolumen = async ({ origin }) => {
   let stderr, max, mean;
   try {
     const [program, ...args] = utilsTranscoder.splitString(
@@ -35,4 +37,27 @@ const getVolumen = async ({ origin }) => {
     throw err;
   }
   return { max, mean };
-};
+}; */
+
+/* const editVolume = async (
+  { origin, destiny },
+  { volume },
+  cb = (output) => {}
+) => {
+  let stderr, status;
+  try {
+    const [program, ...args] = utilsTranscoder.splitString(
+      commands.editVolume({ origin, destiny }, { volume }, {})
+    );
+    ({ stderr, status } = await asyncSpawnExec(
+      {
+        program,
+        args,
+      },
+      (output) => cb(handledData.getOutputFromExec(regexs.editVolume)(output))
+    ));
+  } catch (err) {
+    throw err;
+  }
+  return { status, stderr };
+}; */
