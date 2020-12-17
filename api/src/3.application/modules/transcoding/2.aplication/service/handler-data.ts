@@ -4,7 +4,7 @@
   return { max: maxVolume, mean: meanVolume };
 }; */
 
-import { utils } from "3.application/modules/share";
+import { fpFunctions, utils } from "3.application/modules/share";
 
 const getAttribute = (data: string, attribute: RegExp | string) => {
   let [, value] = data.match(attribute) || [];
@@ -21,12 +21,9 @@ const getOutputFromExec = (
   regexMatch: RegExp,
   regexString: RegExp | string
 ) => (string: string) => {
-  const arrayMatch = utils.matching(regexMatch)(string);
-  const arrayEntries = utils.mapGeneric(
-    arrayMatch,
-    utils.stringToEntries(regexString)
-  );
-  return utils.entriesArrayToObject(arrayEntries);
+  const arrayMatch = utils.matching(regexMatch);
+  const arrayEntries = utils.mapGeneric(utils.stringToEntries(regexString));
+  return utils.entriesArrayToObject(arrayEntries(arrayMatch(string)));
 };
 
 export default {

@@ -15,7 +15,7 @@ const stringToEntries = (regex: RegExp | string | "=") => (
 const unlessOneElement = (array: Array<any>, arg: string) =>
   [...array].some((item) => item === arg);
 
-const mapGeneric = (array: Array<any>, cb: CallableFunction) =>
+const mapGeneric = (cb: CallableFunction) => (array: Array<any>) =>
   [...array].map((item) => cb(item));
 
 const splitString = (splitter: RegExp | string | "/s+/") => (string: string) =>
