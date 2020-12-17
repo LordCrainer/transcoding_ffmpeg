@@ -1,7 +1,7 @@
 import asyncSpawn from "@expo/spawn-async";
-import { IProgram, ISpawnCallBack } from "../../3.Domain/IExecute";
+import { IProgram, ISpawnCallBack } from "../../3.Domain/entities/IExecute";
 
-const asyncSpawnExec = async (program: IProgram, cb: ISpawnCallBack) => {
+const asyncSpawnExec = (cb: ISpawnCallBack) => async (program: IProgram) => {
   let process = asyncSpawn(program.application, program.arguments);
   let childProcess = process.child;
   let status, stderr, pid;

@@ -18,7 +18,7 @@ const unlessOneElement = (array: Array<any>, arg: string) =>
 const mapGeneric = (cb: CallableFunction) => (array: Array<any>) =>
   [...array].map((item) => cb(item));
 
-const splitString = (splitter: RegExp | string | "/s+/") => (string: string) =>
+const splitString = (splitter: RegExp | string) => (string: string) =>
   string.split(splitter);
 // MATH
 const minus = (a: number, b: number) => a - b;

@@ -1,3 +1,4 @@
+import { utils } from "3.application/modules/share";
 import { executeProcess } from "../service";
 
 /* const getVolumen = async ({ origin }) => {
@@ -17,7 +18,12 @@ import { executeProcess } from "../service";
   return { max, mean };
 }; */
 
-const executeCommands = () => {
+const executeCommands = async () => {
+  try {
+    // const [program, ...args] = utils.splitString()()
+  } catch (error) {
+    
+  }
   // split el comando necesario
   // ejecuto el comando, extrayendo las variables y ejecuto la función de salida
   // retorno los datos

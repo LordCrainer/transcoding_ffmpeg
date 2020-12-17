@@ -51,6 +51,7 @@ export interface ISourceData {
     fieldName: string;
     extension: string;
   };
+  getOriginPath(path: string, originalName: string): string
 }
 export interface IMetada {
   audio: IAudio;

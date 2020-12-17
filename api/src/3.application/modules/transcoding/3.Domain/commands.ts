@@ -18,8 +18,8 @@ const preAjust = ({ origin, destiny }) =>
 
 const preAjustSD = ({ origin, destiny }) =>
   `ffmbc -i ${origin} -r 29970/1000 -vcodec mpeg4  -pix_fmt yuv420p -vf pad=720:576:0:72:black:aspect=4:3  -qscale 1 -color_primaries bt709 -b 50M -maxrate 50M  -minrate 50M -bufsize 8M  -acodec pcm_s16le  -timecode 00:00:00:00 -y ${destiny}`;
-
-module.exports = {
+  
+export default {
   volumeDetect,
   editVolume,
   dv25Mov,
