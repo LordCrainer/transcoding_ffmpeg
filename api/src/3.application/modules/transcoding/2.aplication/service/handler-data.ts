@@ -5,6 +5,7 @@
 }; */
 
 import { fpFunctions, utils } from "3.application/modules/share";
+import { IRegFFmpeg } from './../../3.Domain/IRegexFFmpeg';
 
 const getAttribute = (data: string, attribute: RegExp | string) => {
   let [, value] = data.match(attribute) || [];
