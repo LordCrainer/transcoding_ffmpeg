@@ -1,8 +1,8 @@
-const matching = (string: string, regex: RegExp): Array<string> =>
+const matching = (regex: RegExp) => (string: string): Array<string> =>
   string.match(regex) || [];
 
 // ENTRIES, ARRAY, OBJECT
-const entriesToObj = (arrayEntries: Array<Array<string>>): Object =>
+const entriesArrayToObject = (arrayEntries: Array<Array<string>>): Object =>
   Object.fromEntries(arrayEntries);
 
 const stringToEntries = (regex: RegExp | string | "=") => (
@@ -18,14 +18,14 @@ const unlessOneElement = (array: Array<any>, arg: string) =>
 const mapGeneric = (array: Array<any>, cb: CallableFunction) =>
   [...array].map((item) => cb(item));
 
-const splitString = (string: string, splitter: RegExp | string | "/s+/") =>
+const splitString = (splitter: RegExp | string | "/s+/") => (string: string) =>
   string.split(splitter);
 // MATH
 const minus = (a: number, b: number) => a - b;
 
 export default {
   matching,
-  entriesToObj,
+  entriesArrayToObject,
   stringToEntries,
   unlessOneElement,
   mapGeneric,

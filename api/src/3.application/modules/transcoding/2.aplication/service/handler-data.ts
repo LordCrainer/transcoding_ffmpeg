@@ -21,12 +21,12 @@ const getOutputFromExec = (
   regexMatch: RegExp,
   regexString: RegExp | string
 ) => (string: string) => {
-  const arrayMatch = utils.matching(string, regexMatch);
+  const arrayMatch = utils.matching(regexMatch)(string);
   const arrayEntries = utils.mapGeneric(
     arrayMatch,
     utils.stringToEntries(regexString)
   );
-  return utils.entriesToObj(arrayEntries);
+  return utils.entriesArrayToObject(arrayEntries);
 };
 
 export default {

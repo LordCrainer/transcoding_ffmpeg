@@ -1,6 +1,6 @@
 const matching = (string, regex) => string.match(regex) || [];
 
-const entriesToObj = (arrayEntries) => Object.fromEntries(arrayEntries);
+const entriesArrayToObject = (arrayEntries) => Object.fromEntries(arrayEntries);
 
 const stringToEntries = (regex = "=") => (string = "a=10") => {
   const [key, value] = string.split(regex);
@@ -20,7 +20,7 @@ const minus = (a, b) => b - a;
 
 module.exports = {
   matching,
-  entriesToObj,
+  entriesArrayToObject,
   stringToEntries,
   mapGeneric,
   unlessOneElement,

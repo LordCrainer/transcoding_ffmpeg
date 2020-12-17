@@ -2,7 +2,7 @@ const fileSystem = require("../../share/file-system");
 const {
   mapGeneric,
   matching,
-  entriesToObj,
+  entriesArrayToObject,
   stringToEntries,
   unlessOneElement,
   splitString,
@@ -22,7 +22,7 @@ const getError = (data = "") => {
 const getOutputFromExec = (regexMatch, regexString) => (string) => {
   const arrayMatch = matching(string, regexMatch);
   const arrayEntries = mapGeneric(arrayMatch, stringToEntries(regexString));
-  return entriesToObj(arrayEntries);
+  return entriesArrayToObject(arrayEntries);
 };
 
 const setTemporalDestinationFile = ({ volume, fieldName, destination }) =>
