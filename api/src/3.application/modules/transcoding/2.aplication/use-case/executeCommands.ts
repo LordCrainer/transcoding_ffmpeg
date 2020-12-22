@@ -18,17 +18,15 @@ import { executeProcess } from "../service";
   return { max, mean };
 }; */
 
-const executeCommands = async () => {
+const executeCommands = async (commands: string) => {
   try {
-    const [program, ...args] = utils.splitString()()
-  } catch (error) {
-    
-  }
+    const [application, ...args] = utils.splitString(/\s+/)(commands);
+    const executeProgram = executeProcess.asyncSpawnExec();
+    const output = executeProgram({ application, args });
+  } catch (error) {}
   // split el comando necesario
   // ejecuto el comando, extrayendo las variables y ejecuto la función de salida
   // retorno los datos
 };
 
-export default {
-  executeCommands,
-};
+export { executeCommands };

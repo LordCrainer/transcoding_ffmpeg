@@ -1,8 +1,8 @@
 export interface IProgram {
   application: string;
-  arguments: Array<string>;
+  args: Array<string>;
 }
 
 export interface ISpawnCallBack {
-  (output: string): string;
+  (output?: string): string;
 }

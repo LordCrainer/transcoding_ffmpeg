@@ -1,15 +1,15 @@
 import asyncSpawn from "@expo/spawn-async";
 import { IProgram, ISpawnCallBack } from "../../3.Domain/entities/IExecute";
 
-const asyncSpawnExec = (cb: ISpawnCallBack) => async (program: IProgram) => {
-  let process = asyncSpawn(program.application, program.arguments);
+const asyncSpawnExec = (fn?: ISpawnCallBack) => async (program: IProgram) => {
+  let process = asyncSpawn(program.application, program.args);
   let childProcess = process.child;
   let status, stderr, pid;
   try {
     childProcess.stdout?.on("data", (data) => {
       console.log(`stdout: ${data}`);
     });
-    childProcess.stderr?.on("data", (data) => cb(data.toString()));
+    childProcess.stderr?.on("data", (data) => (fn ? fn(data.toString()) : ""));
     ({ status, stderr, pid } = await process);
     // const outputOut = handledData.getParamsFromVolume(stderr, regexs.editVolume)
   } catch (err) {
