@@ -20,7 +20,7 @@ import { executeProcess } from "../service";
 
 const executeCommands = async () => {
   try {
-    // const [program, ...args] = utils.splitString()()
+    const [program, ...args] = utils.splitString()()
   } catch (error) {
     
   }
