@@ -1,4 +1,6 @@
 import { utils } from "3.application/modules/share";
+import { exec } from "child_process";
+import { ISpawnCallBack } from "../../3.Domain/entities/IExecute";
 import { executeProcess } from "../service";
 
 /* const getVolumen = async ({ origin }) => {
@@ -18,12 +20,15 @@ import { executeProcess } from "../service";
   return { max, mean };
 }; */
 
-const executeCommands = async (commands: string) => {
+const executeCommands = async (commands: string, fn?: ISpawnCallBack) => {
   try {
     const [application, ...args] = utils.splitString(/\s+/)(commands);
-    const executeProgram = executeProcess.asyncSpawnExec();
+    const executeProgram = executeProcess.asyncSpawnExec(fn);
     const output = executeProgram({ application, args });
-  } catch (error) {}
+    return output;
+  } catch (error) {
+    throw new Error(error);
+  }
   // split el comando necesario
   // ejecuto el comando, extrayendo las variables y ejecuto la función de salida
   // retorno los datos
