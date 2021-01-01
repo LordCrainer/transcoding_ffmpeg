@@ -1,7 +1,7 @@
 import { utils } from "3.application/modules/share";
-import { exec } from "child_process";
 import { ISpawnCallBack } from "../../3.Domain/entities/IExecute";
-import { executeProcess } from "../service";
+import { executeProcess, handleData } from "../service";
+import { IRegFFmpeg } from "./../../3.Domain/entities/IRegexFFmpeg";
 
 /* const getVolumen = async ({ origin }) => {
   let stderr, max, mean;
@@ -20,9 +20,12 @@ import { executeProcess } from "../service";
   return { max, mean };
 }; */
 
-const executeCommands = async (commands: string, fn?: ISpawnCallBack) => {
+const executeCommands = (commands: string, regex = /\s+/) => async (
+  fn?: ISpawnCallBack
+) => {
   try {
-    const [application, ...args] = utils.splitString(/\s+/)(commands);
+    const arrayArguments = utils.splitString(regex);
+    const [application, ...args] = arrayArguments(commands);
     const executeProgram = executeProcess.asyncSpawnExec(fn);
     const output = executeProgram({ application, args });
     return output;
@@ -32,6 +35,20 @@ const executeCommands = async (commands: string, fn?: ISpawnCallBack) => {
   // split el comando necesario
   // ejecuto el comando, extrayendo las variables y ejecuto la función de salida
   // retorno los datos
+};
+
+const getVolume = (commands: string, regex: IRegFFmpeg) => async (
+  fn?: ISpawnCallBack
+) => {
+  try {
+    const spawnFunction = await executeCommands(commands);
+    const { status, stderr } = await spawnFunction(fn);
+    const max = handleData.getAttribute(stderr, regex.volumen.max);
+    const mean = handleData.getAttribute(stderr, regex.volumen.mean);
+    return { max, mean };
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 export { executeCommands };
