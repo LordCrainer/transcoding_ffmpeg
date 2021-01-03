@@ -1,7 +1,6 @@
 import { utils } from "3.application/modules/share";
 import { ISpawnCallBack } from "../../3.Domain/entities/IExecute";
-import { executeProcess, handleData } from "../service";
-import { IRegFFmpeg } from "./../../3.Domain/entities/IRegexFFmpeg";
+import { executeProcess } from "../service";
 
 /* const getVolumen = async ({ origin }) => {
   let stderr, max, mean;
@@ -20,7 +19,7 @@ import { IRegFFmpeg } from "./../../3.Domain/entities/IRegexFFmpeg";
   return { max, mean };
 }; */
 
-const executeCommands = (commands: string, regex = /\s+/) => async (
+const commands = (commands: string, regex = /\s+/) => async (
   fn?: ISpawnCallBack
 ) => {
   try {
@@ -37,18 +36,5 @@ const executeCommands = (commands: string, regex = /\s+/) => async (
   // retorno los datos
 };
 
-const getVolume = (commands: string, regex: IRegFFmpeg) => async (
-  fn?: ISpawnCallBack
-) => {
-  try {
-    const spawnFunction = await executeCommands(commands);
-    const { status, stderr } = await spawnFunction(fn);
-    const max = handleData.getAttribute(stderr, regex.volumen.max);
-    const mean = handleData.getAttribute(stderr, regex.volumen.mean);
-    return { max, mean };
-  } catch (error) {
-    throw new Error(error);
-  }
-};
 
-export { executeCommands };
+export default { commands };

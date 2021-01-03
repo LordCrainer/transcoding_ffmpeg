@@ -4,8 +4,7 @@
   return { max: maxVolume, mean: meanVolume };
 }; */
 
-import { fpFunctions, utils } from "3.application/modules/share";
-import { IRegFFmpeg } from "../../3.Domain/entities/IRegexFFmpeg";
+import { utils } from "3.application/modules/share";
 
 const getAttribute = (data: string, attribute: RegExp | string) => {
   let [, value] = data.match(attribute) || [];

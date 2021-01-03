@@ -1,7 +1,7 @@
 import { IController } from "../../../../../types/IController";
 import apiResponse from "../../../../../utils/apiResponse";
 import httpStatusCodes from "http-status-codes";
-import transcodingService from "../../2.aplication/use-case/transcoding";
+import transcodingService from "../../2.aplication/1.use-case/transcoding";
 
 const transcoding: IController = async (req, res) => {
   const { body } = req;
