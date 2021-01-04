@@ -19,7 +19,7 @@ import { executeProcess } from "../service";
   return { max, mean };
 }; */
 
-const commands = (commands: string, regex = /\s+/) => async (
+const executeCommands = (commands: string, regex = /\s+/) => async (
   fn?: ISpawnCallBack
 ) => {
   try {
@@ -37,4 +37,4 @@ const commands = (commands: string, regex = /\s+/) => async (
 };
 
 
-export default { commands };
+export default { executeCommands };

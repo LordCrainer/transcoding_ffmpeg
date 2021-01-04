@@ -21,9 +21,10 @@ const getOutputFromExec = (
   regexMatch: RegExp,
   regexString: RegExp | string
 ) => (string: string) => {
-  const arrayMatch = utils.matching(regexMatch);
-  const arrayEntries = utils.mapGeneric(utils.stringToEntries(regexString));
-  return utils.entriesArrayToObject(arrayEntries(arrayMatch(string)));
+  // "F=10 A=20"
+  const arrayMatch = utils.matching(regexMatch); //["F=10", "A=20"]
+  const arrayEntries = utils.mapGeneric(utils.stringToEntries(regexString)); // [[F,10],[A,20]]
+  return utils.entriesArrayToObject(arrayEntries(arrayMatch(string))); // {F=10, A=20}
 };
 
 export default {

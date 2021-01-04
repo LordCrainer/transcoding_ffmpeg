@@ -1,7 +1,23 @@
 import { IMetada, ISourceData } from "./entities/IParams";
 import { sourceData } from "./index";
 
-const volumeDetect = (source: ISourceData, metadata: IMetada) =>
+const ajustVolume = (
+  source: ISourceData,
+  metadata: IMetada,
+  newVolume: number
+) => {
+  const {
+    audioFilter: { volume },
+    audio: { codec },
+  } = metadata;
+  return `ffmpeg -i ${sourceData.getOriginPath(
+    source
+  )} -vcodec copy -af volume=${newVolume}${
+    volume?.unit
+  } -acodec ${codec} -y ${sourceData.getDestinyPath(source)}`;
+};
+
+const volumeDetect = (source: ISourceData) =>
   `ffmpeg -i ${sourceData.getOriginPath(
     source
   )} -af 'volumedetect' -vn -sn -dn -f null /dev/null`;
@@ -53,4 +69,5 @@ export default {
   dv25Mov,
   dv25Mxf,
   preAjustSD,
+  ajustVolume,
 };

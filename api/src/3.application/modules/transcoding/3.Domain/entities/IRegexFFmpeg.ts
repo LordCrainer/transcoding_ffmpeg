@@ -1,5 +1,5 @@
 export interface IRegFFmpeg {
-  volumen: {
+  volume: {
     max: RegExp;
     mean: RegExp;
   };

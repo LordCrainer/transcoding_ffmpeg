@@ -1,6 +1,6 @@
-import commandsFFmpeg from "./commands";
+import cmdFFmpeg from "./commands";
 import regexFFmpeg from "./regex";
-// import params from "./params";
+import params from "./params";
 import sourceData from "./sourceData";
 
-export { commandsFFmpeg, regexFFmpeg, sourceData };
+export { cmdFFmpeg, regexFFmpeg, sourceData, params };

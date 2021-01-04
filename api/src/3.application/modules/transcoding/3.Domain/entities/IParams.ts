@@ -18,7 +18,7 @@ export interface IAudio {
 
 export interface IAudioFilter {
   status: boolean;
-  volume?: {
+  volume: {
     value: number;
     unit: string;
   };
