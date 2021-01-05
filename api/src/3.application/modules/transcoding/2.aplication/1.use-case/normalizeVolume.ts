@@ -8,13 +8,15 @@ const normalizeVolume = async (source: ISourceData, metadata: IMetada) => {
   } = metadata;
   try {
     const { max, mean } = await handleVolume.getVolume()(source);
-    const differenceVolumen = handleVolume.subtractVolume(+max, normalizeVolume.threshold);
-    const cmdAjustVolumen = await cmdFFmpeg.ajustVolume(
+    const diffVolume = handleVolume.subtractVolume(
+      +max,
+      normalizeVolume.threshold
+    );
+    const ajustedVolume = await handleVolume.ajustVolume()(
       source,
       metadata,
-      differenceVolumen
+      diffVolume
     );
-    const changedVolume = await handleVolume.changeVolumen()(cmdAjustVolumen);
 
     return;
   } catch (error) {

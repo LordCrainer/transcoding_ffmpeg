@@ -24,8 +24,7 @@ export interface IAudioFilter {
   };
   normalizeVolume: {
     threshold: number;
-    max: number;
-    min: number;
+    marginError: number;
     unit: number;
   };
 }

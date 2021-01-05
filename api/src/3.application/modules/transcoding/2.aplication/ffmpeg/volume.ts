@@ -4,6 +4,14 @@ import { ISpawnCallBack } from "../../3.Domain/entities/IExecute";
 import { cmdFFmpeg, regexFFmpeg } from "./../../3.Domain/";
 import { IMetada, ISourceData } from "./../../3.Domain/entities/IParams";
 
+const valueRange = (x: number, min: number, max: number) =>
+  x >= min && x <= max;
+const valueUnder = (currentValue: number, minValue: number) =>
+  currentValue < minValue;
+
+const subtractVolume = (currentVolume: number, threshold: number) =>
+  threshold - currentVolume;
+
 const getVolume = (fn?: ISpawnCallBack) => async (source: ISourceData) => {
   try {
     const commands = cmdFFmpeg.volumeDetect(source);
@@ -23,8 +31,13 @@ const ajustVolume = (fn?: ISpawnCallBack) => async (
   volume: number
 ) => {
   try {
-    const commands = cmdFFmpeg.ajustVolume(source, metadata, volume);
-  } catch (error) {}
+    const commands = await cmdFFmpeg.ajustVolume(source, metadata, volume);
+    const spawnFunction = await execute.executeCommands(commands, /\s+/);
+    const { status, stderr } = await spawnFunction(fn);
+    return { status, stderr };
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 const changeVolumen = (fn?: ISpawnCallBack) => async (commands: string) => {
@@ -37,18 +50,22 @@ const changeVolumen = (fn?: ISpawnCallBack) => async (commands: string) => {
   }
 };
 
-const isBetween = (x: number, min: number, max: number) => x >= min && x <= max;
-
-const subtractVolume = (currentVolume: number, threshold: number) =>
-  threshold - currentVolume;
-
-const verifingVolume = (
-  volume: { currentVolume: number; threshold: number },
-  margin: { max: number; min: number }
+const verifyVolume = (
+  maxVolume: number,
+  normalizeVolume: { marginError: number; threshold: number }
 ) => {
-  const { currentVolume, threshold } = volume;
-  const { max, min } = margin;
-  return isBetween(currentVolume, min, max);
+  const { marginError, threshold } = normalizeVolume;
+  return valueRange(
+    maxVolume,
+    threshold - marginError,
+    threshold + marginError
+  );
 };
 
-export default { getVolume, changeVolumen, subtractVolume };
+export default {
+  getVolume,
+  changeVolumen,
+  subtractVolume,
+  ajustVolume,
+  verifyVolume,
+};
