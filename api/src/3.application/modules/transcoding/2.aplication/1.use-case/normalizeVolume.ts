@@ -4,25 +4,17 @@ import { IMetada, ISourceData } from "./../../3.Domain/entities/IParams";
 
 const normalizeVolume = async (source: ISourceData, metadata: IMetada) => {
   const {
-    audioFilter: { volume },
+    audioFilter: { normalizeVolume },
   } = metadata;
   try {
-    const cmdVolume = cmdFFmpeg.volumeDetect(source);
-
-    const { max, mean } = await handleVolume.getVolume()(
-      cmdVolume,
-      regexFFmpeg
-    );
-    const differenceVolumen = handleVolume.subtractVolume(+max, volume.value);
+    const { max, mean } = await handleVolume.getVolume()(source);
+    const differenceVolumen = handleVolume.subtractVolume(+max, normalizeVolume.threshold);
     const cmdAjustVolumen = await cmdFFmpeg.ajustVolume(
       source,
       metadata,
       differenceVolumen
     );
-    const changedVolume = await handleVolume.changeVolumen()(
-      cmdAjustVolumen,
-      regexFFmpeg
-    );
+    const changedVolume = await handleVolume.changeVolumen()(cmdAjustVolumen);
 
     return;
   } catch (error) {

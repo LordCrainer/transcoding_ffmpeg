@@ -22,6 +22,12 @@ export interface IAudioFilter {
     value: number;
     unit: string;
   };
+  normalizeVolume: {
+    threshold: number;
+    max: number;
+    min: number;
+    unit: number;
+  };
 }
 
 export interface IVideoFilter {
@@ -51,8 +57,8 @@ export interface ISourceData {
     fieldName: string;
     extension: string;
   };
-  getOriginPath(source: ISourceData): string
-  getDestinyPath(source: ISourceData): string
+  getOriginPath(source: ISourceData): string;
+  getDestinyPath(source: ISourceData): string;
 }
 export interface IMetada {
   audio: IAudio;
