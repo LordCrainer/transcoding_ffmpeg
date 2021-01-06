@@ -8,7 +8,7 @@ const VUEX_PROPERTIES = ['state', 'getters', 'actions', 'mutations']
 let store = {};
 
 (function updateModules () {
-  store = normalizeRoot(require('../store/index.js'), 'store/index.js')
+  store = normalizeRoot(require('..\\store\\index.js'), 'store/index.js')
 
   // If store is an exported method = classic mode (deprecated)
 
@@ -19,23 +19,23 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
-  resolveStoreModules(require('../store/file.js'), 'file.js')
-  resolveStoreModules(require('../store/notification.js'), 'notification.js')
-  resolveStoreModules(require('../store/users.js'), 'users.js')
-  resolveStoreModules(require('../store/module/ftp.js'), 'module/ftp.js')
-  resolveStoreModules(require('../store/module/snackbars.js'), 'module/snackbars.js')
+  resolveStoreModules(require('..\\store\\file.js'), 'file.js')
+  resolveStoreModules(require('..\\store\\notification.js'), 'notification.js')
+  resolveStoreModules(require('..\\store\\users.js'), 'users.js')
+  resolveStoreModules(require('..\\store\\module\\ftp.js'), 'module/ftp.js')
+  resolveStoreModules(require('..\\store\\module\\snackbars.js'), 'module/snackbars.js')
 
   // If the environment supports hot reloading...
 
   if (process.client && module.hot) {
     // Whenever any Vuex module is updated...
     module.hot.accept([
-      '../store/file.js',
-      '../store/index.js',
-      '../store/notification.js',
-      '../store/users.js',
-      '../store/module/ftp.js',
-      '../store/module/snackbars.js',
+      '..\\store\\file.js',
+      '..\\store\\index.js',
+      '..\\store\\notification.js',
+      '..\\store\\users.js',
+      '..\\store\\module\\ftp.js',
+      '..\\store\\module\\snackbars.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
       updateModules()

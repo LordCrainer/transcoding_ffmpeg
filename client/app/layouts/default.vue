@@ -3,7 +3,7 @@
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title>LANUBETV</v-list-item-title>
+          <v-list-item-title>SORAPID</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
@@ -18,11 +18,11 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar app color="blue darken-4">
+    <v-app-bar app color="deep-purple darken-4">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer />
       <v-toolbar-title>
-        LANUBETV
+        SORAPID
       </v-toolbar-title>
       <v-spacer />
       <v-btn icon class="mx-1">

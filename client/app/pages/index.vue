@@ -4,7 +4,7 @@
       <v-card tile min-width="500">
         <v-app-bar>
           <v-spacer />
-          <v-toolbar-title>LANUBETV EN PROCESO...</v-toolbar-title>
+          <v-toolbar-title>SORAPID EN PROCESO...</v-toolbar-title>
           <v-spacer />
         </v-app-bar>
       </v-card>

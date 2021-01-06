@@ -2,36 +2,36 @@
   {
     "name": "appChat",
     "path": "/appChat",
-    "component": "/app/pages/appChat/index.vue",
+    "component": "D:\\\\Documents\\\\Trabajos\\\\LANUBETV\\\\Desarrollo\\\\Transcoding\\\\transcoding_ffmpeg\\\\client\\\\app\\\\pages\\\\appChat\\\\index.vue",
     "chunkName": "pages/appChat/index",
-    "_name": "_4bd6cae2"
+    "_name": "_505bf60a"
   },
   {
     "name": "file",
     "path": "/file",
-    "component": "/app/pages/file/index.vue",
+    "component": "D:\\\\Documents\\\\Trabajos\\\\LANUBETV\\\\Desarrollo\\\\Transcoding\\\\transcoding_ffmpeg\\\\client\\\\app\\\\pages\\\\file\\\\index.vue",
     "chunkName": "pages/file/index",
-    "_name": "_2e448269"
+    "_name": "_4ae1cf64"
   },
   {
     "name": "ftp",
     "path": "/ftp",
-    "component": "/app/pages/ftp/index.vue",
+    "component": "D:\\\\Documents\\\\Trabajos\\\\LANUBETV\\\\Desarrollo\\\\Transcoding\\\\transcoding_ffmpeg\\\\client\\\\app\\\\pages\\\\ftp\\\\index.vue",
     "chunkName": "pages/ftp/index",
-    "_name": "_3f20eeeb"
+    "_name": "_41d0c3dc"
   },
   {
     "name": "appChat-chat",
     "path": "/appChat/chat",
-    "component": "/app/pages/appChat/chat.vue",
+    "component": "D:\\\\Documents\\\\Trabajos\\\\LANUBETV\\\\Desarrollo\\\\Transcoding\\\\transcoding_ffmpeg\\\\client\\\\app\\\\pages\\\\appChat\\\\chat.vue",
     "chunkName": "pages/appChat/chat",
-    "_name": "_34017b10"
+    "_name": "_3d17e13f"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/app/pages/index.vue",
+    "component": "D:\\\\Documents\\\\Trabajos\\\\LANUBETV\\\\Desarrollo\\\\Transcoding\\\\transcoding_ffmpeg\\\\client\\\\app\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_2dfb1658"
+    "_name": "_042d9340"
   }
 ]

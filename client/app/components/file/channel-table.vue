@@ -9,7 +9,7 @@
       height="275"
       v-bind="options"
       item-key="id"
-      :sort-by="['calidad', 'title']"
+      :sort-by="['CALIDAD', 'TITLE']"
       :sort-desc="[false, false]"
       class="elevation-1"
       group-by="calidad"
@@ -33,7 +33,7 @@ export default {
           sortable: true
         },
         { text: "CALIDAD", value: "calidad" },
-        { text: "NIVEL", value: "audio" }
+        { text: "AUDIO", value: "audio" }
       ],
       label: "Medios",
       options: {
@@ -45,97 +45,55 @@ export default {
       channels: [
         {
           id: 0,
-          title: "DISCOVERY",
+          title: "YOUTUBE",
           audio: -3,
-          formato: "XDCAM",
-          calidad: "HD"
-        },
-        {
-          id: 2,
-          title: "ECUAVISA",
-          audio: -12,
-          formato: "XDCAM",
+          formato: "H264",
           calidad: "HD"
         },
         {
           id: 1,
-          title: "GRUPO_FOX",
+          title: "INSTAGRAM",
+          audio: -12,
+          formato: "H264",
+          calidad: "HD"
+        },
+        {
+          id: 2,
+          title: "WHATSAPP",
           audio: -3,
-          formato: "XDCAM",
+          formato: "H264",
           calidad: "HD"
         },
 
         {
-          id: 4,
-          title: "TC_TELEVISION",
+          id: 3,
+          title: "SONY",
           audio: -12,
           formato: "XDCAM",
           calidad: "HD"
+        },
+        {
+          id: 4,
+          title: "YOUTUBE",
+          audio: -3,
+          formato: "H264",
+          calidad: "SD"
         },
         {
           id: 5,
-          title: "TELEAMAZONAS",
-          audio: -14,
+          title: "INSTAGRAM",
+          audio: -12,
           formato: "H264",
-          calidad: "HD"
-        },
-        { id: 6, title: "RTS", audio: -20, formato: "XDCAM", calidad: "HD" },
-        {
-          id: 7,
-          title: "TELEVICENTRO",
-          audio: -20,
-          formato: "XDCAM",
-          calidad: "HD"
-        },
-        {
-          id: 8,
-          title: "ESPN_DIRECTV",
-          audio: -20,
-          formato: "XDCAM",
-          calidad: "HD"
-        },
-        {
-          id: 9,
-          title: "GRUPO_TURNER",
-          audio: -20,
-          formato: "XDCAM",
-          calidad: "HD"
-        },
-        {
-          id: 3,
-          title: "ECUAVISA",
-          audio: -12,
-          formato: "DVCPRO",
           calidad: "SD"
         },
         {
-          id: 10,
-          title: "RTS",
-          audio: -12,
-          formato: "DVCPRO",
+          id: 6,
+          title: "WHATSAPP",
+          audio: -3,
+          formato: "H264",
           calidad: "SD"
         },
-        {
-          id: 11,
-          title: "CANAL_UNO",
-          audio: -20,
-          formato: "DV25",
-          calidad: "SD"
-        },
-        {
-          id: 12,
-          title: "OROMAR_TV",
-          audio: -20,
-          formato: "DV25",
-          calidad: "SD"
-        },
-        {
-          id: 13,
-          title: "TELEVICENTRO",
-          audio: -20,
-          formato: "DV25",
-          calidad: "SD"
-        }
+        
       ]
     };
   },

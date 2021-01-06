@@ -1,13 +1,13 @@
 import Vue from 'vue'
 
 import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch, promisify, globalHandleError, urlJoin, sanitizeComponent } from './utils'
-import NuxtError from '../layouts/error.vue'
+import NuxtError from '..\\layouts\\error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 
-import _2d22344e from '../layouts/chat.vue'
-import _6f6c098b from '../layouts/default.vue'
-import _77a66d33 from '../layouts/login.vue'
-import _1f43bd82 from '../layouts/navbar-chat.vue'
+import _2d22344e from '..\\layouts\\chat.vue'
+import _6f6c098b from '..\\layouts\\default.vue'
+import _77a66d33 from '..\\layouts\\login.vue'
+import _1f43bd82 from '..\\layouts\\navbar-chat.vue'
 
 const layouts = { "_chat": sanitizeComponent(_2d22344e),"_default": sanitizeComponent(_6f6c098b),"_login": sanitizeComponent(_77a66d33),"_navbar-chat": sanitizeComponent(_1f43bd82) }
 

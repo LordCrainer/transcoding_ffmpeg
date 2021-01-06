@@ -7,7 +7,7 @@
         @input="snackbar.status = false"
       />
       <v-card min-width="500" max-width="500">
-        <v-app-bar color="blue darken-3">
+        <v-app-bar color="deep-purple darken-4 ">
           <v-spacer />
           <v-toolbar-title>SUBIDA DE ARCHIVO POR HTTP</v-toolbar-title>
           <v-spacer />
@@ -107,12 +107,19 @@
               </v-row>
             </v-card-text>
             <v-card-text>
-              <v-btn rounded="" type="submit" color="primary">
-                SUBIR
-              </v-btn>
-              <v-btn rounded="" outlined="" @click="cancelUpload" color="error">
-                CANCELAR
-              </v-btn>
+              <v-row align="right" justify="space-around">
+                <v-btn
+                  rounded=""
+                  outlined=""
+                  @click="cancelUpload"
+                  color="error"
+                >
+                  CANCELAR
+                </v-btn>
+                <v-btn dark rounded="" type="submit" color="blue darken-3">
+                  SUBIR
+                </v-btn>
+              </v-row>
             </v-card-text>
           </v-form>
         </v-card>
@@ -167,7 +174,7 @@ export default {
       }
     ],
     logo: {
-      src: "logo.png"
+      src: ""
     },
     progressUpload: 0
   }),
@@ -241,11 +248,7 @@ export default {
         await this.validationForm(this.validatedFiles);
         const { path } = this.form.uploadTypes.types.find(mode);
         const formData = await this.addFormData(this.form);
-        const response = await this.sendData(
-          `/file/${path}`,
-          formData,
-          config
-        );
+        const response = await this.sendData(`/file/${path}`, formData, config);
       } catch (err) {
         console.log("ERROR_UPLOAD_FILE", err);
       }

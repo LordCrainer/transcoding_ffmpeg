@@ -150,7 +150,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: '/app/services/',
-      env: {"axios":{"baseUrl":"http://example.com/api/services"},"nodeEnv":"development","host":"localhost","port":"4000","nuxt":{"proxy":{"path":"/api/services","target":"http://example.com"}},"routerBase":"/app/services","publicPath":"/_nuxt/","generateDir":"./dist/","socket":{"path":"/api/services/socket.io","server":"http://example.com"},"BASE_URL":"/api/services","PORT":"4000","HOST":"localhost","PROXY_PATH":"/api/services/","PROXY_TARGET":"/","ROUTER_BASE":"/app/services","PUBLIC_PATH":"/_nuxt/","GENERATE_DIR":"./dist/","SOCKET_SERVER":"/","SOCKET_PATH":"/api/services/socket.io","NODE_ENV":"","NUXT_TELEMETRY_DISABLED":"1"}
+      env: {"axios":{"baseUrl":"/api/services"},"nodeEnv":"development","host":"localhost","port":"4000","nuxt":{"proxy":{"path":"/api/services/","target":"/"}},"routerBase":"/app/services","publicPath":"/_nuxt/","generateDir":"./dist/","socket":{"path":"/api/services/socket.io","server":"/"},"BASE_URL":"/api/services","PORT":"4000","HOST":"localhost","PROXY_PATH":"/api/services/","PROXY_TARGET":"/","ROUTER_BASE":"/app/services","PUBLIC_PATH":"/_nuxt/","GENERATE_DIR":"./dist/","SOCKET_SERVER":"/","SOCKET_PATH":"/api/services/socket.io","NODE_ENV":"","NUXT_TELEMETRY_DISABLED":"1"}
     }
     // Only set once
     if (!process.static && context.req) {

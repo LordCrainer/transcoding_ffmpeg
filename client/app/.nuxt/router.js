@@ -3,11 +3,11 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _4bd6cae2 = () => interopDefault(import('../pages/appChat/index.vue' /* webpackChunkName: "pages/appChat/index" */))
-const _2e448269 = () => interopDefault(import('../pages/file/index.vue' /* webpackChunkName: "pages/file/index" */))
-const _3f20eeeb = () => interopDefault(import('../pages/ftp/index.vue' /* webpackChunkName: "pages/ftp/index" */))
-const _34017b10 = () => interopDefault(import('../pages/appChat/chat.vue' /* webpackChunkName: "pages/appChat/chat" */))
-const _2dfb1658 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _505bf60a = () => interopDefault(import('..\\pages\\appChat\\index.vue' /* webpackChunkName: "pages/appChat/index" */))
+const _4ae1cf64 = () => interopDefault(import('..\\pages\\file\\index.vue' /* webpackChunkName: "pages/file/index" */))
+const _41d0c3dc = () => interopDefault(import('..\\pages\\ftp\\index.vue' /* webpackChunkName: "pages/ftp/index" */))
+const _3d17e13f = () => interopDefault(import('..\\pages\\appChat\\chat.vue' /* webpackChunkName: "pages/appChat/chat" */))
+const _042d9340 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -27,23 +27,23 @@ export const routerOptions = {
 
   routes: [{
     path: "/appChat",
-    component: _4bd6cae2,
+    component: _505bf60a,
     name: "appChat"
   }, {
     path: "/file",
-    component: _2e448269,
+    component: _4ae1cf64,
     name: "file"
   }, {
     path: "/ftp",
-    component: _3f20eeeb,
+    component: _41d0c3dc,
     name: "ftp"
   }, {
     path: "/appChat/chat",
-    component: _34017b10,
+    component: _3d17e13f,
     name: "appChat-chat"
   }, {
     path: "/",
-    component: _2dfb1658,
+    component: _042d9340,
     name: "index"
   }],
 

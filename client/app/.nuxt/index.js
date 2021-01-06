@@ -4,7 +4,7 @@ import ClientOnly from 'vue-client-only'
 import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
 import NuxtChild from './components/nuxt-child.js'
-import NuxtError from '../layouts/error.vue'
+import NuxtError from '..\\layouts\\error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
@@ -12,11 +12,11 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_axios_80c87b74 from 'nuxt_plugin_axios_80c87b74' // Source: ./axios.js (mode: 'all')
-import nuxt_plugin_socketclient_03aac5f2 from 'nuxt_plugin_socketclient_03aac5f2' // Source: ../plugins/socket.client.js (mode: 'client')
-import nuxt_plugin_vuetify_d6afc2c2 from 'nuxt_plugin_vuetify_d6afc2c2' // Source: ../plugins/vuetify.js (mode: 'all')
-import nuxt_plugin_imagenURL_737bf4f1 from 'nuxt_plugin_imagenURL_737bf4f1' // Source: ../plugins/imagenURL.js (mode: 'all')
-import nuxt_plugin_vuelidate_4be431c8 from 'nuxt_plugin_vuelidate_4be431c8' // Source: ../plugins/vuelidate.js (mode: 'all')
+import nuxt_plugin_axios_4cf85f66 from 'nuxt_plugin_axios_4cf85f66' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_socketclient_03aac5f2 from 'nuxt_plugin_socketclient_03aac5f2' // Source: ..\\plugins\\socket.client.js (mode: 'client')
+import nuxt_plugin_vuetify_d6afc2c2 from 'nuxt_plugin_vuetify_d6afc2c2' // Source: ..\\plugins\\vuetify.js (mode: 'all')
+import nuxt_plugin_imagenURL_737bf4f1 from 'nuxt_plugin_imagenURL_737bf4f1' // Source: ..\\plugins\\imagenURL.js (mode: 'all')
+import nuxt_plugin_vuelidate_4be431c8 from 'nuxt_plugin_vuelidate_4be431c8' // Source: ..\\plugins\\vuelidate.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -188,8 +188,8 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_axios_80c87b74 === 'function') {
-    await nuxt_plugin_axios_80c87b74(app.context, inject)
+  if (typeof nuxt_plugin_axios_4cf85f66 === 'function') {
+    await nuxt_plugin_axios_4cf85f66(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_socketclient_03aac5f2 === 'function') {
