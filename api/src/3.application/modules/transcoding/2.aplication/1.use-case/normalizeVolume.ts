@@ -1,18 +1,21 @@
 import { cmdFFmpeg, regexFFmpeg } from "../../3.Domain";
-import { handleVolume } from "../ffmpeg/";
 import { IMetada, ISourceData } from "./../../3.Domain/entities/IParams";
+import { IVolume } from './../../3.Domain/entities/volume';
 
-const normalizeVolume = async (source: ISourceData, metadata: IMetada) => {
+const normalizeVolume = (handleVolume: IVolume) => async (
+  source: ISourceData,
+  metadata: IMetada
+) => {
   const {
     audioFilter: { normalizeVolume },
   } = metadata;
   try {
-    const { max, mean } = await handleVolume.getVolume()(source);
+    const { max, mean } = await handleVolume.getVolume(source);
     const diffVolume = handleVolume.subtractVolume(
       +max,
       normalizeVolume.threshold
     );
-    const ajustedVolume = await handleVolume.ajustVolume()(
+    const ajustedVolume = await handleVolume.ajustVolume(
       source,
       metadata,
       diffVolume
@@ -28,4 +31,4 @@ const normalizeVolume = async (source: ISourceData, metadata: IMetada) => {
   // return verifiedVolume
 };
 
-export { normalizeVolume };
+export default normalizeVolume;

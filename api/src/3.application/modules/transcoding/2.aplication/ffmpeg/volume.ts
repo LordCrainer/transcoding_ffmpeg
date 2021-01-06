@@ -12,11 +12,13 @@ const valueUnder = (currentValue: number, minValue: number) =>
 const subtractVolume = (currentVolume: number, threshold: number) =>
   threshold - currentVolume;
 
-const getVolume = (fn?: ISpawnCallBack) => async (source: ISourceData) => {
+const getVolume = async (source: ISourceData, fn?: ISpawnCallBack) => {
   try {
     const commands = cmdFFmpeg.volumeDetect(source);
-    const spawnFunction = await execute.executeCommands(commands, /\s+/);
-    const { status, stderr } = await spawnFunction(fn);
+    const { status, stderr } = await execute.executeCommands(
+      commands,
+      /\s+/
+    )(fn);
     const max = handleData.getAttribute(stderr, regexFFmpeg.volume.max);
     const mean = handleData.getAttribute(stderr, regexFFmpeg.volume.mean);
     return { max, mean };
@@ -25,15 +27,18 @@ const getVolume = (fn?: ISpawnCallBack) => async (source: ISourceData) => {
   }
 };
 
-const ajustVolume = (fn?: ISpawnCallBack) => async (
+const ajustVolume = async (
   source: ISourceData,
   metadata: IMetada,
-  volume: number
+  volume: number,
+  fn?: ISpawnCallBack
 ) => {
   try {
     const commands = await cmdFFmpeg.ajustVolume(source, metadata, volume);
-    const spawnFunction = await execute.executeCommands(commands, /\s+/);
-    const { status, stderr } = await spawnFunction(fn);
+    const { status, stderr } = await execute.executeCommands(
+      commands,
+      /\s+/
+    )(fn);
     return { status, stderr };
   } catch (error) {
     throw new Error(error);
@@ -42,8 +47,10 @@ const ajustVolume = (fn?: ISpawnCallBack) => async (
 
 const changeVolumen = (fn?: ISpawnCallBack) => async (commands: string) => {
   try {
-    const spawnFunction = await execute.executeCommands(commands, /\s+/);
-    const { status, stderr } = await spawnFunction(fn);
+    const { status, stderr } = await execute.executeCommands(
+      commands,
+      /\s+/
+    )(fn);
     return { status, stderr };
   } catch (error) {
     throw new Error(error);
