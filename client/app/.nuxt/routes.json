@@ -1,0 +1,37 @@
+[
+  {
+    "name": "appChat",
+    "path": "/appChat",
+    "component": "/app/pages/appChat/index.vue",
+    "chunkName": "pages/appChat/index",
+    "_name": "_4bd6cae2"
+  },
+  {
+    "name": "file",
+    "path": "/file",
+    "component": "/app/pages/file/index.vue",
+    "chunkName": "pages/file/index",
+    "_name": "_2e448269"
+  },
+  {
+    "name": "ftp",
+    "path": "/ftp",
+    "component": "/app/pages/ftp/index.vue",
+    "chunkName": "pages/ftp/index",
+    "_name": "_3f20eeeb"
+  },
+  {
+    "name": "appChat-chat",
+    "path": "/appChat/chat",
+    "component": "/app/pages/appChat/chat.vue",
+    "chunkName": "pages/appChat/chat",
+    "_name": "_34017b10"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/app/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_2dfb1658"
+  }
+]
