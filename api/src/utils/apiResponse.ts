@@ -18,7 +18,7 @@ const error = (
 ): void => {
   res
     .status(status)
-    .json({ error: { message: error }, success: false, override });
+    .json({ error: { message: new Error(error) }, success: false, override });
 };
 
 export default {
