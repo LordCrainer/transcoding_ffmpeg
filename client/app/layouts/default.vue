@@ -3,7 +3,7 @@
     <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title>SORAPID</v-list-item-title>
+          <v-list-item-title>QUIKOPS</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
@@ -22,7 +22,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer />
       <v-toolbar-title>
-        SORAPID
+        QUIKOPS
       </v-toolbar-title>
       <v-spacer />
       <v-btn icon class="mx-1">
