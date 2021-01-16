@@ -1,4 +1,5 @@
-import { handleVolume } from "../ffmpeg";
-import normalizeVolume from "./normalizeVolume"
+import ffmpeg from "../ffmpeg";
+import normalizeVolume from "./normalizeVolume";
+import transcoding from "./transcoding";
 
-export default normalizeVolume(handleVolume);
+export { transcoding, normalizeVolume };

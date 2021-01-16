@@ -6,10 +6,10 @@ const asyncSpawnExec = (fn?: ISpawnCallBack) => async (program: IProgram) => {
   let childProcess = process.child;
   let status, stderr, pid;
   try {
-    childProcess.stdout?.on("data", (data) => {
+    /* childProcess.stdout?.on("data", (data) => {
       console.log(`stdout: ${data}`);
     });
-    childProcess.stderr?.on("data", (data) => (fn ? fn(data.toString()) : {}));
+    childProcess.stderr?.on("data", (data) => (fn ? fn(data.toString()) : {})); */
     ({ status, stderr, pid } = await process);
     // const outputOut = handledData.getParamsFromVolume(stderr, regexs.editVolume)
   } catch (err) {

@@ -59,6 +59,8 @@ export interface ISourceData {
   getOriginPath(source: ISourceData): string;
   getDestinyPath(source: ISourceData): string;
 }
+
+
 export interface IMetada {
   audio: IAudio;
   video: IVideo;

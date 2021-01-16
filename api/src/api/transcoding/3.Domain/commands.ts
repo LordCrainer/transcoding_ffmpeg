@@ -13,7 +13,7 @@ const ajustVolume = (
   return `ffmpeg -i ${sourceData.getOriginPath(
     source
   )} -vcodec copy -af volume=${newVolume}${
-    volume?.unit
+    volume.unit
   } -acodec ${codec} -y ${sourceData.getDestinyPath(source)}`;
 };
 
@@ -30,7 +30,7 @@ const editVolume = (source: ISourceData, metadata: IMetada) => {
   } = metadata;
   return `ffmpeg -i ${sourceData.getOriginPath(
     source
-  )} -vcodec copy -af volume=${volume?.value}${
+  )} -vcodec copy -af volume=${volume.value}${
     volume?.unit
   } -acodec ${codec} -y ${sourceData.getDestinyPath(source)}`;
 };

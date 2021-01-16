@@ -1,8 +1,8 @@
-import { execute, handleData } from ".";
-import { IRegFFmpeg } from "../../3.Domain/entities/IRegexFFmpeg";
 import { ISpawnCallBack } from "../../3.Domain/entities/IExecute";
 import { cmdFFmpeg, regexFFmpeg } from "../../3.Domain";
 import { IMetada, ISourceData } from "../../3.Domain/entities/IParams";
+import handleData from "./handle-data";
+import execute from "./execute";
 
 const valueRange = (x: number, min: number, max: number) =>
   x >= min && x <= max;

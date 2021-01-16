@@ -1,4 +1,4 @@
-import { utils } from "api/share";
+import utils from "../../../share/utils";
 import { ISpawnCallBack } from "../../3.Domain/entities/IExecute";
 import { executeProcess } from "../service";
 
@@ -35,6 +35,5 @@ const executeCommands = (commands: string, regex = /\s+/) => async (
   // ejecuto el comando, extrayendo las variables y ejecuto la función de salida
   // retorno los datos
 };
-
 
 export default { executeCommands };

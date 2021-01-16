@@ -1,5 +1,5 @@
 import execute from "./execute";
 import handleVolume from "./volume";
-import handleData from "./handler-data";
+import handleData from "./handle-data";
 
-export { execute, handleVolume, handleData };
+export default { execute, handleVolume, handleData };
