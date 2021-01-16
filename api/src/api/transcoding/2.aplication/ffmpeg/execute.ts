@@ -1,4 +1,4 @@
-import { utils } from "3.application/modules/share";
+import { utils } from "api/share";
 import { ISpawnCallBack } from "../../3.Domain/entities/IExecute";
 import { executeProcess } from "../service";
 

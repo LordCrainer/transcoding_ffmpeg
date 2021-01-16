@@ -1,5 +1,5 @@
 import express from "express";
-import transcodingRouter from "../../3.application/modules/transcoding/1.infraestructure/routes/transcoding";
+import transcodingRouter from "../../api/transcoding/1.infraestructure/routes/transcoding";
 
 const apiRouter = () => {
   const router = express.Router();
