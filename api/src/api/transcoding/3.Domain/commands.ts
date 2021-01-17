@@ -6,15 +6,13 @@ const ajustVolume = (
   metadata: IMetada,
   newVolume: number
 ) => {
+  const origin = sourceData.getOriginPath(source);
+  const destiny = sourceData.getOriginPath(source);
   const {
     audioFilter: { volume },
     audio: { codec },
   } = metadata;
-  return `ffmpeg -i ${sourceData.getOriginPath(
-    source
-  )} -vcodec copy -af volume=${newVolume}${
-    volume.unit
-  } -acodec ${codec} -y ${sourceData.getDestinyPath(source)}`;
+  return `ffmpeg -i ${origin} -vcodec copy -af volume=${newVolume}${volume.unit} -acodec ${codec} -y ${destiny}`;
 };
 
 const volumeDetect = (source: ISourceData) =>
@@ -28,11 +26,9 @@ const editVolume = (source: ISourceData, metadata: IMetada) => {
     audioFilter: { volume },
     audio: { codec },
   } = metadata;
-  return `ffmpeg -i ${sourceData.getOriginPath(
-    source
-  )} -vcodec copy -af volume=${volume.value}${
-    volume?.unit
-  } -acodec ${codec} -y ${sourceData.getDestinyPath(source)}`;
+  const origin = sourceData.getOriginPath(source);
+  const destiny = sourceData.getOriginPath(source);
+  return `ffmpeg -i ${origin} -vcodec copy -af volume=${volume.value}${volume.unit} -acodec ${codec} -y ${destiny}`;
 };
 
 const dv25Mov = (source: ISourceData, metadata: IMetada) =>

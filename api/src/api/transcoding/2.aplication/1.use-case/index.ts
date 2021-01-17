@@ -1,5 +1,4 @@
-import ffmpeg from "../ffmpeg";
 import normalizeVolume from "./normalizeVolume";
-import transcoding from "./transcoding";
+import transcoder from "./transcoder";
 
-export { transcoding, normalizeVolume };
+export { transcoder, normalizeVolume };

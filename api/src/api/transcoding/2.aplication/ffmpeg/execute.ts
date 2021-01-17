@@ -2,23 +2,6 @@ import utils from "../../../share/utils";
 import { ISpawnCallBack } from "../../3.Domain/entities/IExecute";
 import { executeProcess } from "../service";
 
-/* const getVolumen = async ({ origin }) => {
-  let stderr, max, mean;
-  try {
-    const [program, ...args] = utilsTranscoder.splitString(
-      commands.volumeDetect({ origin })
-    );
-    ({ stderr } = await asyncSpawnExec({
-      program,
-      args,
-    }));
-    ({ max, mean } = handledData.getMaxAndMean(stderr, regexs.volume));
-  } catch (err) {
-    throw err;
-  }
-  return { max, mean };
-}; */
-
 const executeCommands = (commands: string, regex = /\s+/) => async (
   fn?: ISpawnCallBack
 ) => {

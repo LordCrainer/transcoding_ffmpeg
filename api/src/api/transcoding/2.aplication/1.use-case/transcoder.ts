@@ -1,7 +1,7 @@
 import { IMetada, ISourceData } from "../../3.Domain/entities/IParams";
-import transcodingRouter from "./../../1.infraestructure/routes/transcoding";
+import transcodingRouter from "../../1.infraestructure/routes/transcoding";
 
-const transcoding = async (source: ISourceData, metadata: IMetada) => {
+const transcoder = async (source: ISourceData, metadata: IMetada) => {
   console.log("Ingresando");
   try {
     // const { origin, destiny } = source;
@@ -19,8 +19,4 @@ const transcoding = async (source: ISourceData, metadata: IMetada) => {
   }
 };
 
-const suma = (a: number, b: number) => {
-  return a + b;
-};
-
-export default { suma, transcoding };
+export default transcoder;
