@@ -8,9 +8,9 @@ const transcoder = async (source: ISourceData, metadata: IMetada) => {
     console.log("USE CASE: ", source);
 
     // const { audio, audioFilter, video, videoFilter } = metadata;
-    // Filtrar: Reducir el volumen, rellenar el video, cortar el video
+    // Filtrar: Mapear y ejecutar cada filtro seleccionado
     // Transcoding: Convertir el archivo al codec de audio y video respectivo
-    // Repetir el proceso
+    // Repetir el proceso si existen más datos
     return { data: "salida" };
   } catch (error) {
     console.log(error);

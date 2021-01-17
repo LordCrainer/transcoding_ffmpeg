@@ -6,9 +6,9 @@ const normalizeVolume = (handleVolume: IVolume) => async (
   source: ISourceData,
   metadata: IMetada
 ) => {
-  const {
+  /*  const {
     audioFilter: { normalizeVolume },
-  } = metadata;
+  } = metadata; */
   try {
     console.log("normalize: ", source);
 
