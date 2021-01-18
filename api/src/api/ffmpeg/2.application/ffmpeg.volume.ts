@@ -1,7 +1,7 @@
-import { ISpawnCallBack } from "../../3.Domain/entities/IExecute";
+import { ISpawnCallBack } from "../../share/3.domain/execute.interface";
 import { cmdFFmpeg, regexFFmpeg } from "../../3.Domain";
 import { IMetada, ISourceData } from "../../3.Domain/entities/IParams";
-import handleData from "./handle-data";
+import handleData from "./ffmpeg.handle-data";
 import execute from "./execute";
 
 const valueRange = (x: number, min: number, max: number) =>
