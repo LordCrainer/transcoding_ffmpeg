@@ -1,5 +1,5 @@
 import asyncSpawn from "@expo/spawn-async";
-import { IProgram, ISpawnCallBack } from "../../../share/3.domain/IExecute";
+import { IProgram, ISpawnCallBack } from "./../3.domain";
 
 const asyncSpawnExec = (fn?: ISpawnCallBack) => async (program: IProgram) => {
   let process = asyncSpawn(program.application, program.args);

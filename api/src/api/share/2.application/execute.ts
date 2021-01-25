@@ -1,6 +1,6 @@
-import utils from "../../../share/utils";
-import { ISpawnCallBack } from "../../../share/3.domain/IExecute";
-import { executeProcess } from "../service";
+import utils from "../utils";
+import { IProgram, ISpawnCallBack } from "./../3.domain";
+import executeProcess from "./execute-process";
 
 const executeCommands = (commands: string, regex = /\s+/) => async (
   fn?: ISpawnCallBack
@@ -19,4 +19,4 @@ const executeCommands = (commands: string, regex = /\s+/) => async (
   // retorno los datos
 };
 
-export default { executeCommands };
+export default executeCommands;

@@ -1,5 +1,9 @@
-import { IMetada, ISourceData } from "./entities/IParams";
-import { sourceData } from "./index";
+import {
+  ISourceData,
+  ISpawnCallBack,
+  IMetada,
+  sourceData,
+} from "./../../share/3.domain";
 
 const ajustVolume = (
   source: ISourceData,

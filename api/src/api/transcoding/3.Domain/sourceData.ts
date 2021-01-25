@@ -1,4 +1,4 @@
-import { ISourceData } from "./entities/IParams";
+import { ISourceData } from "../../share/3.domain/IParams";
 import path from "path";
 
 const getOriginPath = (source: ISourceData) => {

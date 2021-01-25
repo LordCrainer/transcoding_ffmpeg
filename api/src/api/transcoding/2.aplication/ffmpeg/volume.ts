@@ -1,6 +1,6 @@
-import { ISpawnCallBack } from "../../3.Domain/entities/IExecute";
+import { ISpawnCallBack } from "../../../share/3.domain/IExecute";
 import { cmdFFmpeg, regexFFmpeg } from "../../3.Domain";
-import { IMetada, ISourceData } from "../../3.Domain/entities/IParams";
+import { IMetada, ISourceData } from "../../../share/3.domain/IParams";
 import handleData from "./handle-data";
 import execute from "./execute";
 

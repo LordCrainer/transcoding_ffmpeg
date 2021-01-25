@@ -1,4 +1,4 @@
-import cmdFFmpeg from "./commands";
+import cmdFFmpeg from "../../share/3.domain/ffmpeg.commands";
 import regexFFmpeg from "./regex";
 import params from "./params";
 import sourceData from "./sourceData";
