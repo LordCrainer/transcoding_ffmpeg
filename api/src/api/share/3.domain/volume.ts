@@ -1,4 +1,4 @@
-import { IMetada, ISourceData } from "./IParams";
+import { IMetada, ISourceData } from ".";
 
 export interface IVolume {
   getVolume(source: ISourceData, fn?: Function): Promise<any>;

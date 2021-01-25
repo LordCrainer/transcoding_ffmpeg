@@ -1,4 +1,4 @@
-import handleData from "./ffmpeg.handle-data";
+import handleData from "../../share/2.application/handle-data";
 import { ffmpegCMD, ffmpegRegex } from "../3.domain";
 import execute from "../../share/2.application/execute";
 import { ISourceData, ISpawnCallBack, IMetada } from "./../../share/3.domain";
