@@ -1,5 +1,5 @@
-import { IRegFFmpeg } from "./ffmpeg.interface";
+import { IRegexFFmpeg } from "./ffmpeg.interface";
 import ffmpegCMD from "./ffmpeg.commands";
 import ffmpegRegex from "./ffmpeg.regex";
 
-export { ffmpegCMD, ffmpegRegex, IRegFFmpeg };
+export { ffmpegCMD, ffmpegRegex, IRegexFFmpeg };
