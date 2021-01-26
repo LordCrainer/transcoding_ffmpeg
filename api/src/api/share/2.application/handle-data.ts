@@ -4,7 +4,7 @@
   return { max: maxVolume, mean: meanVolume };
 }; */
 
-import { utils } from "..";
+import { utils } from "./";
 
 const getAttribute = (data: string, attribute: RegExp | string) => {
   let [, value] = data.match(attribute) || [];

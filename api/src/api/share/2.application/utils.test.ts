@@ -1,4 +1,4 @@
-import { utils } from ".";
+import { utils } from "./";
 
 describe("CAMBIANDO EL COMPORTAMIENTO DEL STRING", () => {
   test("Split the string", () => {

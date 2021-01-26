@@ -1,4 +1,4 @@
-import utils from "../utils";
+import utils from "./utils";
 import asyncSpawn from "@expo/spawn-async";
 import { IProgram, ISpawnCallBack } from "./../3.domain";
 
