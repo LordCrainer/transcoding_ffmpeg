@@ -1,10 +1,7 @@
 import { IMetada, ISourceData, ISpawnCallBack } from "../../share/3.domain";
 import { handleData, execute } from "../../share/2.application";
-import { ffmpegCMD, ffmpegRegex } from "api/ffmpeg/3.domain";
-
-const valueRange = (x: number, min: number, max: number) =>
-  x >= min && x <= max;
-const isLess = (a: number, b: number) => a < b;
+import { ffmpegCMD, ffmpegRegex } from "../../ffmpeg/3.domain";
+import { fpFunctions } from "../../share/2.application";
 
 const subtractVolume = (currentVolume: number, threshold: number) =>
   threshold - currentVolume;
@@ -50,7 +47,7 @@ const verifyVolume = (
   normalizeVolume: { marginError: number; threshold: number }
 ) => {
   const { marginError, threshold } = normalizeVolume;
-  return valueRange(
+  return fpFunctions.onRange(
     maxVolume,
     threshold - marginError,
     threshold + marginError
@@ -63,5 +60,4 @@ export default {
   subtractVolume,
   ajustVolume,
   verifyVolume,
-  isLess,
 };

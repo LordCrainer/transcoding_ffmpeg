@@ -11,7 +11,18 @@ const pipe = <T extends any[], R>(
 
 const not = (boolean: boolean) => !boolean;
 
+const isLessThan = (a: number, b: number) => a < b;
+const isMoreThan = (a: number, b: number) => a > b;
+const substract = (a: number, b: number) => a - b;
+const sum = (a: number, b: number) => a + b;
+const onRange = (x: number, min: number, max: number) => x >= min && x <= max;
+
 export default {
   pipe,
   not,
+  isLessThan,
+  isMoreThan,
+  substract,
+  sum,
+  onRange,
 };
