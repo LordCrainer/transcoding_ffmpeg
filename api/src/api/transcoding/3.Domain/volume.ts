@@ -1,4 +1,4 @@
-import { IMetada, ISourceData } from ".";
+import { IMetada, ISourceData } from "../../share/3.domain";
 
 export interface IVolume {
   getVolume(source: ISourceData, fn?: Function): Promise<any>;
