@@ -1,5 +1,4 @@
-import execute from "./execute-commands";
-import executeProcess from "./execute-process";
+import execute from "./execute";
 import handleData from "./handle-data";
 
-export { executeProcess, execute, handleData };
+export { execute, handleData };
