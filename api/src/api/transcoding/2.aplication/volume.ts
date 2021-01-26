@@ -4,8 +4,7 @@ import { ffmpegCMD, ffmpegRegex } from "api/ffmpeg/3.domain";
 
 const valueRange = (x: number, min: number, max: number) =>
   x >= min && x <= max;
-const valueUnder = (currentValue: number, minValue: number) =>
-  currentValue < minValue;
+const isLess = (a: number, b: number) => a < b;
 
 const subtractVolume = (currentVolume: number, threshold: number) =>
   threshold - currentVolume;
@@ -64,4 +63,5 @@ export default {
   subtractVolume,
   ajustVolume,
   verifyVolume,
+  isLess,
 };
