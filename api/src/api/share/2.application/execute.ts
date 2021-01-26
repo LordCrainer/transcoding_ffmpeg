@@ -1,5 +1,4 @@
 import utils from "../utils";
-import executeProcess from "./execute-process";
 import asyncSpawn from "@expo/spawn-async";
 import { IProgram, ISpawnCallBack } from "./../3.domain";
 
@@ -24,7 +23,7 @@ const commands = (commands: string, regex = /\s+/) => async (
   try {
     const arrayArguments = utils.splitString(regex);
     const [application, ...args] = arrayArguments(commands);
-    const executeProgram = executeProcess.asyncSpawnExec(fn);
+    const executeProgram = asyncSpawnExec(fn);
     const output = executeProgram({ application, args });
     return output;
   } catch (error) {
