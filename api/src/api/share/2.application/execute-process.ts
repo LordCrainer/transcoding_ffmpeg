@@ -16,9 +16,7 @@ const asyncSpawnExec = (fn?: ISpawnCallBack) => async (program: IProgram) => {
   return { status, stderr, pid };
 };
 
-export default {
-  asyncSpawnExec,
-};
+export default { asyncSpawnExec };
 
 /* const getVolumen = async ({ origin }) => {
   let stderr, max, mean;

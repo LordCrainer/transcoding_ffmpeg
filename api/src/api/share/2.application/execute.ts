@@ -2,7 +2,7 @@ import utils from "../utils";
 import { IProgram, ISpawnCallBack } from "./../3.domain";
 import executeProcess from "./execute-process";
 
-const executeCommands = (commands: string, regex = /\s+/) => async (
+const commands = (commands: string, regex = /\s+/) => async (
   fn?: ISpawnCallBack
 ) => {
   try {
@@ -19,4 +19,4 @@ const executeCommands = (commands: string, regex = /\s+/) => async (
   // retorno los datos
 };
 
-export default executeCommands;
+export default { commands };
