@@ -1,5 +1,5 @@
 import utils from "../../../share/utils";
-import { ISpawnCallBack } from "../../../share/3.domain/IExecute";
+import { ISpawnCallBack } from "../../../share/3.domain";
 import { executeProcess } from "../service";
 
 const executeCommands = (commands: string, regex = /\s+/) => async (

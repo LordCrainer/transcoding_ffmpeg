@@ -1,10 +1,10 @@
-import { cmdFFmpeg, regexFFmpeg } from "../../3.Domain";
+import { cmdFFmpeg, regexFFmpeg } from "../3.Domain";
 
-import { IVolume } from "../../../share/3.domain/volume";
+import { IVolume } from "../../share/3.domain/volume";
 import {
   ISourceData,
   IMetada,
-} from "./../../../share/3.domain/params.interface";
+} from "../../share/3.domain/params.interface";
 
 const normalizeVolume = (handleVolume: IVolume) => async (
   source: ISourceData,
