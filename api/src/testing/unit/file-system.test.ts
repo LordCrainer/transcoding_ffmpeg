@@ -1,4 +1,4 @@
-const { fs, existFile } = require("../../components/service/file-system");
+/* const { fs, existFile } = require("../../components/service/file-system");
 const path =
   "D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/server/src/api/testing/unit/transcoding.test.js";
 
@@ -16,3 +16,4 @@ describe("Funciones del sistema de archivos", () => {
     done();
   });
 });
+ */
