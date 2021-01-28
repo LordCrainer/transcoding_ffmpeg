@@ -12,7 +12,7 @@ export interface IVideo {
 export interface IAudio {
   codec: string;
   format: string;
-  audioRate: string;
+  frameRate: string;
   bitRate: string;
 }
 
@@ -25,6 +25,8 @@ export interface IAudioFilter {
   normalizeVolume: {
     threshold: number;
     marginError: number;
+    max: number;
+    min: number;
     unit: number;
   };
 }
@@ -60,10 +62,40 @@ export interface ISourceData {
   getDestinyPath(source: ISourceData): string;
 }
 
+export interface IGeneral {
+  fileExtension: string;
+  format: string;
+  fileSize: string;
+  duration: string;
+  videoCount: string;
+  audioCount: string;
+}
 
-export interface IMetada {
+export interface IMetadata {
+  general: IGeneral;
+  audio: IAudio;
+  video: IVideo;
+}
+
+export interface IOptions {
+  general: IGeneral;
   audio: IAudio;
   video: IVideo;
   audioFilter: IAudioFilter;
   videoFilter: IVideoFilter;
+}
+
+export interface IParams {
+  origin: string;
+  destiny: string;
+  options: IOptions;
+}
+
+export interface IFilter {
+  list: {
+    video: Array<String>;
+    audio: Array<String>;
+  };
+  audio: IAudioFilter;
+  video: IVideoFilter;
 }

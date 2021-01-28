@@ -1,8 +1,8 @@
-import { ISourceData, IMetada, sourceData } from "../../share/3.domain";
+import { ISourceData, IMetadata, sourceData } from "../../share/3.domain";
 
 const ajustVolume = (
   source: ISourceData,
-  metadata: IMetada,
+  metadata: IMetadata,
   newVolume: number
 ) => {
   const origin = sourceData.getOriginPath(source);
@@ -20,7 +20,7 @@ const volumeDetect = (source: ISourceData) =>
   )} -af 'volumedetect' -vn -sn -dn -f null /dev/null`;
 /*   { origin = "origin.mov", destiny = "destiny.mov" },
   { volume = 0, unit = "dB", audiocodec = "pcm_s24le" } */
-const editVolume = (source: ISourceData, metadata: IMetada) => {
+const editVolume = (source: ISourceData, metadata: IMetadata) => {
   const {
     audioFilter: { volume },
     audio: { codec },
@@ -30,28 +30,28 @@ const editVolume = (source: ISourceData, metadata: IMetada) => {
   return `ffmpeg -i ${origin} -vcodec copy -af volume=${volume.value}${volume.unit} -acodec ${codec} -y ${destiny}`;
 };
 
-const dv25Mov = (source: ISourceData, metadata: IMetada) =>
+const dv25Mov = (source: ISourceData, metadata: IMetadata) =>
   `ffmbc -i ${sourceData.getOriginPath(
     source
   )}  -r 29970/1000 -aspect 3:2 -bff -target dvcpro -b 30M -minrate 30M -maxrate 30M -bufsize 4M  -timecode 00:00:00:00  -y ${sourceData.getDestinyPath(
     source
   )}`;
 
-const dv25Mxf = (source: ISourceData, metadata: IMetada) =>
+const dv25Mxf = (source: ISourceData, metadata: IMetadata) =>
   `ffmbc -i ${sourceData.getOriginPath(
     source
   )}  -r 29970/1000 -aspect 3:2 -bff -target dvcpro -b 30M -minrate 30M -maxrate 30M -bufsize 4M  -timecode 00:00:00:00 -acodec pcm_s24le -sample_fmt s32 -ac 1  -y ${sourceData.getDestinyPath(
     source
   )} -ac 1 -ar 48000 -acodec pcm_s24le -sample_fmt s32  -newaudio  -map_audio_channel  0:1:0:0:1:0  -timecode 00:00:00:00`;
 
-const preAjust = (source: ISourceData, metadata: IMetada) =>
+const preAjust = (source: ISourceData, metadata: IMetadata) =>
   `ffmpeg -i ${sourceData.getOriginPath(
     source
   )} -r 29970/1000 -vcodec mpeg4 -pix_fmt yuv420p  -vf eq=saturation=1.06,scale=640:480:force_original_aspect_ratio=decrease,pad=640:480:(ow-iw)/2:(oh-ih)/2,setsar=1 -q:v 1 -b:v 50M -maxrate 50M  -minrate 50M -bufsize 8M  -acodec pcm_s16le  -timecode 00:00:00:00 -y ${sourceData.getDestinyPath(
     source
   )}`;
 
-const preAjustSD = (source: ISourceData, metadata: IMetada) =>
+const preAjustSD = (source: ISourceData, metadata: IMetadata) =>
   `ffmbc -i ${sourceData.getOriginPath(
     source
   )} -r 29970/1000 -vcodec mpeg4  -pix_fmt yuv420p -vf pad=720:576:0:72:black:aspect=4:3  -qscale 1 -color_primaries bt709 -b 50M -maxrate 50M  -minrate 50M -bufsize 8M  -acodec pcm_s16le  -timecode 00:00:00:00 -y ${sourceData.getDestinyPath(

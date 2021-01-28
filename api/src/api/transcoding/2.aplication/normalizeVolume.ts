@@ -1,9 +1,9 @@
 import { IVolume } from "../3.domain";
-import { ISourceData, IMetada } from "../../share/3.domain";
+import { ISourceData, IMetadata } from "../../share/3.domain";
 
 const normalizeVolume = (handleVolume: IVolume) => async (
   source: ISourceData,
-  metadata: IMetada
+  metadata: IMetadata
 ) => {
   /*  const {
     audioFilter: { normalizeVolume },

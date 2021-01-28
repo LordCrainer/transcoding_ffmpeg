@@ -1,4 +1,4 @@
-import { IMetada, ISourceData, ISpawnCallBack } from "../../share/3.domain";
+import { IMetadata, ISourceData, ISpawnCallBack } from "../../share/3.domain";
 import { handleData, execute } from "../../share/2.application";
 import { ffmpegCMD, ffmpegRegex } from "../../ffmpeg/3.domain";
 import { fpFunctions } from "../../share/2.application";
@@ -20,7 +20,7 @@ const getVolume = async (source: ISourceData, fn?: ISpawnCallBack) => {
 
 const ajustVolume = async (
   source: ISourceData,
-  metadata: IMetada,
+  metadata: IMetadata,
   volume: number,
   fn?: ISpawnCallBack
 ) => {
