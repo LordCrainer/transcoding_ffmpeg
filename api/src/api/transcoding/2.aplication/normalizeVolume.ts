@@ -1,8 +1,8 @@
 import { IVolume } from "../3.domain";
-import { ISourceData, IMetadata } from "../../share/3.domain";
+import { IParams, IMetadata } from "../../share/3.domain";
 
 const normalizeVolume = (handleVolume: IVolume) => async (
-  source: ISourceData,
+  source: IParams,
   metadata: IMetadata
 ) => {
   /*  const {

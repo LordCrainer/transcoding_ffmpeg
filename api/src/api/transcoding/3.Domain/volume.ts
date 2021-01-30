@@ -1,10 +1,10 @@
-import { IMetadata, ISourceData } from "../../share/3.domain";
+import { IMetadata, IParams } from "../../share/3.domain";
 
 export interface IVolume {
-  getVolume(source: ISourceData, fn?: Function): Promise<any>;
+  getVolume(source: IParams, fn?: Function): Promise<any>;
   subtractVolume(currentVolume: number, threshold: number): number;
   ajustVolume(
-    source: ISourceData,
+    source: IParams,
     metadata: IMetadata,
     volume: number,
     fn?: Function

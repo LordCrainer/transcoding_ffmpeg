@@ -17,7 +17,6 @@ export interface IAudio {
 }
 
 export interface IAudioFilter {
-  status: boolean;
   volume: {
     value: number;
     unit: string;
@@ -32,7 +31,6 @@ export interface IAudioFilter {
 }
 
 export interface IVideoFilter {
-  status: boolean;
   pad?: {
     top: number;
     bottom: number;
@@ -46,21 +44,6 @@ export interface IVideoFilter {
     right: number;
   };
 }
-export interface ISourceData {
-  origin: {
-    path: string;
-    originalName: string;
-  };
-  destiny: {
-    suffix: string;
-    prefix: string;
-    path: string;
-    fieldName: string;
-    extension: string;
-  };
-  getOriginPath(source: ISourceData): string;
-  getDestinyPath(source: ISourceData): string;
-}
 
 export interface IGeneral {
   fileExtension: string;
@@ -70,32 +53,22 @@ export interface IGeneral {
   videoCount: string;
   audioCount: string;
 }
-
 export interface IMetadata {
   general: IGeneral;
   audio: IAudio;
   video: IVideo;
 }
-
-export interface IOptions {
-  general: IGeneral;
-  audio: IAudio;
-  video: IVideo;
-  audioFilter: IAudioFilter;
-  videoFilter: IVideoFilter;
+export interface IFilter {
+  status: boolean;
+  audio: IAudioFilter;
+  video: IVideoFilter;
 }
-
 export interface IParams {
   origin: string;
   destiny: string;
-  options: IOptions;
-}
-
-export interface IFilter {
-  list: {
-    video: Array<String>;
-    audio: Array<String>;
+  metadata: IMetadata;
+  filter: {
+    audio: Array<IAudioFilter>;
+    video: Array<IVideoFilter>;
   };
-  audio: IAudioFilter;
-  video: IVideoFilter;
 }

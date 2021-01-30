@@ -1,7 +1,6 @@
 import { IController } from "../../../../types/IController";
 import apiResponse from "../../../../utils/apiResponse";
 import httpStatusCodes from "http-status-codes";
-import ffmpeg from "../../2.aplication/ffmpeg";
 import { normalizeVolume, transcoder } from "../../2.aplication";
 
 const transcoding: IController = async (req, res) => {
@@ -9,8 +8,7 @@ const transcoding: IController = async (req, res) => {
 
   try {
     const { source, metadata } = body;
-    const data2 = await transcoder(source, metadata);
-    const data = await normalizeVolume(ffmpeg.handleVolume)(source, metadata);
+    const data = await transcoder(source, metadata);
     const response = await apiResponse.result(res, data, httpStatusCodes.OK);
   } catch (error) {
     console.log(error);
