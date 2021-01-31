@@ -1,8 +1,7 @@
 import { IParams } from "api/share/3.domain";
-import preDefined from "api/transcoding/2.aplication/preDefined";
-import { volume } from "../../api/transcoding/2.aplication";
+import { volume, predefined } from "../../api/transcoding/2.aplication";
 
-const params = <IParams>{
+let params = <IParams>{
   origin: "C:/Users/camog/Desktop/CONVERT/original.mov",
   destiny: "C:/Users/camog/Desktop/CONVERT/output.mov",
   metadata: {
@@ -28,13 +27,14 @@ const params = <IParams>{
 
 describe("TRANSCODING VIDEO", () => {
   test("should ajust the file to SD", async (done) => {
-    const data = await preDefined.preAjust(params);
+    params.destiny = "C:/Users/camog/Desktop/CONVERT/temp/sd.output.mov";
+    const data = await predefined.preAjust(params);
     expect(data.status).toBe(0);
     done();
   });
-
   test("should ajust the file to SD", async (done) => {
-    const data = await preDefined.dvcpro25(params);
+    params.destiny = "C:/Users/camog/Desktop/CONVERT/temp/dv25.output.mov";
+    const data = await predefined.dvcpro25(params);
     expect(data.status).toBe(0);
     done();
   });
@@ -50,9 +50,7 @@ describe("TRANSCODING VIDEO", () => {
     done();
   });
   test("Should get volume", async (done) => {
-    const params = <IParams>{
-      origin: "C:/Users/camog/Desktop/CONVERT/output.mov",
-    };
+    params.origin = params.destiny;
     const data = await volume.getVolume(params);
     expect(data).toEqual({ max: "-11.8", mean: "-22.1" });
     done();
