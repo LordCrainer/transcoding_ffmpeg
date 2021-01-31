@@ -27,4 +27,5 @@ export default {
   volumeDetect,
   editVolume,
   ajustVolume,
+  preAjust,
 };
