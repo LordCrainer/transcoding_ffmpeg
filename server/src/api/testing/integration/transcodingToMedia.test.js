@@ -1,6 +1,6 @@
 jest.setTimeout(30000);
 
-const transcodingController = require("../../components/transcoding/Infrastructure/transcoding.controller");
+const transcodingController = require("../../components/transcoding/1.adapter/transcoding.controller");
 
 describe("Transcoding to media", () => {
   test("Transcodigicación de un a muchos archivos ", async (done) => {

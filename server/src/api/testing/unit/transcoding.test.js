@@ -6,11 +6,11 @@ const {
   asyncSpawnExec,
   editVolume,
   transcodingVideo,
-} = require("../../components/transcoding/aplication/index");
+} = require("../../components/transcoding/2.aplication/index");
 
-const commands = require("../../components/transcoding/aplication/commads");
-const handledData = require("../../components/transcoding/aplication/handled-data");
-const regexs = require("../../components/transcoding/aplication/regexs");
+const commands = require("../../components/transcoding/3.Domain/commads");
+const handledData = require("../../components/transcoding/2.aplication/handled-data");
+const regexs = require("../../components/transcoding/3.Domain/regexs");
 
 const file = {
   origin:
@@ -81,9 +81,9 @@ describe("FUNCIONES DEL TRANSCODING", () => {
     expect(newFile.status).toStrictEqual(0);
     done();
   });
-  /* test("Transcodificando el video pasando el comando como parámetro", async (done) => {
+  test("Transcodificando el video pasando el comando como parámetro", async (done) => {
     const newFile = await transcodingVideo(file, { commands: commands.dv25Mov });
     expect(newFile.status).toStrictEqual(0);
     done();
-  }); */
+  });
 });
