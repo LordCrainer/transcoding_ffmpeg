@@ -1,12 +1,11 @@
 import { IMetadata, IParams } from "../../share/3.domain";
 
-export interface IVolume {
-  getVolume(source: IParams, fn?: Function): Promise<any>;
+export interface IAudioVolume {
+  getVolume(params: IParams, fn?: Function): Promise<any>;
   subtractVolume(currentVolume: number, threshold: number): number;
   ajustVolume(
-    source: IParams,
-    metadata: IMetadata,
-    volume: number,
+    params: IParams,
+    newVolume: number,
     fn?: Function
   ): Promise<Object>;
   verifyVolume(

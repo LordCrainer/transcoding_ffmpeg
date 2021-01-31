@@ -1,7 +1,7 @@
-import { IVolume } from "../3.domain";
+import { IAudioVolume } from "../3.domain";
 import { IParams, IMetadata } from "../../share/3.domain";
 
-const normalizeVolume = (handleVolume: IVolume) => async (
+const normalizeVolume = (handleVolume: IAudioVolume) => async (
   source: IParams,
   metadata: IMetadata
 ) => {
