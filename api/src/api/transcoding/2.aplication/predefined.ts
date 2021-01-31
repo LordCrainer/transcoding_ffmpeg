@@ -1,6 +1,6 @@
-import { ffmpegCMD } from "api/ffmpeg/3.domain";
-import { ffmbcCMD } from "api/ffmbc/3.domain";
-import { execute } from "api/share/2.application";
+import { ffmpegCMD } from "../../../api/ffmpeg/3.domain";
+import { ffmbcCMD } from "../../../api/ffmbc/3.domain";
+import { execute } from "../../../api/share/2.application";
 import { IParams, ISpawnCallBack } from "api/share/3.domain";
 
 const preAjust = async (params: IParams, fn?: ISpawnCallBack) => {
