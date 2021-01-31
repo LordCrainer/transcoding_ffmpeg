@@ -1,5 +1,5 @@
 import { IMetadata, IParams } from "../../share/3.domain";
-import transcodingRouter from "../1.infraestructure/routes/transcoding";
+import transcodingRouter from "../1.adapter/routes/transcoding";
 
 const transcoder = async (source: IParams, metadata: IMetadata) => {
   console.log("Ingresando");

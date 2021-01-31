@@ -12,4 +12,9 @@ describe("FUNCIONES DEL AUDIO, VOLUMEN", () => {
     expect(data).toEqual({ max: "0.0", mean: "-10.1" });
     done();
   });
+  test("Should get volume from the file ", async (done) => {
+    const data = await volume.getVolume(params);
+    expect(data).toEqual({ max: "0.0", mean: "-10.1" });
+    done();
+  });
 });
