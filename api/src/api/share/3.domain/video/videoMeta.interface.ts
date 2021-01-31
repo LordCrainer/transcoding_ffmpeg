@@ -7,4 +7,6 @@ export interface IVideoMeta {
   fieldInterlaced: string;
   aspectRatio: string;
   bitRate: string;
+  bitRateMax: string;
+  bitRateMin: string;
 }

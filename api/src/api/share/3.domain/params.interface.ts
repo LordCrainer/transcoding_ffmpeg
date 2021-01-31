@@ -9,6 +9,7 @@ export interface IGeneral {
   duration: string;
   videoCount: string;
   audioCount: string;
+  perfil: string;
 }
 export interface IMetadata {
   general: IGeneral;
