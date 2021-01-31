@@ -13,7 +13,6 @@ const getAttribute = (data: string, attribute: RegExp | string) => {
 
 const getError = (data = "") => {
   const array = data.match(/Error/) || [];
-
   return utils.unlessOneElement(array, "Error");
 };
 

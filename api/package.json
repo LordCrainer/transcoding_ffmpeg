@@ -9,7 +9,7 @@
     "start": "npm run build && node ./dist/index.js",
     "comment": "Windows set DEBUG, Linux DEBUG",
     "test:custom": "jest",
-    "test:unit": "cross-env NODE_ENV=test jest --detectOpenHandles ./src/api/testing/unit/*"
+    "test:unit": "cross-env NODE_ENV=test jest --detectOpenHandles ./src/testing/unit/*"
   },
   "keywords": [
     "node",

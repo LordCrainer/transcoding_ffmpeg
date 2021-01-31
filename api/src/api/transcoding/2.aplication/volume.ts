@@ -20,12 +20,11 @@ const getVolume = async (source: IParams, fn?: ISpawnCallBack) => {
 
 const ajustVolume = async (
   source: IParams,
-  metadata: IMetadata,
   volume: number,
   fn?: ISpawnCallBack
 ) => {
   try {
-    const commands = await ffmpegCMD.ajustVolume(source, metadata, volume);
+    const commands = await ffmpegCMD.ajustVolume(source, volume);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr };
   } catch (error) {
