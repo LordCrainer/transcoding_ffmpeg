@@ -19,7 +19,7 @@ export interface IMetadata {
 export interface IFilter {
   status: boolean;
   fAudio: IAudioFilter;
-  FVideo: IVideoFilter;
+  fVideo: IVideoFilter;
 }
 export interface IParams {
   origin: string;

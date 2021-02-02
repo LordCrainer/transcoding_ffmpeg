@@ -52,7 +52,8 @@ describe("TRANSCODING VIDEO 1", () => {
   });
   test("Should verify the volume", async (done) => {
     params.origin = "C:/Users/camog/Desktop/CONVERT/temp/-12.output.mov";
-    const data = await volume.getVolume(params);    expect(data).toEqual({ max: "-11.8", mean: "-22.1" });
+    const data = await volume.getVolume(params);
+    expect(data).toEqual({ max: "-11.8", mean: "-22.1" });
     done();
   });
 });
@@ -112,7 +113,7 @@ describe("TRANSCODING VIDEO 2", () => {
   });
 });
 
-describe("TRANSCODING VIDEO 3", () => {
+/* describe("TRANSCODING VIDEO 3", () => {
   let params = <IParams>{
     origin: "C:/Users/camog/Desktop/CONVERT/original.mov",
     destiny: "C:/Users/camog/Desktop/CONVERT/output.mov",
@@ -166,4 +167,4 @@ describe("TRANSCODING VIDEO 3", () => {
     expect(data).toEqual({ max: "-11.8", mean: "-22.1" });
     done();
   });
-});
+}); */

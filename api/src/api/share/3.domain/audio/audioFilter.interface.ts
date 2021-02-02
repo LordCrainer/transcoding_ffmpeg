@@ -8,7 +8,7 @@ interface INormalizeVolume {
   marginError: number;
   max: number;
   min: number;
-  unit: number;
+  unit: string;
 }
 
 export interface IAudioFilter {
