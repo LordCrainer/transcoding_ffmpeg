@@ -1,0 +1,62 @@
+{
+  "ChatForm": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/ChatForm.vue"
+  },
+  "LazyChatForm": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/ChatForm.vue"
+  },
+  "Logo": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/Logo.vue"
+  },
+  "LazyLogo": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/Logo.vue"
+  },
+  "Message": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/Message.vue"
+  },
+  "LazyMessage": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/Message.vue"
+  },
+  "Snackbar": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/Snackbar.vue"
+  },
+  "LazySnackbar": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/Snackbar.vue"
+  },
+  "VuetifyLogo": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/VuetifyLogo.vue"
+  },
+  "LazyVuetifyLogo": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/VuetifyLogo.vue"
+  },
+  "ChannelTable": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/file/channel-table.vue"
+  },
+  "LazyChannelTable": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/file/channel-table.vue"
+  },
+  "InputFile": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/file/input-file.vue"
+  },
+  "LazyInputFile": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/file/input-file.vue"
+  },
+  "SelectChannel": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/file/select-channel.vue"
+  },
+  "LazySelectChannel": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/file/select-channel.vue"
+  },
+  "Menu": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/ui/menu.vue"
+  },
+  "LazyMenu": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/ui/menu.vue"
+  },
+  "Stepper": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/ui/stepper.vue"
+  },
+  "LazyStepper": {
+    "description": "Auto imported from D:/Documents/Trabajos/LANUBETV/Desarrollo/Transcoding/transcoding_ffmpeg/client/quikops-app-service/components/ui/stepper.vue"
+  }
+}
