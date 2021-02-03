@@ -1,9 +1,11 @@
 import colors from 'vuetify/es5/util/colors'
+import config from './config'
 
 export default {
+  env: config,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - quikops-app-service',
+    titleTemplate: '%s - QUIKOPS',
     title: 'quikops-app-service',
     meta: [
       { charset: 'utf-8' },
@@ -28,6 +30,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/dotenv',
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
@@ -39,11 +42,14 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa', '@nuxtjs/proxy'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: config.axios.baseUrl || 'http://localhost:3010'
+    // proxyHeaders: false
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -55,11 +61,14 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    icons: {
+      iconfont: 'mdi'
+    },
     theme: {
       dark: true,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
+          primary: 'rgb(26,39,55)',
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
@@ -72,6 +81,29 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
+  proxy: {
+    [config.nuxt.proxy.path]: config.nuxt.proxy.target
+    /* [config.nuxt.proxy.path]: {
+      target: config.nuxt.proxy.target,
+      pathRewrite: {
+        ["^" + config.nuxt.proxy.path]: "/"
+      }
+    } */
+  },
   build: {
+    publicPath: config.publicPath
+  },
+  generate: {
+    dir: config.generateDir
+  } /* buildDir: "dest" */,
+
+  router: {
+    base: config.routerBase
+  },
+  publicRuntimeConfig: {
+    baseURL: process.env.BASE_URL
+  },
+  privateRuntimeConfig: {
+    apiSecret: process.env.API_SECRET
   }
 }
