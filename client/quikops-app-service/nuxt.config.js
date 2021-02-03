@@ -23,7 +23,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: "~/plugins/imagenURL.js" }
+    { src: "./plugins/imagenURL.js" }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -33,7 +33,7 @@ export default {
   buildModules: [
     '@nuxtjs/dotenv',
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify'
   ],
@@ -69,9 +69,9 @@ export default {
       dark: true,
       themes: {
         dark: {
-          primary: 'rgb(26,39,55)',
+          primary: '#1A2737',
           accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
+          secondary: colors.orange.darken4,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,

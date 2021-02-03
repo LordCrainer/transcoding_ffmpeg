@@ -41,51 +41,51 @@ export const actions = {
       id: user.id
     }
 
-    dispatch("socketEmit", {
-      action: "createMessage",
+    dispatch('socketEmit', {
+      action: 'createMessage',
       payload
     })
   },
   joinRoom ({ dispatch, state }) {
     const { user } = state
 
-    dispatch("socketEmit", {
-      action: "joinRoom",
+    dispatch('socketEmit', {
+      action: 'joinRoom',
       payload: user
     })
   },
   leftRoom ({ commit, dispatch }) {
-    dispatch("socketEmit", {
-      action: "leftChat",
+    dispatch('socketEmit', {
+      action: 'leftChat',
       payload: null
     })
 
-    commit("clearData")
+    commit('clearData')
   },
   setTypingStatus ({ dispatch, commit, state }, typingStatus) {
-    commit("setTypingStatus", typingStatus)
+    commit('setTypingStatus', typingStatus)
     const { user } = state
-    dispatch("socketEmit", {
-      action: "setTypingStatus",
+    dispatch('socketEmit', {
+      action: 'setTypingStatus',
       payload: user
     })
   },
   async createUser ({ commit, dispatch }, user) {
     try {
-      const { id } = await dispatch("socketEmit", {
-        action: "createUser",
+      const { id } = await dispatch('socketEmit', {
+        action: 'createUser',
         payload: user
       })
 
-      commit("setUser", { id, ...user })
+      commit('setUser', { id, ...user })
     } catch (error) {}
   },
   SOCKET_reconnect ({ state, dispatch }) {
     const { user } = state
     if (Object.values(user).length) {
       const { id, ...userInfo } = user
-      dispatch("createUser", userInfo)
-      dispatch("joinRoom")
+      dispatch('createUser', userInfo)
+      dispatch('joinRoom')
     }
   }
 }

@@ -18,7 +18,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar app color="primary darken-4">
+    <v-app-bar app color="primary">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-spacer />
       <v-toolbar-title>

@@ -43,8 +43,8 @@ export const actions = {
     const { user } = state
     const payload = Object.assign(data, user.id)
 
-    dispatch("socketEmit", {
-      action: "createUser",
+    dispatch('socketEmit', {
+      action: 'createUser',
       payload,
       cb
     })
@@ -56,48 +56,48 @@ export const actions = {
       id: notification.id
     }
 
-    dispatch("socketEmit", {
-      action: "uploadProgress",
+    dispatch('socketEmit', {
+      action: 'uploadProgress',
       payload
     })
   },
   joinRoom ({ commit, dispatch, state }) {
     const { notification } = state
 
-    dispatch("socketEmit", {
-      action: "joinRoom",
+    dispatch('socketEmit', {
+      action: 'joinRoom',
       payload: notification
     })
   },
   leftRoom ({ commit, dispatch, state }) {
-    dispatch("socketEmit", {
-      action: "leftChat",
+    dispatch('socketEmit', {
+      action: 'leftChat',
       payload: null
     })
 
-    commit("clearData")
+    commit('clearData')
   },
   typing ({ commit, dispatch, state }) {
     const { notification } = state
-    dispatch("socketEmit", {
-      action: "typing",
+    dispatch('socketEmit', {
+      action: 'typing',
       payload: notification
     })
   },
   addTypingUser ({ commit, dispatch, state }, notification) {
     if (!state.typingUsers.some(el => el.id === notification.id)) {
-      commit("updateTypingUsers", notification)
+      commit('updateTypingUsers', notification)
     }
   },
   setTypingStatus ({ commit, dispatch, state }, status) {
     const { notification } = state
     const newUser = { ...notification, status }
-    dispatch("socketEmit", {
-      action: "setTypingStatus",
+    dispatch('socketEmit', {
+      action: 'setTypingStatus',
       payload: newUser
     })
   },
   displayTypingStatus ({ commit }, notification) {
-    commit("setTypingStatus", notification)
+    commit('setTypingStatus', notification)
   }
 }

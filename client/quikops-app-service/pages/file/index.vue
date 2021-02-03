@@ -1,5 +1,5 @@
 <template>
-  <v-row no-gutters align="center" justify="center">
+  <v-row no-gutters justify="center">
     <v-col cols="auto">
       <Snackbar
         v-model="snackbar.status"
@@ -7,9 +7,9 @@
         @input="snackbar.status = false"
       />
       <v-card min-width="500" max-width="500">
-        <v-app-bar color="deep-purple darken-4 ">
+        <v-app-bar color="secondary">
           <v-spacer />
-          <v-toolbar-title>SUBIDA DE ARCHIVO POR HTTP</v-toolbar-title>
+          <v-toolbar-title>SISTEMA DE ENVÍOS</v-toolbar-title>
           <v-spacer />
           <uiMenu :items="menu">
             <template #pre="{item}">
@@ -33,7 +33,7 @@
             @submit.prevent="upload"
           >
             <v-card-text>
-              <v-img :src="imagenURL(logo.src)" height="80" contain="" />
+              <v-img :src="logo.src" height="80" contain="" />
             </v-card-text>
             <v-card-text>
               <v-file-input
@@ -107,7 +107,7 @@
               </v-row>
             </v-card-text>
             <v-card-text>
-              <v-row align="right" justify="space-around">
+              <v-row justify="space-around">
                 <v-btn
                   rounded=""
                   outlined=""
@@ -116,7 +116,7 @@
                 >
                   CANCELAR
                 </v-btn>
-                <v-btn dark rounded="" type="submit" color="blue darken-3">
+                <v-btn dark rounded="" type="submit" color="primary">
                   SUBIR
                 </v-btn>
               </v-row>
@@ -172,7 +172,7 @@ export default {
       }
     ],
     logo: {
-      src: ''
+      src: 'logo.png'
     },
     progressUpload: 0
   }),
