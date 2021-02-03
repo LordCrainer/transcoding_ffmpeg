@@ -7,8 +7,13 @@ const transcoding: IController = async (req, res) => {
   const { body } = req;
 
   try {
-    const { source, metadata } = body;
-    const data = await transcoder(source, metadata);
+    const { params } = body;
+    const data = await Promise.all(
+      [...params].map(async (param) => {
+        const data = await transcoder(param);
+        return data;
+      })
+    );
     const response = await apiResponse.result(res, data, httpStatusCodes.OK);
   } catch (error) {
     console.log(error);

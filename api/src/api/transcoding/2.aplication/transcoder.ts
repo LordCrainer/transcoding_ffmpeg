@@ -1,12 +1,12 @@
 import { IMetadata, IParams } from "../../share/3.domain";
 import transcodingRouter from "../1.adapter/routes/transcoding";
 
-const transcoder = async (source: IParams, metadata: IMetadata) => {
+const transcoder = async (params: IParams) => {
   console.log("Ingresando");
   try {
     // const { origin, destiny } = source;
-    console.log("USE CASE: ", source);
-
+    console.log("USE CASE: ", params);
+    
     // const { audio, audioFilter, video, videoFilter } = metadata;
     // Filtrar: Mapear y ejecutar cada filtro seleccionado
     // Transcoding: Convertir el archivo al codec de audio y video respectivo

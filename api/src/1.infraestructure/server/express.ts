@@ -20,7 +20,7 @@ export default async (config: IexpressConfig, apiRouter: () => Router) => {
   //app.use(helmet());
   app.use(cors(config.cors));
   // ROUTES
-  app.use("/api", apiRouter());
+  app.use("/api/services/", apiRouter());
   app.use("*", (req, res, next) => {
     res.status(404);
     res.type("txt").send("API SERVICE: NOT FOUND PATH!!");

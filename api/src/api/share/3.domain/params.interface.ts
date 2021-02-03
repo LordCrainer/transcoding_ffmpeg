@@ -21,6 +21,10 @@ export interface IFilter {
   fAudio: IAudioFilter;
   fVideo: IVideoFilter;
 }
+export interface ISource {
+  origin: string;
+  destiny: string;
+}
 export interface IParams {
   origin: string;
   destiny: string;

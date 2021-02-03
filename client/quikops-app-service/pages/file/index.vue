@@ -283,7 +283,7 @@ export default {
         this.validationForm(this.validatedFiles)
         const { path } = this.form.uploadTypes.types.find(mode)
         const formData = await this.addFormData(this.form)
-        const response = await this.sendData(`/file/${path}`, formData, config)
+        const response = await this.sendData(`/${path}`, formData, config)
         return response
       } catch (err) {
         // eslint-disable-next-line no-console
