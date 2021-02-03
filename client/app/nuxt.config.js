@@ -1,11 +1,4 @@
-const path = require("path");
-/* require("dotenv").config({
-  path: path.join(__dirname, ".env"),
-  allowEmptyValues: true
-}); */
-
 const config = require("./config");
-console.log(config);
 module.exports = {
   env: config,
   mode: "spa",

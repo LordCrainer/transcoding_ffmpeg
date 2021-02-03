@@ -1,4 +1,4 @@
-# quikops-app
+# quikops-app-service
 
 ## Build Setup
 
