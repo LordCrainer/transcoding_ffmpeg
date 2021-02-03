@@ -25,7 +25,7 @@
         QUIKOPS
       </v-toolbar-title>
       <v-spacer />
-      <v-btn icon class="mx-1">
+      <v-btn icon class="mx-1" to="/">
         <v-icon>mdi-exit-to-app</v-icon>
       </v-btn>
     </v-app-bar>

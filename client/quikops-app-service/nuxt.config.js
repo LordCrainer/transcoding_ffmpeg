@@ -5,15 +5,15 @@ export default {
   env: config,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - QUIKOPS',
-    title: 'quikops-app-service',
+    titleTemplate: '%s - DISTRIBUIDOR DE CONTENIDOS DIGITALES',
+    title: 'QUIKOPS',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'http://localhost:4000/app/services/favicon.ico' }
     ]
   },
 
@@ -23,7 +23,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: "./plugins/imagenURL.js" }
+    { src: "./plugins/imagenURL.js" },
+    { src: "./plugins/vuelidate.js" }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -63,7 +64,7 @@ export default {
   vuetify: {
     // customVariables: ['~/assets/variables.scss'],
     icons: {
-      iconfont: 'mdi'
+      iconfont: 'mdiSvg' || 'mdi' // || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
     },
     theme: {
       dark: true,

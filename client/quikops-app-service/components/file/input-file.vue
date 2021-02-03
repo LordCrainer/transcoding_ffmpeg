@@ -5,11 +5,10 @@
       v-model="form.files"
       color="deep-purple accent-4"
       counter
-      label="Entrada de Archivos"
+      label="Subir archivo"
       multiple="false"
-      placeholder="Selecciona tus archivos a subir"
+      placeholder="Selecciona un archivo"
       prepend-icon="mdi-paperclip"
-      outlined
       :show-size="1000"
       @change="onFilePicked"
     >

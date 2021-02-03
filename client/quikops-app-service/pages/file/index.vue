@@ -40,13 +40,12 @@
                 ref="inputUpload"
                 v-model="form.file"
                 color="deep-purple accent-4"
-                label="Entrada de Archivos"
-                placeholder="Selecciona tus archivos a subir"
+                placeholder="Selecciona un archivo"
                 prepend-icon="mdi-paperclip"
-                outlined
                 :rules="validatedFiles"
                 :show-size="1000"
                 counter-size-string
+                filled
                 error-count="2"
                 @change="onFilePicked"
               >
@@ -107,6 +106,9 @@
               </v-row>
             </v-card-text>
             <v-card-text>
+              <stepper />
+            </v-card-text>
+            <v-card-text>
               <v-row justify="space-around">
                 <v-btn
                   rounded=""
@@ -133,6 +135,7 @@
 import channelTable from '@/components/file/channel-table'
 import Snackbar from '@/components/Snackbar'
 import uiMenu from '@/components/ui/menu'
+import stepper from '@/components/ui/stepper'
 
 export default {
   name: 'File',
@@ -140,7 +143,8 @@ export default {
     // channelList,
     channelTable,
     Snackbar,
-    uiMenu
+    uiMenu,
+    stepper
   },
   data: () => ({
     menu: [{ title: 'redirect', icon: 'cog', action: false }],
@@ -190,11 +194,8 @@ export default {
     fileRule (value = [], property) {
       const GIGA = 1000 * 1000 * 1000
       const MAX_SIZE = 1 * GIGA
-      const rule = [
-        !!value.toString() || 'No existe ningún archivo seleccionado',
-        value.length <= 0 ||
-          value.size < MAX_SIZE ||
-          `El archivo es superior a ${MAX_SIZE / GIGA} Gb`
+      const rule = [value => !value || value.size < MAX_SIZE || `El archivo es superior a ${MAX_SIZE / GIGA} Gb`,
+        value => !!value || 'No existe ningún archivo seleccionado'
       ]
       return rule
     },
@@ -248,7 +249,7 @@ export default {
       this.form = Object.assign(this.form, { file: [], metaData: [] })
     },
     onFilePicked (value) {
-      this.validatedFiles()
+      // return this.validatedFiles
     }
   }
 }

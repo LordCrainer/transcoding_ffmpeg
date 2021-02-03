@@ -4,8 +4,8 @@ Vue.mixin({
   methods: {
     imagenURL (...route) {
       const path = route.join('/')
+      // eslint-disable-next-line no-console
       console.log(path);
-      console.log(require(`@/assets/${path}`))
       try {
         if (route.length > 0) { return require(`@/assets/${path}`) }
       } catch (error) {
