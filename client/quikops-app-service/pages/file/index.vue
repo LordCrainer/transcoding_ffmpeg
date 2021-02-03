@@ -105,9 +105,9 @@
                 </v-col>
               </v-row>
             </v-card-text>
-            <v-card-text>
+            <!--             <v-card-text>
               <stepper />
-            </v-card-text>
+            </v-card-text> -->
             <v-card-text>
               <v-row justify="space-around">
                 <v-btn
@@ -135,7 +135,7 @@
 import channelTable from '@/components/file/channel-table'
 import Snackbar from '@/components/Snackbar'
 import uiMenu from '@/components/ui/menu'
-import stepper from '@/components/ui/stepper'
+// import stepper from '@/components/ui/stepper'
 
 export default {
   name: 'File',
@@ -143,8 +143,8 @@ export default {
     // channelList,
     channelTable,
     Snackbar,
-    uiMenu,
-    stepper
+    uiMenu
+    // stepper
   },
   data: () => ({
     menu: [{ title: 'redirect', icon: 'cog', action: false }],
@@ -160,7 +160,7 @@ export default {
       uploadTypes: {
         types: [
           { title: 'multer', path: 'upload' },
-          { title: 'formidable', path: 'uploadFormidable' }
+          { title: 'formidable', path: 'transcoding' }
         ],
         selected: 'formidable'
       }
@@ -194,8 +194,9 @@ export default {
     fileRule (value = [], property) {
       const GIGA = 1000 * 1000 * 1000
       const MAX_SIZE = 1 * GIGA
-      const rule = [value => !value || value.size < MAX_SIZE || `El archivo es superior a ${MAX_SIZE / GIGA} Gb`,
-        value => !!value || 'No existe ningún archivo seleccionado'
+      const rule = [
+        value => !!value || 'No existe ningún archivo seleccionado',
+        value => !value || value.size < MAX_SIZE || `El archivo es superior a ${MAX_SIZE / GIGA} Gb`
       ]
       return rule
     },
@@ -219,10 +220,11 @@ export default {
       return formData
     },
     validationForm (rule) {
-      this.$refs.form.validate()
-      const isTrue = value => value === true
-      const someError = ![...rule].every(isTrue)
-      if (someError) { throw new Error('Validación incompleta') }
+      const isValidated = this.$refs.form.validate()
+      // const isTrue = value => value === true
+      // const someError = ![...rule].every(isTrue)
+      if (!isValidated) { throw new Error('Validación incompleta') }
+      return isValidated
     },
     async upload (e) {
       const mode = mode => mode.title === this.form.uploadTypes.selected
