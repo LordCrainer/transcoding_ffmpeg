@@ -1,11 +1,4 @@
-const path = require("path");
-/* require("dotenv").config({
-  path: path.join(__dirname, ".env"),
-  allowEmptyValues: true
-}); */
-
 const config = require("./config");
-console.log(config);
 module.exports = {
   env: config,
   mode: "spa",
@@ -72,7 +65,7 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) { }
   },
   server: {
     port: config.port, // default: 3000

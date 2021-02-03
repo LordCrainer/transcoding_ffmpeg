@@ -6,7 +6,7 @@
           <v-list-item-title>QUIKOPS</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-divider></v-divider>
+      <v-divider />
       <v-list dense>
         <v-list-item v-for="item in items" :key="item.title" link :to="item.to">
           <v-list-item-icon>
@@ -18,14 +18,14 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar app color="primary darken-4">
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar app color="primary">
+      <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-spacer />
       <v-toolbar-title>
         QUIKOPS
       </v-toolbar-title>
       <v-spacer />
-      <v-btn icon class="mx-1">
+      <v-btn icon class="mx-1" to="/">
         <v-icon>mdi-exit-to-app</v-icon>
       </v-btn>
     </v-app-bar>
@@ -43,10 +43,10 @@ export default {
   data: () => ({
     drawer: false,
     items: [
-      { title: "FTP", icon: "folder-upload", to: "/ftp" },
-      { title: "UPLOAD", icon: "cloud-upload", to: "/file" },
-      { title: "CHAT", icon: "chat", to: "/appChat" }
+      // { title: 'FTP', icon: 'folder-upload', to: '/ftp' },
+      { title: 'UPLOAD', icon: 'cloud-upload', to: '/file' }
+      // { title: 'CHAT', icon: 'chat', to: '/appChat' }
     ]
   })
-};
+}
 </script>
