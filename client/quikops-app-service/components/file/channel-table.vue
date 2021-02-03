@@ -47,21 +47,21 @@ export default {
           id: 0,
           title: 'YOUTUBE',
           audio: -3,
-          formato: 'H264',
+          format: 'H264',
           calidad: 'HD'
         },
         {
           id: 1,
           title: 'INSTAGRAM',
           audio: -12,
-          formato: 'H264',
+          format: 'H264',
           calidad: 'HD'
         },
         {
           id: 2,
           title: 'WHATSAPP',
           audio: -3,
-          formato: 'H264',
+          format: 'H264',
           calidad: 'HD'
         },
 
@@ -69,28 +69,28 @@ export default {
           id: 3,
           title: 'SONY',
           audio: -12,
-          formato: 'XDCAM',
+          format: 'XDCAM',
           calidad: 'HD'
         },
         {
           id: 4,
           title: 'YOUTUBE',
           audio: -3,
-          formato: 'H264',
+          format: 'H264',
           calidad: 'SD'
         },
         {
           id: 5,
           title: 'INSTAGRAM',
           audio: -12,
-          formato: 'H264',
+          format: 'H264',
           calidad: 'SD'
         },
         {
           id: 6,
           title: 'WHATSAPP',
           audio: -3,
-          formato: 'H264',
+          format: 'H264',
           calidad: 'SD'
         }
 

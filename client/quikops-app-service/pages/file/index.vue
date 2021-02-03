@@ -163,7 +163,49 @@ export default {
           { title: 'formidable', path: 'transcoding' }
         ],
         selected: 'formidable'
-      }
+      },
+      params: [
+        {
+          origin: "C:/Users/camog/Desktop/CONVERT/original.mov",
+          destiny: "C:/Users/camog/Desktop/CONVERT/original_dvcpro.mov",
+          metaData: {
+            general: {
+              profile: "dvcpro"
+            },
+            audio: { codec: "pcm_s16le" },
+            video: { codec: "mpeg4", frameRate: "29970/1000", bitRate: "50M" }
+          },
+          filter: {
+            normalizeVolume: {
+              threshold: -12,
+              marginError: -2,
+              max: -10,
+              min: -14,
+              unit: "dB"
+            }
+          }
+        },
+        {
+          origin: "C:/Users/camog/Desktop/CONVERT/original.mov",
+          destiny: "C:/Users/camog/Desktop/CONVERT/original_H264.mov",
+          metaData: {
+            general: {
+              profile: "H264"
+            },
+            audio: { codec: "pcm_s16le" },
+            video: { codec: "libx264", frameRate: "29970/1000", bitRate: "50M" }
+          },
+          filter: {
+            normalizeVolume: {
+              threshold: -14,
+              marginError: -1,
+              max: -13,
+              min: -15,
+              unit: "dB"
+            }
+          }
+        }
+      ]
     },
     formRules: {
       file: [true]
@@ -217,6 +259,7 @@ export default {
       const formData = new FormData()
       formData.append('files', file, file.title)
       formData.append('metaData', JSON.stringify(metaData))
+      formData.append('params', JSON.stringify(this.params))
       return formData
     },
     validationForm (rule) {
