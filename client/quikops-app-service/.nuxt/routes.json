@@ -3,21 +3,18 @@
     "name": "file",
     "path": "/file",
     "component": "D:\\\\Documents\\\\Trabajos\\\\LANUBETV\\\\Desarrollo\\\\Transcoding\\\\transcoding_ffmpeg\\\\client\\\\quikops-app-service\\\\pages\\\\file\\\\index.vue",
-    "chunkName": "pages/file/index",
-    "_name": "_60ad40aa"
+    "chunkName": "pages/file/index"
   },
   {
     "name": "inspire",
     "path": "/inspire",
     "component": "D:\\\\Documents\\\\Trabajos\\\\LANUBETV\\\\Desarrollo\\\\Transcoding\\\\transcoding_ffmpeg\\\\client\\\\quikops-app-service\\\\pages\\\\inspire.vue",
-    "chunkName": "pages/inspire",
-    "_name": "_0dd1e2af"
+    "chunkName": "pages/inspire"
   },
   {
     "name": "index",
     "path": "/",
     "component": "D:\\\\Documents\\\\Trabajos\\\\LANUBETV\\\\Desarrollo\\\\Transcoding\\\\transcoding_ffmpeg\\\\client\\\\quikops-app-service\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_5acf7032"
+    "chunkName": "pages/index"
   }
 ]
