@@ -7,7 +7,7 @@ if (envFound.error) {
 
 const configuration = {
   cors: {
-    origin: process.env.CORS_ORIGIN || "localhost",
+    origin: process.env.CORS_ORIGIN || "localhost:4000/",
     optionsSuccessStatus: 200,
   },
   morgan: process.env.NODE_ENV === "production" ? "combined" : "dev",

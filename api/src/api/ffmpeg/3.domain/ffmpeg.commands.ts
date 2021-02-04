@@ -4,11 +4,11 @@ const ajustVolume = (
   { metadata: { audio }, destiny, origin, filter: { fAudio } }: IParams,
   newVolume: number
 ) => {
-  return `ffmpeg -i ${origin} -vcodec copy -af volume=${newVolume}${fAudio.volume.unit} -acodec ${audio.codec} -y ${destiny}`;
+  return `ffmpeg -i ${origin} -vcodec copy -af volume=${newVolume}${fAudio.normalizeVolume.unit} -acodec ${audio.codec} -y ${destiny}`;
 };
 
-const volumeDetect = (params: IParams) =>
-  `ffmpeg -i ${params.origin} -af 'volumedetect' -vn -sn -dn -f null /dev/null`;
+const volumeDetect = ({ origin }: IParams) =>
+  `ffmpeg -i ${origin} -af 'volumedetect' -vn -sn -dn -f null /dev/null`;
 /*   { origin = "origin.mov", destiny = "destiny.mov" },
   { volume = 0, unit = "dB", audiocodec = "pcm_s24le" } */
 const editVolume = ({
@@ -17,7 +17,9 @@ const editVolume = ({
   origin,
   filter: { fAudio },
 }: IParams) => {
-  return `ffmpeg -i ${origin} -vcodec copy -af volume=${fAudio.volume.value}${fAudio.volume.unit} -acodec ${audio.codec} -y ${destiny}`;
+  return `ffmpeg -i ${origin} -vcodec copy -af volume=${fAudio.volume.value}${
+    fAudio.volume.unit || "dB"
+  } -acodec ${audio.codec} -y ${destiny}`;
 };
 
 const preAjust = ({ destiny, origin }: IParams) =>

@@ -1,35 +1,35 @@
 import { IAudioVolume } from "../3.domain";
 import { IParams, IMetadata } from "../../share/3.domain";
+import volume from "./volume";
 
-const normalizeVolume = (handleVolume: IAudioVolume) => async (
-  source: IParams,
-  metadata: IMetadata
+const normalizeVolume = async (
+  params: IParams,
+  { destiny }: { destiny: string }
 ) => {
-  /*  const {
-    audioFilter: { normalizeVolume },
-  } = metadata; */
+  const {
+    filter: { fAudio },
+  } = params;
   try {
-    console.log("normalize: ", source);
-
-    /*     const { max, mean } = await handleVolume.getVolume(source);
-    const diffVolume = handleVolume.subtractVolume(
-      +max,
-      normalizeVolume.threshold
+    let source = params;
+    source.destiny = destiny;
+    const preVolume = await volume.getVolume(source);
+    const differenceVolume = volume.subtractVolume(
+      +preVolume.max,
+      fAudio.normalizeVolume.threshold
     );
-    const ajustedVolume = await handleVolume.ajustVolume(
-      source,
-      metadata,
-      diffVolume
-    ); */
+    console.log(differenceVolume, source.destiny, source.origin);
 
-    return { source };
+    const ajustedVolume = await volume.ajustVolume(source, differenceVolume);
+    source.origin = destiny;
+    const newVolume = await volume.getVolume(source);
+    const correctVolume = await volume.verifyVolume(
+      +newVolume.max,
+      fAudio.normalizeVolume
+    );
+    return { destiny };
   } catch (error) {
-    throw new Error(error);
+    throw new Error("NORMALIZE VOLUME" + error);
   }
-
-  // const isVerified =
-  // const verifiedVolume = await  verificationVolume(destinyPath)
-  // return verifiedVolume
 };
 
 export default normalizeVolume;

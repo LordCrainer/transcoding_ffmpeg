@@ -1,31 +1,34 @@
-import { IParams } from "api/share/3.domain";
-import { volume, predefined } from "../../api/transcoding/2.aplication";
+import { IParams } from "../api/share/3.domain";
+import { volume, predefined } from "../api/transcoding/2.aplication";
 jest.setTimeout(30000);
 
 describe("TRANSCODING VIDEO 1", () => {
-  let params = <IParams>{
+  const params = <IParams>{
     origin: "C:/Users/camog/Desktop/CONVERT/original.mov",
     destiny: "C:/Users/camog/Desktop/CONVERT/output.mov",
     metadata: {
       general: {
-        perfil: "dvcpro25",
-        fileExtension: "mov",
+        profile: "dvcpro25",
       },
-      video: {
-        frameRate: "29970/1000",
-      },
-      audio: {
-        codec: "pcm_s16le",
-      },
+      audio: { codec: "pcm_s16le" },
+      video: { codec: "mpeg4", frameRate: "29970/1000", bitRate: "50M" },
     },
     filter: {
       fAudio: {
         volume: {
           unit: "dB",
         },
+        normalizeVolume: {
+          threshold: -14,
+          marginError: -1,
+          max: -13,
+          min: -15,
+          unit: "dB",
+        },
       },
     },
   };
+
   test("should ajust the file to SD", async (done) => {
     params.destiny = "C:/Users/camog/Desktop/CONVERT/temp/sd.output.mov";
     const data = await predefined.preAjust(params);
@@ -57,7 +60,7 @@ describe("TRANSCODING VIDEO 1", () => {
     done();
   });
 });
-describe("TRANSCODING VIDEO 2", () => {
+/* describe("TRANSCODING VIDEO 2", () => {
   let params = <IParams>{
     origin: "C:/Users/camog/Desktop/CONVERT/original.mov",
     destiny: "C:/Users/camog/Desktop/CONVERT/output.mov",
@@ -111,7 +114,7 @@ describe("TRANSCODING VIDEO 2", () => {
     expect(data).toEqual({ max: "-11.8", mean: "-22.1" });
     done();
   });
-});
+}); */
 
 /* describe("TRANSCODING VIDEO 3", () => {
   let params = <IParams>{
