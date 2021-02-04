@@ -17,8 +17,6 @@ const normalizeVolume = async (
       +preVolume.max,
       fAudio.normalizeVolume.threshold
     );
-    console.log(differenceVolume, source.destiny, source.origin);
-
     const ajustedVolume = await volume.ajustVolume(source, differenceVolume);
     source.origin = destiny;
     const newVolume = await volume.getVolume(source);
@@ -26,9 +24,9 @@ const normalizeVolume = async (
       +newVolume.max,
       fAudio.normalizeVolume
     );
-    return { destiny };
+    return destiny;
   } catch (error) {
-    throw new Error("NORMALIZE VOLUME" + error);
+    throw new Error("NORMALIZE VOLUME \n" + error);
   }
 };
 

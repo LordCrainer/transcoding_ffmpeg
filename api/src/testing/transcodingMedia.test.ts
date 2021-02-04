@@ -20,7 +20,7 @@ describe("TRANSCODING VIDEO 1", () => {
         },
         normalizeVolume: {
           threshold: -14,
-          marginError: -1,
+          marginError: 1,
           max: -13,
           min: -15,
           unit: "dB",

@@ -53,9 +53,9 @@ const verifyVolume = async (
       threshold + marginError
     );
     if (isCorrect) return true;
-    throw new Error("Volume fuera del rango permitido");
+    throw new Error("VOLUMEN FUERA DEL RANGO PERMITIDO");
   } catch (error) {
-    throw new Error("Error al verificar el volume" + error);
+    throw new Error("VERIFY VOLUME \n" + error);
   }
 };
 

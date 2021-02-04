@@ -16,7 +16,7 @@ const params = [
       fAudio: {
         normalizeVolume: {
           threshold: -12,
-          marginError: -2,
+          marginError: 2,
           max: -10,
           min: -14,
           unit: "dB",
@@ -38,7 +38,7 @@ const params = [
       fAudio: {
         normalizeVolume: {
           threshold: -14,
-          marginError: -1,
+          marginError: 1,
           max: -13,
           min: -15,
           unit: "dB",
@@ -67,7 +67,7 @@ describe("TRANSCODING GENERAL", () => {
           },
           normalizeVolume: {
             threshold: -14,
-            marginError: -1,
+            marginError: 1,
             max: -13,
             min: -15,
             unit: "dB",
