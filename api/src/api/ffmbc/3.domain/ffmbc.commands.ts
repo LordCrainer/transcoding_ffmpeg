@@ -2,7 +2,6 @@ import {
   IParams,
   ISpawnCallBack,
   IMetadata,
-  sourceData,
 } from "./../../share/3.domain";
 
 const dv25Mov = ({ origin, destiny, metadata: { video } }: IParams) =>

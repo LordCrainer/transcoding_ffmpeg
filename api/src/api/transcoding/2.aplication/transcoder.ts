@@ -1,5 +1,5 @@
 import { predefined } from ".";
-import { IMetadata, IParams } from "../../share/3.domain";
+import { IMetadata, IParams, paramsService } from "../../share/3.domain";
 import transcodingRouter from "../1.adapter/routes/transcoding";
 import normalizeVolume from "./normalizeVolume";
 
@@ -10,12 +10,13 @@ const transcoder = async (params: IParams) => {
   let transcoding;
   try {
     let source = params;
-    const pathArray = params.destiny.split("/");
-    let fieldName = pathArray.pop();
-    const pathDestiny = pathArray.join("/");
+    const { basename, dirname, extension } = paramsService.getPropPath(
+      params.destiny
+    );
+
     // const { origin, destiny } = source;
     const normalizedAuidoPath = await normalizeVolume(source, {
-      destiny: pathDestiny + `/temp/normalize.${fieldName}`,
+      destiny: dirname + `/temp/normalize.${basename}${extension}`,
     });
     // const transcoding = predefined["preAjust"];
     // const { audio, audioFilter, video, videoFilter } = metadata;

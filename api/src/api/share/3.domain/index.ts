@@ -1,5 +1,6 @@
 export * from "./execute.interface";
 export * from "./params.interface";
-import sourceData from "./sourceData.service";
 
-export { sourceData };
+import paramsService from "./params.service";
+
+export { paramsService };
