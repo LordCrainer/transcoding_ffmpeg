@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import transcodingController from "../controllers/transcoding";
+import transcodingController from "../controllers";
 
 const transcodingRouter = (router: Router) => {
   router.post("/", transcodingController.transcoding);

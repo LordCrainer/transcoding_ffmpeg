@@ -1,6 +1,6 @@
 import { predefined } from ".";
 import { IMetadata, IParams, paramsService } from "../../share/3.domain";
-import transcodingRouter from "../1.adapter/routes/transcoding";
+import transcodingRouter from "../1.adapter/routes";
 import normalizeVolume from "./normalizeVolume";
 
 const transcoder = async (params: IParams) => {

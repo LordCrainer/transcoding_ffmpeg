@@ -4,9 +4,8 @@ import httpStatusCodes from "http-status-codes";
 import { normalizeVolume, transcoder } from "../../2.aplication";
 
 const transcoding: IController = async (req, res) => {
-  const { body } = req;
-
   try {
+    const { body } = req;
     const { params } = body;
     const data = await Promise.all(
       [...params].map(async (param) => {
