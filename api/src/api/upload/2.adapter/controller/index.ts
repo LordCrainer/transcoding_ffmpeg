@@ -1,4 +1,4 @@
-import apiResponse from "utils/apiResponse";
+import apiResponse from "../../../../utils/apiResponse";
 import { IController } from "./../../../../types/IController";
 import httpStatusCodes from "http-status-codes";
 
