@@ -2,7 +2,7 @@ import {
   IParams,
   ISpawnCallBack,
   IMetadata,
-} from "./../../share/3.domain";
+} from "../../../share/3.domain";
 
 const dv25Mov = ({ origin, destiny, metadata: { video } }: IParams) =>
   `ffmbc -i ${origin}  -r ${video.frameRate} -aspect 3:2 -bff -target dvcpro -b 30M -minrate 30M -maxrate 30M -bufsize 4M  -timecode 00:00:00:00  -y ${destiny}`;

@@ -1,5 +1,5 @@
 import { IMetadata, IParams } from "../../share/3.domain";
-import { IRegexFFmpeg } from './../../ffmpeg/3.domain/ffmpeg.interface';
+import { IRegexFFmpeg } from './ffmpeg/ffmpeg.interface';
 
 export interface IAudioVolume {
   getVolume(params: IParams, fn?: Function): Promise<IRegexFFmpeg>;

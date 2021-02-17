@@ -1,6 +1,6 @@
 import { IMetadata, IParams, ISpawnCallBack } from "../../share/3.domain";
 import { handleData, execute } from "../../share/2.application";
-import { ffmpegCMD, ffmpegRegex } from "../../ffmpeg/3.domain";
+import { ffmpegCMD, ffmpegRegex } from "../3.domain/ffmpeg/";
 import { fpFunctions } from "../../share/2.application";
 
 const subtractVolume = (currentVolume: number, threshold: number) =>
