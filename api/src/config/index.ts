@@ -11,6 +11,6 @@ import production from "./production";
 const { NODE_ENV } = process.env;
 let currentEnv = development;
 
-currentEnv = NODE_ENV === "production" ? production : production;
+currentEnv = NODE_ENV === "production" ? production : development;
 
 export default currentEnv;
