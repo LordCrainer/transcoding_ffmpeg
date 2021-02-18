@@ -31,3 +31,9 @@ export interface IParams {
   metadata: IMetadata;
   filter: IFilter;
 }
+
+export interface ICustomConfig {
+  origin: string;
+  destiny: string;
+  commands: string;
+}

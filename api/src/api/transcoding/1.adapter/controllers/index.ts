@@ -16,7 +16,6 @@ const transcoding: IController = async (req, res) => {
     const response = await apiResponse.result(res, data, httpStatusCodes.OK);
   } catch (error) {
     console.log(error);
-
     await apiResponse.error(res, 400, error);
   }
 };

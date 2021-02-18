@@ -9,21 +9,20 @@ const transcoder = async (params: IParams) => {
   } = params;
   let transcoding;
   try {
-    let source = params;
     const { basename, dirname, extension } = paramsService.getPropPath(
       params.destiny
     );
 
     // const { origin, destiny } = source;
-    const normalizedAuidoPath = await normalizeVolume(source, {
-      destiny: dirname + `/temp/normalize.${basename}${extension}`,
+    const normalizedAuidoPath = await normalizeVolume(params, {
+      destiny: `./data/temp/normalize.${basename}`,
     });
-    // const transcoding = predefined["preAjust"];
+    // const transcoding = await predefined[general.profile];
     // const { audio, audioFilter, video, videoFilter } = metadata;
     // Filtrar: Mapear y ejecutar cada filtro seleccionado
     // Transcoding: Convertir el archivo al codec de audio y video respectivo
     // Repetir el proceso si existen más datos
-    return source.destiny;
+    return params.destiny;
   } catch (error) {
     console.log(error);
 
