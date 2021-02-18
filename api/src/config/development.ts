@@ -1,7 +1,7 @@
 const configuration = {
   server: {
     host: "localhost",
-    port: 3000,
+    port: 3002,
   },
   multer: {
     destiny: process.env.PATH_ORIGIN || "./data",

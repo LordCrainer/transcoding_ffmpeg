@@ -34,6 +34,7 @@
     "http-status-codes": "^2.1.4",
     "method-override": "^3.0.0",
     "morgan": "^1.10.0",
+    "multer": "^1.4.2",
     "mz": "^2.7.0",
     "socket.io": "^2.3.0",
     "winston": "^3.3.3"
@@ -42,6 +43,7 @@
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "@types/bluebird-global": "^3.5.12",
+    "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.8",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.9",
@@ -49,6 +51,7 @@
     "@types/jest": "^26.0.15",
     "@types/method-override": "0.0.31",
     "@types/morgan": "^1.9.2",
+    "@types/multer": "^1.4.5",
     "@types/node": "^14.14.9",
     "babel-jest": "^26.3.0",
     "jest": "^26.4.2",

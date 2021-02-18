@@ -2,11 +2,11 @@ import { IexpressConfig } from "types/IServer";
 
 import express, { Router } from "express";
 import http from "http";
-import morgan from "morgan";
-//import compress from "compression"
+import * as morgan from "morgan";
+import compress from "compression";
 import methodOverride from "method-override";
 import cors from "cors";
-//import helmet from "helmet"
+import helmet from "helmet";
 import bodyParser from "body-parser";
 
 export default async (config: IexpressConfig, apiRouter: () => Router) => {
@@ -14,10 +14,10 @@ export default async (config: IexpressConfig, apiRouter: () => Router) => {
   const server = http.createServer(app);
   //app.use(compress());
   app.use(methodOverride());
-  app.use(bodyParser.json())
+  app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
-  //app.use(morgan("dev"))
-  //app.use(helmet());
+  // app.use(morgan("dev"))
+  app.use(helmet());
   app.use(cors(config.cors));
   // ROUTES
   app.use("/api/services/", apiRouter());
