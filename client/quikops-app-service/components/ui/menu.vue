@@ -16,9 +16,9 @@
     <v-card>
       <v-list v-show="items.length > 0" class="px-3">
         <v-list-item v-for="(item, i) in items" :key="i">
-          <slot name="pre" :item="item" />
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-          <slot name="post" :item="item" />
+          <slot name="pre" :data="item" />
+          <slot name="title" :data="item" />
+          <slot name="post" :data="item" />
         </v-list-item>
       </v-list>
     </v-card>

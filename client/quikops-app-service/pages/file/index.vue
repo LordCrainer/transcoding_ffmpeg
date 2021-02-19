@@ -7,21 +7,45 @@
         @input="snackbar.status = false"
       />
       <v-card min-width="500" max-width="500">
-        <v-app-bar color="secondary">
+        <v-app-bar color="primary">
           <v-spacer />
           <v-toolbar-title>SISTEMA DE ENVÍOS</v-toolbar-title>
           <v-spacer />
           <uiMenu :items="menu">
-            <template #pre="{item}">
+            <template #pre="{data}">
               <v-list-item-icon>
-                <v-icon>mdi-{{ item.icon }}</v-icon>
+                <v-icon>mdi-{{ data.icon }}</v-icon>
               </v-list-item-icon>
             </template>
-            <template #post="{item}">
-              <v-list-item-action>
-                <v-switch v-model="item.action" color="purple" />
-              </v-list-item-action>
+            <template #title="{data}">
+              <v-card-text class="pa-0">
+                <v-list-item-title>{{ data.title }}</v-list-item-title>
+              </v-card-text>
+
+              <v-select
+                v-model="form.uploadTypes.selected"
+                :items="form.uploadTypes.types"
+                label="MODE"
+                dense
+                color="white"
+              >
+                <template #item="{ item }">
+                  <h4 style="color: white;">
+                    {{ item.title }}
+                  </h4>
+                </template>
+                <template #selection="{ item }">
+                  <h4 style="color: white;">
+                    {{ item.title }}
+                  </h4>
+                </template>
+              </v-select>
             </template>
+            <!--             <template #post="{item}">
+              <v-list-item-action>
+                <v-select v-model="item.action" color="purple" />
+              </v-list-item-action>
+            </template> -->
           </uiMenu>
         </v-app-bar>
         <v-card light="" tile>
@@ -72,14 +96,52 @@
             <!--  <v-card-text>
               <channelList @channels-selected="form.metaData" />
             </v-card-text> -->
-            <v-card-text class="pt-0">
-              <h4>LISTA DE MEDIOS</h4>
-              <div class="pa-0 pt-2">
-                <client-only>
-                  <channelTable @input="channelsSelected" />
-                </client-only>
-              </div>
-            </v-card-text>
+            <div v-if="form.uploadTypes.selected.title == 'predefined'">
+              <v-card-text class="pt-0">
+                <h4>LISTA DE MEDIOS</h4>
+                <div class="pa-0 pt-2">
+                  <client-only>
+                    <channelTable @input="channelsSelected" />
+                  </client-only>
+                </div>
+              </v-card-text>
+            </div>
+            <div v-else>
+              <v-card-text class="pt-0 px-5">
+                <h4>TRANSCODING PERSONALIZABLE</h4>
+                <div>
+                  <v-combobox
+                    v-model="param.program"
+                    :items="programs.items"
+                    label="Seleccione un programa"
+                    chips
+                  >
+                    <template #selection="data">
+                      <v-chip
+                        :key="JSON.stringify(data.item)"
+                        v-bind="data.attrs"
+                        :input-value="data.selected"
+                        :disabled="data.disabled"
+                        @click:close="data.parent.selectItem(data.item)"
+                      >
+                        <v-avatar
+                          class="accent white--text"
+                          left
+                          v-text="data.item.slice(0, 1).toUpperCase()"
+                        />
+                        {{ data.item }}
+                      </v-chip>
+                    </template>
+                  </v-combobox>
+                </div>
+                <div>
+                  <v-text-field v-model="param.command" label="Escriba los comandos" />
+                </div>
+                <div>
+                  <v-text-field v-model="param.destiny" label="Destino" />
+                </div>
+              </v-card-text>
+            </div>
             <v-card-text>
               <v-row dense>
                 <v-col
@@ -147,7 +209,12 @@ export default {
     // stepper
   },
   data: () => ({
-    menu: [{ title: 'redirect', icon: 'cog', action: false }],
+    programs: {
+      items: ["ffmpeg", "ffmbc"],
+      selected: ""
+    },
+    param: { program: "", commands: "", destiny: "" },
+    menu: [{ title: 'MODE', icon: 'cog', action: false }],
     snackbar: {
       status: false,
       message: ''
@@ -159,52 +226,13 @@ export default {
       validForm: false,
       uploadTypes: {
         types: [
-          { title: 'multer', path: 'upload' },
-          { title: 'formidable', path: 'transcoding' }
+          { title: 'predefined', path: 'transcoding/' },
+          { title: 'custom', path: 'transcoding/custom/upload' }
         ],
-        selected: 'formidable'
+        selected: { title: 'custom', path: 'transcoding/custom/upload' }
       },
       params: [
-        {
-          origin: "C:/Users/camog/Desktop/CONVERT/original.mov",
-          destiny: "C:/Users/camog/Desktop/CONVERT/original_dvcpro.mov",
-          metaData: {
-            general: {
-              profile: "dvcpro"
-            },
-            audio: { codec: "pcm_s16le" },
-            video: { codec: "mpeg4", frameRate: "29970/1000", bitRate: "50M" }
-          },
-          filter: {
-            normalizeVolume: {
-              threshold: -12,
-              marginError: -2,
-              max: -10,
-              min: -14,
-              unit: "dB"
-            }
-          }
-        },
-        {
-          origin: "C:/Users/camog/Desktop/CONVERT/original.mov",
-          destiny: "C:/Users/camog/Desktop/CONVERT/original_H264.mov",
-          metaData: {
-            general: {
-              profile: "H264"
-            },
-            audio: { codec: "pcm_s16le" },
-            video: { codec: "libx264", frameRate: "29970/1000", bitRate: "50M" }
-          },
-          filter: {
-            normalizeVolume: {
-              threshold: -14,
-              marginError: -1,
-              max: -13,
-              min: -15,
-              unit: "dB"
-            }
-          }
-        }
+
       ]
     },
     formRules: {
@@ -217,6 +245,46 @@ export default {
         isRequired: true
       }
     ],
+    examplesParams: [{
+      origin: "C:/Users/camog/Desktop/CONVERT/original.mov",
+      destiny: "C:/Users/camog/Desktop/CONVERT/original_dvcpro.mov",
+      metaData: {
+        general: {
+          profile: "dvcpro"
+        },
+        audio: { codec: "pcm_s16le" },
+        video: { codec: "mpeg4", frameRate: "29970/1000", bitRate: "50M" }
+      },
+      filter: {
+        normalizeVolume: {
+          threshold: -12,
+          marginError: -2,
+          max: -10,
+          min: -14,
+          unit: "dB"
+        }
+      }
+    },
+    {
+      origin: "C:/Users/camog/Desktop/CONVERT/original.mov",
+      destiny: "C:/Users/camog/Desktop/CONVERT/original_H264.mov",
+      metaData: {
+        general: {
+          profile: "H264"
+        },
+        audio: { codec: "pcm_s16le" },
+        video: { codec: "libx264", frameRate: "29970/1000", bitRate: "50M" }
+      },
+      filter: {
+        normalizeVolume: {
+          threshold: -14,
+          marginError: -1,
+          max: -13,
+          min: -15,
+          unit: "dB"
+        }
+      }
+    }],
     logo: {
       src: 'logo.png'
     },
@@ -255,11 +323,11 @@ export default {
       )
       return progressUpload
     },
-    addFormData ({ file, metaData }) {
+    addFormData ({ file, metaData, params }) {
       const formData = new FormData()
       formData.append('files', file, file.title)
       formData.append('metaData', JSON.stringify(metaData))
-      formData.append('params', JSON.stringify(this.params))
+      formData.append('params', JSON.stringify(this.param))
       return formData
     },
     validationForm (rule) {
@@ -270,18 +338,18 @@ export default {
       return isValidated
     },
     async upload (e) {
-      const mode = mode => mode.title === this.form.uploadTypes.selected
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-        onUploadProgress: function (progressEvent) {
-          this.progressUpload = this.porcentProgress(progressEvent)
-        }.bind(this)
-      }
       try {
+        const config = {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+          onUploadProgress: function (progressEvent) {
+            this.progressUpload = this.porcentProgress(progressEvent)
+          }.bind(this)
+        }
         this.validationForm(this.validatedFiles)
-        const { path } = this.form.uploadTypes.types.find(mode)
+        const { path, title } = this.form.uploadTypes.selected
+        console.log(title);
         const formData = await this.addFormData(this.form)
         const response = await this.sendData(`/${path}`, formData, config)
         return response
