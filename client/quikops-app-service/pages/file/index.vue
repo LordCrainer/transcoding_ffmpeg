@@ -348,8 +348,7 @@ export default {
           }.bind(this)
         }
         this.validationForm(this.validatedFiles)
-        const { path, title } = this.form.uploadTypes.selected
-        console.log(title);
+        const { path } = this.form.uploadTypes.selected
         const formData = await this.addFormData(this.form)
         const response = await this.sendData(`/${path}`, formData, config)
         return response
