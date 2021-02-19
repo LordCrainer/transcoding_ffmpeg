@@ -30,7 +30,11 @@ const executeAnyProgram: IController = async (req, res) => {
       body: { params },
     } = req;
     const data = await executeProgram(params);
-    const response = await apiResponse.result(res, data, httpStatusCodes.OK);
+    const response = await apiResponse.result(
+      res,
+      { status: data.status },
+      httpStatusCodes.OK
+    );
   } catch (error) {
     await apiResponse.error(res, 400, error);
   }
