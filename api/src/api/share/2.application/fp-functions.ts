@@ -16,6 +16,9 @@ const isMoreThan = (a: number, b: number) => a > b;
 const substract = (a: number, b: number) => a - b;
 const sum = (a: number, b: number) => a + b;
 const onRange = (x: number, min: number, max: number) => x >= min && x <= max;
+const findOneElementList = (list: Array<string>, b: string) =>
+  list.find((a) => a === b);
+const lowerCase = (a: string) => a.toLowerCase();
 
 export default {
   pipe,
@@ -25,4 +28,6 @@ export default {
   substract,
   sum,
   onRange,
+  findOneElementList,
+  lowerCase,
 };
