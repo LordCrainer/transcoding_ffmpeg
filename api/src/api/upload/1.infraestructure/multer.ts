@@ -1,5 +1,5 @@
 import multer from "multer";
-import { IMulter } from "../multer.interface";
+import { IMulter } from "../4.domain/multer.interface";
 
 const multerHandler = (multerConf: IMulter) => {
   const storage = multer.diskStorage({
@@ -15,7 +15,7 @@ const multerHandler = (multerConf: IMulter) => {
     limits: {
       fileSize: multerConf.fileSize,
     },
-    // fileFilter: fileFilter,
+    //fileFilter: fileFilter,
   });
   return upload;
 };
