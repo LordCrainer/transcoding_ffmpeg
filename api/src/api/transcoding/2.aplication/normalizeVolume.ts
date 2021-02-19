@@ -3,10 +3,10 @@ import { IParams, IMetadata } from "../../share/3.domain";
 import volume from "./volume";
 
 const normalizeVolume = async (params: IParams, options: Object) => {
-  const {
-    filter: { fAudio },
-  } = params;
   try {
+    const {
+      filter: { fAudio },
+    } = params;
     let source = { ...params, ...options };
     const preVolume = await volume.getVolume(source);
     const differenceVolume = volume.subtractVolume(

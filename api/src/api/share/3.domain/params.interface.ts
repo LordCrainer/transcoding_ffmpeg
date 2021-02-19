@@ -36,4 +36,5 @@ export interface ICustomConfig {
   origin: string;
   destiny: string;
   commands: string;
+  program: string;
 }
