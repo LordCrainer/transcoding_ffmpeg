@@ -1,0 +1,5 @@
+.env
+*.mov
+*.flv
+*.mxf
+*.mp4

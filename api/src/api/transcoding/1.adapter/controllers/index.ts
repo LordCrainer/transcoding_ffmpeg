@@ -43,14 +43,16 @@ const executeProgramUploaded: IController = async (req, res) => {
       body: { params },
       file,
     } = req;
-    let source = { ...params };
-    const dataFile = multerService.handleData(file);
-    source = { ...source, ...{ origin: dataFile.origin } };
+    console.log(req.body, req.file, req.params);
 
-    const data = await executeProgram(source);
+    /* let source = { ...params };
+    const dataFile = multerService.handleData(file);
+    source = { ...source, ...{ origin: dataFile.origin } }; */
+
+    //const data = await executeProgram(source);
     const response = await apiResponse.result(
       res,
-      { status: data.status },
+      { status: 0 },
       httpStatusCodes.OK
     );
   } catch (error) {
