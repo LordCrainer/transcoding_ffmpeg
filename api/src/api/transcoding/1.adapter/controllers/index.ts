@@ -1,11 +1,9 @@
 import { IController } from "../../../../types/IController";
 import apiResponse from "../../../../utils/apiResponse";
 import httpStatusCodes from "http-status-codes";
-import {
-  executeProgram,
-  normalizeVolume,
-  transcoder,
-} from "../../2.aplication";
+import { executeProgram, transcoder } from "../../2.aplication";
+import axios from "axios";
+import { multerService } from "../../../upload/3.application";
 
 const transcoding: IController = async (req, res) => {
   try {
@@ -39,8 +37,29 @@ const executeAnyProgram: IController = async (req, res) => {
     await apiResponse.error(res, 400, error);
   }
 };
+const executeProgramUploaded: IController = async (req, res) => {
+  try {
+    const {
+      body: { params },
+      file,
+    } = req;
+    let source = { ...params };
+    const dataFile = multerService.handleData(file);
+    source = { ...source, ...{ origin: dataFile.origin } };
+
+    const data = await executeProgram(source);
+    const response = await apiResponse.result(
+      res,
+      { status: data.status },
+      httpStatusCodes.OK
+    );
+  } catch (error) {
+    await apiResponse.error(res, 400, error);
+  }
+};
 
 export default {
   transcoding,
   executeAnyProgram,
+  executeProgramUploaded,
 };
