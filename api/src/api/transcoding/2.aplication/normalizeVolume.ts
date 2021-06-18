@@ -20,7 +20,11 @@ const normalizeVolume = async (params: IParams, options: Object) => {
       +newVolume.max,
       fAudio.normalizeVolume
     );
-    return source;
+    return {
+      destiny: source.destiny,
+      startVolume: preVolume.max,
+      endVolume: newVolume.max,
+    };
   } catch (error) {
     throw new Error("NORMALIZE VOLUME \n" + error);
   }

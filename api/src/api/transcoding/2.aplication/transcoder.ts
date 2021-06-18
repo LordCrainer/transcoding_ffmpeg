@@ -14,15 +14,17 @@ const transcoder = async (params: IParams) => {
     );
 
     // const { origin, destiny } = source;
-    const normalizedAuidoPath = await normalizeVolume(params, {
+    const normalizedAuido = await normalizeVolume(params, {
       destiny: `./data/temp/normalize.${basename}`,
     });
+    console.log(normalizedAuido);
+
     // const transcoding = await predefined[general.profile];
     // const { audio, audioFilter, video, videoFilter } = metadata;
     // Filtrar: Mapear y ejecutar cada filtro seleccionado
     // Transcoding: Convertir el archivo al codec de audio y video respectivo
     // Repetir el proceso si existen más datos
-    return params.destiny;
+    return {...params,...normalizedAuido};
   } catch (error) {
     console.log(error);
 
