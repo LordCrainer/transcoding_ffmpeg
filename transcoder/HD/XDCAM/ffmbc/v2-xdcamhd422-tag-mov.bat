@@ -1,0 +1,1 @@
+ffmbc -i %1 -target xdcamhd422 -tff -vtag xd5b -y "v2.mov"

@@ -1,0 +1,60 @@
+$ ffmpeg -i ORIGINAL-GANGA.mxf -vn -sn -dn -f null /dev/null
+ffmpeg version git-2020-08-09-6e951d0 Copyright (c) 2000-2020 the FFmpeg developers
+  built with gcc 10.2.1 (GCC) 20200805
+  configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libdav1d --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libsrt --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libgsm --enable-librav1e --disable-w32threads --enable-libmfx --enable-ffnvcodec --enable-cuda-llvm --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth --enable-libopenmpt --enable-amf
+  libavutil      56. 58.100 / 56. 58.100
+  libavcodec     58.100.100 / 58.100.100
+  libavformat    58. 50.100 / 58. 50.100
+  libavdevice    58. 11.101 / 58. 11.101
+  libavfilter     7. 87.100 /  7. 87.100
+  libswscale      5.  8.100 /  5.  8.100
+  libswresample   3.  8.100 /  3.  8.100
+  libpostproc    55.  8.100 / 55.  8.100
+Guessed Channel Layout for Input Stream #0.1 : mono
+Guessed Channel Layout for Input Stream #0.2 : mono
+Input #0, mxf, from 'ORIGINAL-GANGA.mxf':
+  Metadata:
+    operational_pattern_ul: 060e2b34.04010101.0d010201.01010900
+    uid             : adab4424-2f25-4dc7-92ff-29bd000c0000
+    generation_uid  : adab4424-2f25-4dc7-92ff-29bd000c0001
+    company_name    : FFmpeg
+    product_name    : OP1a Muxer
+    product_version : 58.65.101
+    product_uid     : adab4424-2f25-4dc7-92ff-29bd000c0002
+    modification_date: 2021-04-15T04:03:34.528000Z
+    material_package_umid: 0x060A2B340101010501010D001364B35E529471340364B35E0052947134036400
+    timecode        : 00:00:00;00
+  Duration: 00:00:25.19, start: 0.000000, bitrate: 52663 kb/s
+    Stream #0:0: Video: mpeg2video (4:2:2), yuv422p(tv, bt709, top first), 1920x1080 [SAR 1:1 DAR 16:9], 50000 kb/s, 29.97 fps, 29.97 tbr, 29.97 tbn, 59.94 tbc
+    Metadata:
+      file_package_umid: 0x060A2B340101010501010D001364B35E529471340364B35E0052947134036401
+    Side data:
+      cpb: bitrate max/min/avg: 50000000/0/0 buffer size: 17825792 vbv_delay: N/A
+    Stream #0:1: Audio: pcm_s24le, 48000 Hz, mono, s32 (24 bit), 1152 kb/s
+    Metadata:
+      file_package_umid: 0x060A2B340101010501010D001364B35E529471340364B35E0052947134036401
+    Stream #0:2: Audio: pcm_s24le, 48000 Hz, mono, s32 (24 bit), 1152 kb/s
+    Metadata:
+      file_package_umid: 0x060A2B340101010501010D001364B35E529471340364B35E0052947134036401
+Stream mapping:
+  Stream #0:1 -> #0:0 (pcm_s24le (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'nul':
+  Metadata:
+    operational_pattern_ul: 060e2b34.04010101.0d010201.01010900
+    uid             : adab4424-2f25-4dc7-92ff-29bd000c0000
+    generation_uid  : adab4424-2f25-4dc7-92ff-29bd000c0001
+    company_name    : FFmpeg
+    product_name    : OP1a Muxer
+    product_version : 58.65.101
+    product_uid     : adab4424-2f25-4dc7-92ff-29bd000c0002
+    modification_date: 2021-04-15T04:03:34.528000Z
+    material_package_umid: 0x060A2B340101010501010D001364B35E529471340364B35E0052947134036400
+    timecode        : 00:00:00;00
+    encoder         : Lavf58.50.100
+    Stream #0:0: Audio: pcm_s16le, 48000 Hz, mono, s16, 768 kb/s
+    Metadata:
+      file_package_umid: 0x060A2B340101010501010D001364B35E529471340364B35E0052947134036401
+      encoder         : Lavc58.100.100 pcm_s16le
+size=N/A time=00:00:25.19 bitrate=N/A speed= 619x
+video:0kB audio:2362kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown

@@ -1,0 +1,1 @@
+ffmpgeg -i %1 -s 1920x1080 -r 25 -aspect 16:9 -pix_fmt yuv422p -vcodec mpeg2video -non_linear_quant 1 -flags +ildct+ilme -top 1 -dc 10 -intra_vlc 1 -qmax 3 -lmin "1*QP2LAMBDA" -vtag xd5c -rc_max_vbv_use 1 -rc_min_vbv_use 1 -g 12 -bf 2 -b:v 50000k -minrate 50000k -maxrate 50000k -bufsize 8000k -acodec pcm_s24le -ar 48000 -map 0 

@@ -1,2 +1,0 @@
-ffmbc -i "D:\Documents\Trabajos\LANUBETV\Desarrollo\Transcoding\transcoding_ffmpeg\transcoder\Original.mov" -r 29.97 -target xdcamhd422 -vtag xd5c -acodec pcm_s24le  -y "PRUEBA_HD_V3.1.mxf"  -ab 1500 -ar 48000 -acodec pcm_s24le -ac 1 -newaudio -map_audio_channel  0:1:0:0:1:0  -timecode 00:00:00:00
-pause
