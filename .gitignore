@@ -5,6 +5,7 @@ node_modules/
 *.rar
 *.dv
 *.mpg
+.env
 
 *.references*
 
