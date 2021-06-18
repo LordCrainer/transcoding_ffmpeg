@@ -3,3 +3,5 @@
 *.flv
 *.mxf
 *.mp4
+dist/
+data/
