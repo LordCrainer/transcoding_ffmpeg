@@ -2,7 +2,7 @@ import { IAudioVolume } from "../3.domain";
 import { IParams, IMetadata } from "../../share/3.domain";
 import volume from "./volume";
 
-const normalizeVolume = async (params: IParams, options: Object) => {
+const normalizeVolume = async (params: IParams, options?: Object) => {
   try {
     const {
       filter: { fAudio },
