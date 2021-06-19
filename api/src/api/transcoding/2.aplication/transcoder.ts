@@ -3,7 +3,7 @@ import { IMetadata, IParams, paramsService } from "../../share/3.domain";
 import transcodingRouter from "../1.adapter/routes";
 import normalizeVolume from "./normalizeVolume";
 
-const transcoder = async (params: IParams) => {
+const oneTranscoding = async (params: IParams) => {
   const {
     metadata: { general },
   } = params;
@@ -24,7 +24,7 @@ const transcoder = async (params: IParams) => {
     // Filtrar: Mapear y ejecutar cada filtro seleccionado
     // Transcoding: Convertir el archivo al codec de audio y video respectivo
     // Repetir el proceso si existen más datos
-    return {...params,...normalizedAuido};
+    return { ...params, ...normalizedAuido };
   } catch (error) {
     console.log(error);
 
@@ -32,8 +32,18 @@ const transcoder = async (params: IParams) => {
   }
 };
 
-const manyTranscoding = () => {
-  
-}
+const exceuteManyTranscoding = async (params: IParams[]) => {
+  try {
+    const data = await Promise.all(
+      [...params].map(async (param) => await oneTranscoding(param))
+    );
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
-export default transcoder;
+export default {
+  exceuteManyTranscoding,
+  oneTranscoding,
+};

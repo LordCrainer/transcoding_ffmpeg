@@ -9,12 +9,13 @@ const createTranscoding: IController = async (req, res) => {
   try {
     const { body } = req;
     const { params } = body;
-    const data = await Promise.all(
+    const data = await transcoder.exceuteManyTranscoding(params);
+    /*     const data = await Promise.all(
       [...params].map(async (param) => {
-        const data = await transcoder(param);
+        const data = await transcoder.exceuteManyTranscoding(param);
         return data;
       })
-    );
+    ); */
     const response = await apiResponse.result(res, data, httpStatusCodes.OK);
   } catch (error) {
     console.log(error);
