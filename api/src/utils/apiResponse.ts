@@ -12,13 +12,13 @@ const result = (
 };
 const error = (
   res: Response,
-  status: number = 400,
-  error: string = httpStatusCodes.getStatusText(status),
+  status: number = 404,
+  error = {
+    message: httpStatusCodes.getStatusText(status),
+  },
   override?: IOverrideRequest
 ): void => {
-  res
-    .status(status)
-    .json({ error: { message: new Error(error) }, success: false, override });
+  res.status(status).json({ error, success: false, override });
 };
 
 export default {

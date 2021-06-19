@@ -8,10 +8,11 @@ import apiRouter from "./2.adapter/routes/index";
 
 import config from "./config";
 import appConfig from "./config/app";
+import Logger from "./1.infraestructure/middleware/logger";
 
 const main = async () => {
   await (await app(appConfig, apiRouter)).listen(config.server.port);
-  console.log(
+  Logger.info(
     `SERVER START: http://${config.server.host}:${config.server.port}`
   );
 };
