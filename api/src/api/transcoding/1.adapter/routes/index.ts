@@ -1,16 +1,16 @@
 import { multer } from "../../../upload/1.infraestructure";
 import { Router } from "express";
 
-import transcodingController from "../controllers";
+import transcoderCtrl from "../controllers";
 
 const transcodingRouter = (router: Router) => {
-  router.post("/", transcodingController.transcoding);
+  router.post("/", transcoderCtrl.createTranscoding);
   router.post(
     "/custom/upload",
     multer.single("files"),
-    transcodingController.executeProgramUploaded
+    transcoderCtrl.executeProgramUploaded
   );
-  router.post("/custom", transcodingController.executeAnyProgram);
+  router.post("/custom", transcoderCtrl.executeAnyProgram);
 
   return router;
 };

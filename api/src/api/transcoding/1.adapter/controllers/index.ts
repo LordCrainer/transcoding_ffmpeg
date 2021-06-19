@@ -5,7 +5,7 @@ import { executeProgram, transcoder } from "../../2.aplication";
 import axios from "axios";
 import { multerService } from "../../../upload/3.application";
 
-const transcoding: IController = async (req, res) => {
+const createTranscoding: IController = async (req, res) => {
   try {
     const { body } = req;
     const { params } = body;
@@ -61,7 +61,7 @@ const executeProgramUploaded: IController = async (req, res) => {
 };
 
 export default {
-  transcoding,
+  createTranscoding,
   executeAnyProgram,
   executeProgramUploaded,
 };
