@@ -9,8 +9,7 @@ const ajustVolume = (
 
 const detectVolume = ({ origin }: IParams) =>
   `ffmpeg -i ${origin} -af 'volumedetect' -vn -sn -dn -f null /dev/null`;
-/*   { origin = "origin.mov", destiny = "destiny.mov" },
-  { volume = 0, unit = "dB", audiocodec = "pcm_s24le" } */
+
 const editVolume = ({
   metadata: { audio },
   destiny,

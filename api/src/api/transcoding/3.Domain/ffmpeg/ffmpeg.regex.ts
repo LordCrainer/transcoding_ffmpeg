@@ -1,4 +1,6 @@
-const regexs = {
+import { IRegexFFmpeg } from "./ffmpeg.interface";
+
+const regexs: IRegexFFmpeg = {
   volume: {
     max: /max_volume:\s(-?[0-9]\d*\.\d+)/,
     mean: /mean_volume:\s(-?[0-9]\d*\.\d+)/,

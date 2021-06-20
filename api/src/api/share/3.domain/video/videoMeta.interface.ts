@@ -10,3 +10,7 @@ export interface IVideoMeta {
   bitRateMax: string;
   bitRateMin: string;
 }
+
+export interface IVideoContainer {
+  name: "mov" | "mxf";
+}

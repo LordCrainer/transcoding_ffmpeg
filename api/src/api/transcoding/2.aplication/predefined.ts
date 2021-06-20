@@ -5,7 +5,7 @@ import { IParams, ISpawnCallBack } from "api/share/3.domain";
 
 const preAjust = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmpegCMD.preAjust(params);
+    const commands = ffmpegCMD.sdPreAjust(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr };
   } catch (error) {
@@ -15,7 +15,7 @@ const preAjust = async (params: IParams, fn?: ISpawnCallBack) => {
 
 const dvcpro25 = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmbcCMD.dv25Mov(params);
+    const commands = ffmbcCMD.dv25.mov(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr };
   } catch (error) {
@@ -25,7 +25,7 @@ const dvcpro25 = async (params: IParams, fn?: ISpawnCallBack) => {
 
 const h264 = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmbcCMD.dv25Mov(params);
+    const commands = ffmbcCMD.dv25.mov(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr };
   } catch (error) {
