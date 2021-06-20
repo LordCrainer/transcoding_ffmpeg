@@ -8,7 +8,7 @@ const subtractVolume = (currentVolume: number, threshold: number) =>
 
 const getVolume = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmpegCMD.volumeDetect(params);
+    const commands = ffmpegCMD.detectVolume(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     const max = handleData.getAttribute(stderr, ffmpegRegex.volume.max);
     const mean = handleData.getAttribute(stderr, ffmpegRegex.volume.mean);
