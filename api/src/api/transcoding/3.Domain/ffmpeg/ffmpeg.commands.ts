@@ -22,12 +22,12 @@ const editVolume = ({
   } -acodec ${audio.codec} -y ${destiny}`;
 };
 
-const SdPreAjust = ({ destiny, origin }: IParams) =>
+const sdPreAjust = ({ destiny, origin }: IParams) =>
   `ffmpeg -i ${origin} -r 29970/1000 -vcodec mpeg4 -pix_fmt yuv420p  -vf eq=saturation=1.06,scale=640:480:force_original_aspect_ratio=decrease,pad=640:480:(ow-iw)/2:(oh-ih)/2,setsar=1 -q:v 1 -b:v 50M -maxrate 50M  -minrate 50M -bufsize 8M  -acodec pcm_s16le  -timecode 00:00:00:00 -y ${destiny}`;
 
 export default {
   detectVolume,
   editVolume,
   ajustVolume,
-  SdPreAjust,
+  sdPreAjust,
 };

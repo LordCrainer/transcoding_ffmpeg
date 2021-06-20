@@ -11,5 +11,5 @@ export interface IRegexFFmpeg {
 interface IFFmpeg {
   ajustVolume(params: IParams): string
   detectVolume(params: IParams): string
-  SdPreAjust(params: IParams): string
+  sdPreAjust(params: IParams): string
 }
