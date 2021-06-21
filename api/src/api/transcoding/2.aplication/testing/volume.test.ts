@@ -18,9 +18,10 @@ const params = <IParams>{
   },
   filter: {
     fAudio: {
-      volume: { value: -12 },
+      volume: { value: -12, unit: "dB" },
       normalizeVolume: {
         threshold: -12,
+        unit: "dB"
       },
     },
   },
@@ -33,8 +34,6 @@ describe("VOLUME FUNCTIONS", () => {
   });
   test("should ajust volume", async (done) => {
     const ajusted = await volume.editVolume(params);
-    console.log(ajusted.stderr, ajusted.status);
-
     expect(ajusted.status).toBe(0);
     done();
   });
