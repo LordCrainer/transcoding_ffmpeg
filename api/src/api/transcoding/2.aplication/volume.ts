@@ -2,6 +2,7 @@ import { IMetadata, IParams, ISpawnCallBack } from "../../share/3.domain";
 import { handleData, execute } from "../../share/2.application";
 import { ffmpegCMD, ffmpegRegex } from "../3.domain/ffmpeg/";
 import { fpFunctions } from "../../share/2.application";
+import normalizeVolume from "./normalizeVolume";
 
 const subtractVolume = (currentVolume: number, threshold: number) =>
   threshold - currentVolume;
@@ -53,7 +54,7 @@ const changeVolumen = (fn?: ISpawnCallBack) => async (commands: string) => {
 
 const verifyVolume = async (
   currentVolume: number,
-  normalizeVolume: { marginError: number; threshold: number }
+  normalizeVolume: IParams["filter"]["fAudio"]["normalizeVolume"]
 ) => {
   const { marginError, threshold } = normalizeVolume;
   try {

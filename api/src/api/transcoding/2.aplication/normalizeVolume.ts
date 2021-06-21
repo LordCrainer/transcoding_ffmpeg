@@ -14,18 +14,16 @@ const normalizeVolume = async (params: IParams) => {
       fAudio.normalizeVolume.threshold,
       +preVolume.max
     );
-    console.log(differenceVolume);
-
     const ajustedVolume = await volume.ajustVolume(
       tempParams,
       differenceVolume
-    );
+    );  
     tempParams.origin = tempParams.destiny;
     const newVolume = await volume.getVolume(tempParams);
     const correctVolume = await volume.verifyVolume(
       +newVolume.max,
       fAudio.normalizeVolume
-    );
+    );   
     return {
       destiny: tempParams.destiny,
       startVolume: preVolume.max,

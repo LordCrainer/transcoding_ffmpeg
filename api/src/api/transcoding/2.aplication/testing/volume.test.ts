@@ -20,21 +20,35 @@ const params = <IParams>{
     fAudio: {
       volume: { value: -12, unit: "dB" },
       normalizeVolume: {
-        threshold: -12,
-        unit: "dB"
+        threshold: -14,
+        marginError: 1,
+        unit: "dB",
       },
     },
   },
 };
 describe("VOLUME FUNCTIONS", () => {
+  let tempParams = { ...params };
   test("should get volume", async (done) => {
     const getVolume = await volume.getVolume(params);
     expect(getVolume.max).toBe("0.0");
     done();
   });
   test("should ajust volume", async (done) => {
-    const ajusted = await volume.editVolume(params);
+    const ajusted = await volume.ajustVolume(params, -12);
     expect(ajusted.status).toBe(0);
+    done();
+  });
+  test("should get new volume", async (done) => {
+    tempParams.origin = tempParams.destiny;
+    const getVolume = await volume.getVolume(tempParams);
+    expect(getVolume.max).toBe("-13.3");
+    done();
+  });
+  test("should ajust volume", async (done) => {
+    const { normalizeVolume } = tempParams.filter.fAudio;
+    const verified = await volume.verifyVolume(-13.3, normalizeVolume);
+    expect(verified).toBeTruthy();
     done();
   });
 });
