@@ -1,27 +1,33 @@
 import { IAudioVolume } from "../3.domain";
 import { IParams, IMetadata } from "../../share/3.domain";
 import volume from "./volume";
+import { fpFunctions } from "../..//share/2.application";
 
-const normalizeVolume = async (params: IParams, options?: Object) => {
+const normalizeVolume = async (params: IParams) => {
   try {
     const {
       filter: { fAudio },
     } = params;
-    let source = { ...params, ...options };
-    const preVolume = await volume.getVolume(source);
-    const differenceVolume = volume.subtractVolume(
-      +preVolume.max,
-      fAudio.normalizeVolume.threshold
+    let tempParams = { ...params };
+    const preVolume = await volume.getVolume(tempParams);
+    const differenceVolume = fpFunctions.substract(
+      fAudio.normalizeVolume.threshold,
+      +preVolume.max
     );
-    const ajustedVolume = await volume.ajustVolume(source, differenceVolume);
-    source = { ...source, ...{ origin: source.destiny } };
-    const newVolume = await volume.getVolume(source);
+    console.log(differenceVolume);
+
+    const ajustedVolume = await volume.ajustVolume(
+      tempParams,
+      differenceVolume
+    );
+    tempParams.origin = tempParams.destiny;
+    const newVolume = await volume.getVolume(tempParams);
     const correctVolume = await volume.verifyVolume(
       +newVolume.max,
       fAudio.normalizeVolume
     );
     return {
-      destiny: source.destiny,
+      destiny: tempParams.destiny,
       startVolume: preVolume.max,
       endVolume: newVolume.max,
     };

@@ -16,9 +16,7 @@ const editVolume = ({
   origin,
   filter: { fAudio },
 }: IParams) => {
-  return `ffmpeg -i ${origin} -vcodec copy -af volume=${fAudio.volume.value}${
-    fAudio.volume.unit || "dB"
-  } -acodec ${audio.codec} -y ${destiny}`;
+  return `ffmpeg -i ${origin} -vcodec copy -af volume=${fAudio.volume.value}${fAudio.volume.unit} -acodec ${audio.codec} -y ${destiny}`;
 };
 
 const sdPreAjust = ({ destiny, origin }: IParams) =>

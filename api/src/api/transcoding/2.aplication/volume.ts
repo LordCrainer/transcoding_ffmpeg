@@ -32,6 +32,16 @@ const ajustVolume = async (
   }
 };
 
+const editVolume = async (params: IParams, fn?: ISpawnCallBack) => {
+  try {
+    const commands = await ffmpegCMD.editVolume(params);
+    const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
+    return { status, stderr, params };
+  } catch (error) {
+    throw new Error("ERROR EDIT VOLUME: " + error);
+  }
+};
+
 const changeVolumen = (fn?: ISpawnCallBack) => async (commands: string) => {
   try {
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
@@ -65,4 +75,5 @@ export default {
   subtractVolume,
   ajustVolume,
   verifyVolume,
+  editVolume,
 };

@@ -15,7 +15,7 @@ const preAjust = async (params: IParams, fn?: ISpawnCallBack) => {
 
 const dvcpro25 = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmbcCMD.dv25.mov(params);
+    const commands = ffmbcCMD.dv25(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr };
   } catch (error) {
@@ -25,7 +25,7 @@ const dvcpro25 = async (params: IParams, fn?: ISpawnCallBack) => {
 
 const h264 = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmbcCMD.dv25.mov(params);
+    const commands = ffmbcCMD.dv25(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr };
   } catch (error) {
@@ -33,8 +33,22 @@ const h264 = async (params: IParams, fn?: ISpawnCallBack) => {
   }
 };
 
+const listPredefined = async (predefined: string) => {
+  if (predefined === "preAjust") {
+    return await preAjust;
+  }
+  if (predefined === "dvcpro25") {
+    return await dvcpro25;
+  }
+  if (predefined === "h264") {
+    return await h264;
+  }
+  return await preAjust;
+};
+
 export default {
   preAjust,
   dvcpro25,
   h264,
+  listPredefined,
 };

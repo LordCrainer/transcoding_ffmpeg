@@ -1,14 +1,14 @@
 interface IVolume {
   value: number;
-  unit: string;
+  unit: "dB";
 }
 
 interface INormalizeVolume {
   threshold: number;
-  marginError: number;
-  max: number;
-  min: number;
-  unit: string;
+  marginError: 1;
+  max: 1;
+  min: 1;
+  unit: "dB";
 }
 
 export interface IAudioFilter {
