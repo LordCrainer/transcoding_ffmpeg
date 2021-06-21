@@ -28,8 +28,8 @@ const params = <IParams>{
     },
   },
 };
-describe("PIPING FFMPEG ON FFMBC", () => {
-  test("should join the output to input", async () => {
+describe("TRANSCODING", () => {
+  test("should transcoding one file", async () => {
     const data = await transcoder.oneTranscoding(params);
     expect(data.startVolume).toBe("0.0");
   });
