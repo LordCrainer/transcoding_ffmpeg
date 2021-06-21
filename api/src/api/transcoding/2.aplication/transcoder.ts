@@ -1,7 +1,7 @@
 import { predefined } from ".";
 import { IMetadata, IParams, paramsService } from "../../share/3.domain";
 import transcodingRouter from "../1.adapter/routes";
-import normalizeVolume from "./normalizeVolume";
+import volume from "./volume";
 
 const oneTranscoding = async (params: IParams) => {
   const {
@@ -15,7 +15,7 @@ const oneTranscoding = async (params: IParams) => {
 
     let tempSource = { ...params };
     tempSource.destiny = `./data/temp/normalize.${basename}`;
-    const normalizedAuido = await normalizeVolume(tempSource);
+    const normalizedAuido = await volume.normalizeVolume(tempSource);
     console.log(normalizedAuido);
     tempSource.origin = normalizedAuido.destiny;
     tempSource.destiny = params.origin;

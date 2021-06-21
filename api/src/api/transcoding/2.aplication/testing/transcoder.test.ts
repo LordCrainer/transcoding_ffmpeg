@@ -1,5 +1,4 @@
 import { IParams } from "../../../share/3.domain/params.interface";
-import normalizeVolume from "../normalizeVolume";
 import transcoder from "../transcoder";
 jest.setTimeout(5000);
 const params = <IParams>{
@@ -32,13 +31,5 @@ describe("TRANSCODING", () => {
   test("should transcoding one file", async () => {
     const data = await transcoder.oneTranscoding(params);
     expect(data.startVolume).toBe("0.0");
-  });
-});
-
-describe("FUNCTION ON FFMPEG", () => {
-  test("should Normalize the output audio", async (done) => {
-    const final = await normalizeVolume(params);
-    expect(final.endVolume).toBe("-13.3");
-    done();
   });
 });

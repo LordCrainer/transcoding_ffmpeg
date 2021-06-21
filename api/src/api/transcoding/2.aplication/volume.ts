@@ -66,6 +66,37 @@ const verifyVolume = async (
   }
 };
 
+const normalizeVolume = async (params: IParams) => {
+  try {
+    const {
+      filter: { fAudio },
+    } = params;
+    let tempParams = { ...params };
+    const preVolume = await getVolume(tempParams);
+    const differenceVolume = fpFunctions.substract(
+      fAudio.normalizeVolume.threshold,
+      +preVolume.max
+    );
+    const ajustedVolume = await ajustVolume(
+      tempParams,
+      differenceVolume
+    );
+    tempParams.origin = tempParams.destiny;
+    const newVolume = await getVolume(tempParams);
+    const correctVolume = await verifyVolume(
+      +newVolume.max,
+      fAudio.normalizeVolume
+    );
+    return {
+      destiny: tempParams.destiny,
+      startVolume: preVolume.max,
+      endVolume: newVolume.max,
+    };
+  } catch (error) {
+    throw new Error("NORMALIZE VOLUME \n" + error);
+  }
+};
+
 export default {
   getVolume,
   changeVolumen,

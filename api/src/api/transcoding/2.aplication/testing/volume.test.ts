@@ -51,4 +51,9 @@ describe("VOLUME FUNCTIONS", () => {
     expect(verified).toBeTruthy();
     done();
   });
+  test("should Normalize the output audio", async (done) => {
+    const final = await volume.normalizeVolume(params);
+    expect(final.endVolume).toBe("-13.3");
+    done();
+  });
 });
