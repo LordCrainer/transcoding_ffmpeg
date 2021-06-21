@@ -1,5 +1,6 @@
 export interface IVideoMeta {
   codec: string;
+  container: "mov" | "mxf" | "mp4";
   format: string;
   frameRate: string;
   size: string;
@@ -9,8 +10,4 @@ export interface IVideoMeta {
   bitRate: string;
   bitRateMax: string;
   bitRateMin: string;
-}
-
-export interface IVideoContainer {
-  name: "mov" | "mxf";
 }
