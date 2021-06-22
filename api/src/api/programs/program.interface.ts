@@ -7,3 +7,7 @@ interface ITranscodingProgram {
   ffmpeg: IFFmpegRepository;
   ffmbc: IFFmbcRepository;
 }
+export interface IProgram {
+  application: string;
+  args: Array<string>;
+}
