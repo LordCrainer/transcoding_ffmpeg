@@ -1,4 +1,4 @@
-import { IParams } from 'api/share/3.domain';
+import { IParams } from './../../params/params.interface';
 
 export interface IRegexFFmpeg {
   volume: {
@@ -8,7 +8,7 @@ export interface IRegexFFmpeg {
   editVolume: RegExp;
 }
 
-export interface IFFmpeg {
+export interface IFFmpegRepository {
   ajustVolume(params: IParams): string
   detectVolume(params: IParams): string
   sdPreAjust(params: IParams): string

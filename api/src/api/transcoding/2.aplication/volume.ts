@@ -1,7 +1,8 @@
-import { IMetadata, IParams, ISpawnCallBack } from "../../share/3.domain";
+import { IMetadata, IParams } from "../../params";
 import { handleData, execute } from "../../share/2.application";
-import { ffmpegCMD, ffmpegRegex } from "../3.domain/ffmpeg/";
+import { ffmpegCMD, ffmpegRegex } from "../../programs/ffmpeg/";
 import { fpFunctions } from "../../share/2.application";
+import { ISpawnCallBack } from 'api/share/3.domain';
 
 const getVolume = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
@@ -77,10 +78,7 @@ const normalizeVolume = async (params: IParams) => {
       fAudio.normalizeVolume.threshold,
       +preVolume.max
     );
-    const ajustedVolume = await ajustVolume(
-      tempParams,
-      differenceVolume
-    );
+    const ajustedVolume = await ajustVolume(tempParams, differenceVolume);
     tempParams.origin = tempParams.destiny;
     const newVolume = await getVolume(tempParams);
     const correctVolume = await verifyVolume(
@@ -103,4 +101,5 @@ export default {
   ajustVolume,
   verifyVolume,
   editVolume,
+  normalizeVolume,
 };

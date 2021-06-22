@@ -1,4 +1,4 @@
-import { IParams } from "../../../share/3.domain/params.interface";
+import { IParams } from './../../../params/params.interface';
 import transcoder from "../transcoder";
 jest.setTimeout(5000);
 const params = <IParams>{

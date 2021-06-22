@@ -1,4 +1,4 @@
-import { IParams, ISpawnCallBack, IMetadata } from "../../../share/3.domain";
+import { IParams, IMetadata } from "../../params/";
 
 const xdcamHD = ({ origin, destiny, metadata: { video } }: IParams) => {
   let pre = "";

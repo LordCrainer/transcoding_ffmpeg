@@ -1,5 +1,5 @@
 import { predefined } from ".";
-import { IMetadata, IParams, paramsService } from "../../share/3.domain";
+import { IMetadata, IParams, paramsService } from "../../params";
 import transcodingRouter from "../1.adapter/routes";
 import volume from "./volume";
 

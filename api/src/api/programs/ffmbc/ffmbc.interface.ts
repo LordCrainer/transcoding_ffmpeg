@@ -1,4 +1,4 @@
-import { IParams } from "./../../../share/3.domain/params.interface";
+import { IParams } from './../../params/params.interface';
 
 export interface IFFmbcRepository {
   dv25(params: IParams): string;

@@ -1,5 +1,5 @@
 import { ffmbcCMD } from ".";
-import { IParams } from "./../../../share/3.domain/params.interface";
+import { IParams } from './../../params/params.interface';
 
 describe("FFMBC COMMANDS STRING", () => {
   const params = <IParams>{
