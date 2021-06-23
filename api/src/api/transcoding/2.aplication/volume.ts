@@ -1,15 +1,15 @@
 import { IMetadata, IParams } from "../../params";
 import { handleData, execute } from "../../share/2.application";
-import { ffmpegCMD, ffmpegRegex } from "../../programs/ffmpeg/";
+import { ffmbc, ffmpeg } from "../../programs/";
 import { fpFunctions } from "../../share/2.application";
 import { ISpawnCallBack } from 'api/share/3.domain';
 
 const getVolume = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmpegCMD.detectVolume(params);
+    const commands = ffmpeg.commands.detectVolume(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
-    const max = handleData.getAttribute(stderr, ffmpegRegex.volume.max);
-    const mean = handleData.getAttribute(stderr, ffmpegRegex.volume.mean);
+    const max = handleData.getAttribute(stderr, ffmpeg.regex.volume.max);
+    const mean = handleData.getAttribute(stderr, ffmpeg.regex.volume.mean);
     return { max, mean };
   } catch (error) {
     throw new Error("ERROR GET VOLUME: " + error);
@@ -22,7 +22,7 @@ const ajustVolume = async (
   fn?: ISpawnCallBack
 ) => {
   try {
-    const commands = await ffmpegCMD.ajustVolume(params, volume);
+    const commands = await ffmpeg.commands.ajustVolume(params, volume);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr, params };
   } catch (error) {
@@ -32,7 +32,7 @@ const ajustVolume = async (
 
 const editVolume = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = await ffmpegCMD.editVolume(params);
+    const commands = await ffmpeg.commands.editVolume(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr, params };
   } catch (error) {

@@ -1,4 +1,4 @@
-import ffmpegCMD from "./ffmpeg.commands";
-import ffmpegRegex from "./ffmpeg.regex";
+import commands from "./ffmpeg.commands";
+import regex from "./ffmpeg.regex";
 
-export { ffmpegCMD, ffmpegRegex };
+export default { commands, regex };

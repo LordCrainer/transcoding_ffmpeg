@@ -1,12 +1,11 @@
-import { ffmpegCMD} from "../../programs/ffmpeg/";
-import { ffmbcCMD } from "../../programs/ffmbc";
+import { ffmbc, ffmpeg } from "../../programs";
 import { execute } from "../../share/2.application";
-import { IParams } from './../../params/params.interface';
+import { IParams } from "./../../params/params.interface";
 import { ISpawnCallBack } from "api/share/3.domain";
 
 const preAjust = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmpegCMD.sdPreAjust(params);
+    const commands = ffmpeg.commands.sdPreAjust(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr };
   } catch (error) {
@@ -16,7 +15,7 @@ const preAjust = async (params: IParams, fn?: ISpawnCallBack) => {
 
 const dvcpro25 = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmbcCMD.dv25(params);
+    const commands = ffmbc.commands.dv25(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr };
   } catch (error) {
@@ -26,7 +25,7 @@ const dvcpro25 = async (params: IParams, fn?: ISpawnCallBack) => {
 
 const h264 = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmbcCMD.dv25(params);
+    const commands = ffmbc.commands.dv25(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr };
   } catch (error) {

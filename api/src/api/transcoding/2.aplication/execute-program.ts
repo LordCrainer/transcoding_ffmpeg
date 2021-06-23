@@ -1,5 +1,5 @@
+import { ICustomConfig } from "api/params";
 import { execute, fpFunctions } from "../../../api/share/2.application";
-import { ICustomConfig } from "../../../api/share/3.domain";
 
 const executeProgram = async (params: ICustomConfig) => {
   try {

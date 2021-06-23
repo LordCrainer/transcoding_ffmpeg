@@ -1,4 +1,4 @@
-import { IParams } from "../../../share/3.domain";
+import { IParams } from "../../params";
 
 const ajustVolume = (
   { metadata: { audio }, destiny, origin, filter: { fAudio } }: IParams,

@@ -1,3 +1,3 @@
-import ffmbcCMD from "./ffmbc.commands";
+import commands from "./ffmbc.commands";
 
-export { ffmbcCMD };
+export default { commands };

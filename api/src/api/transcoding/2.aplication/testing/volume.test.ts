@@ -1,5 +1,5 @@
 import volume from "../volume";
-import { IParams } from "./../../../share/3.domain/params.interface";
+import { IParams } from './../../../params/params.interface';
 
 const params = <IParams>{
   origin: "C:/Users/camog/Desktop/testingFile.mp4",
