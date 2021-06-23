@@ -5,6 +5,7 @@ export interface IVideoMeta {
   frameRate: string;
   size: string;
   pixelFormat: string;
+  scanType: string;
   fieldInterlaced: string;
   aspectRatio: string;
   bitRate: string;
