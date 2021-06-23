@@ -1,8 +1,8 @@
-import { IMetadata, IParams } from "../../params";
+import { IParams } from "../../params";
 import { handleData, execute } from "../../share/2.application";
-import { ffmbc, ffmpeg } from "../../programs/";
+import { ffmpeg } from "../../programs/";
 import { fpFunctions } from "../../share/2.application";
-import { ISpawnCallBack } from 'api/share/3.domain';
+import { ISpawnCallBack } from "api/share/3.domain";
 
 const getVolume = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
