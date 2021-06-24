@@ -23,7 +23,6 @@ export interface IGeneral {
   duration: string;
   videoCount: string;
   audioCount: string;
-  profile: any;
 }
 
 export interface IFilter {

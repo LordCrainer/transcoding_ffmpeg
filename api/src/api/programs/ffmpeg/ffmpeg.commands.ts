@@ -1,44 +1,6 @@
 import { fpFunctions } from "api/share/2.application";
 import { IParams } from "./../../params/params.interface";
 
-const ffmpeg = (params: IParams) => {
-  const {
-    origin,
-    destiny,
-    metadata: { audio, video },
-  } = params;
-  return {
-    origin: `-i ${origin}`,
-    destiny,
-    metadata: {
-      video: {
-        frameRate: `-r ${video.frameRate}`,
-        bitRate: `-b ${video.bitRate}`,
-        codec: `-c:a ${audio.codec}`,
-        scanType: video.scanType.startsWith("inter")
-          ? `-top ${video.fieldInterlaced}`
-          : "",
-      },
-    },
-  };
-};
-
-const h264 = (params: IParams) => {
-  const {
-    origin,
-    destiny,
-    metadata: {
-      video: {
-        codec = "pcm_s24le",
-        frameRate = "29.97",
-        scanType = "interlace",
-      },
-    },
-  } = ffmpeg(params);
-  return `${origin}  ${frameRate}  -c:v libx264 -b:v 20M -maxrate 20M -minrate 20M -bufsize 4M -flags +ildct+ilme ${scanType}
-  } -crf 2 -preset:v fast ${codec} -ac 2  -y ${destiny}`;
-};
-
 const ajustVolume = (
   { metadata: { audio }, destiny, origin, filter: { fAudio } }: IParams,
   newVolume: number
