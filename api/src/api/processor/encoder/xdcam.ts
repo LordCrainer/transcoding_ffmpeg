@@ -75,6 +75,9 @@ const getCommands = ({
 
 const defaultValue = <IParams>{
   metadata: {
+    general: {
+      
+    },
     video: {
       profile: "high",
       level: "auto",
@@ -95,7 +98,8 @@ const defaultValue = <IParams>{
 };
 
 interface XDCAM extends IParams {
-  
+  full: string;
+  metadata: IParams["metadata"]
 }
 type codec = "libx264";
 type container = "mov" | "mxf";
@@ -111,3 +115,5 @@ const h264 = (params: IParams) => {
   return `${video.frameRate}  -c:v libx264 -b:v 20M -maxrate 20M -minrate 20M -bufsize 4M -flags +ildct+ilme ${video.scanType}
   } -crf 2 -preset:v fast ${audio.codec} -ac 2`;
 };
+
+

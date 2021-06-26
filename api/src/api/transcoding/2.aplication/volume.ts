@@ -6,7 +6,7 @@ import { ISpawnCallBack } from "api/share/3.domain";
 
 const getVolume = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
-    const commands = ffmpeg.commands.detectVolume(params);
+    const commands = ffmpeg.commands.getVolume(params);
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     const max = handleData.getAttribute(stderr, ffmpeg.regex.volume.max);
     const mean = handleData.getAttribute(stderr, ffmpeg.regex.volume.mean);
