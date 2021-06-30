@@ -89,7 +89,6 @@ const defaultValue = <IParams>{
       bitRate: "15M",
       bitRateMax: "15M",
       bitRateMin: "15M",
-      container: "mov",
     },
     audio: {
       codec: "pcm_s24le",

@@ -10,6 +10,11 @@ export interface IParams {
   filter: IFilter;
 }
 
+export interface INewParams {
+  metadata: IMetadata;
+  filter?: IFilter;
+}
+
 export interface IMetadata {
   general: IGeneral;
   audio: IAudioMeta;
@@ -23,7 +28,10 @@ export interface IGeneral {
   duration: string;
   videoCount: string;
   audioCount: string;
+  container: container;
 }
+
+type container = "mov" | "mxf" | "mp4" | "avi" | "flv";
 
 export interface IFilter {
   status: boolean;

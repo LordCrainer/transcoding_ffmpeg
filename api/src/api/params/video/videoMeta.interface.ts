@@ -1,14 +1,13 @@
 export interface IVideoMeta {
   codec: codec;
-  container: container;
   format: string;
-  frameRate: string;
+  frameRate: string | string[];
   size: string;
   pixelFormat: string;
   scanType: "interlace" | "progressive";
   fieldInterlaced: "1" | "0";
-  aspectRatio: string;
-  bitRate: string;
+  aspectRatio: string | string[];
+  bitRate: string | string[];
   bitRateMax: string;
   bitRateMin: string;
   profile: profile;
@@ -17,7 +16,6 @@ export interface IVideoMeta {
   tune: tune;
 }
 
-type container = "mov" | "mxf" | "mp4" | "avi" | "flv";
 type codec =
   | "avs"
   | "flv1"
