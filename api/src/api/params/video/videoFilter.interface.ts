@@ -1,18 +1,19 @@
 interface ICrop {
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
 }
 
 interface IPad {
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+  color: "black" | "white";
 }
 
 export interface IVideoFilter {
-  crop: ICrop;
-  IPad: IPad;
+  crop?: ICrop;
+  pad?: IPad;
 }

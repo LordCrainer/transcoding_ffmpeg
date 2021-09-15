@@ -1,19 +1,22 @@
 export interface IVideoMeta {
-  codec: codec;
-  format: string;
-  frameRate: string | string[];
-  size: string;
-  pixelFormat: string;
-  scanType: "interlace" | "progressive";
-  fieldInterlaced: "1" | "0";
-  aspectRatio: string | string[];
-  bitRate: string | string[];
-  bitRateMax: string;
-  bitRateMin: string;
-  profile: profile;
-  level: string;
-  preset: preset;
-  tune: tune;
+  codec?: codec;
+  format?: string;
+  frameRate?: string | number;
+  size?: string;
+  pixelFormat?: string;
+  scanType?: "interlace" | "progressive";
+  fieldInterlaced?: "1" | "0";
+  aspectRatio?: string | string[];
+  bitRate?: string | string[];
+  bitRateMax?: string;
+  bitRateMin?: string;
+  profile?: profile;
+  level?: string;
+  preset?: preset;
+  tune?: tune;
+  pixFmt?: "yuv420p";
+  qscale?: number;
+  colorPrimaries?: "bt709";
 }
 
 type codec =

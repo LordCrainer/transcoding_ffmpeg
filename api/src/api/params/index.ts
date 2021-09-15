@@ -1,5 +1,5 @@
 export * from "./params.interface";
 
-import paramsService from "./params.service";
+// import paramsService from "./params.service";
 
-export { paramsService };
+// export { paramsService };

@@ -16,19 +16,21 @@ export interface INewParams {
 }
 
 export interface IMetadata {
-  general: IGeneral;
-  audio: IAudioMeta;
-  video: IVideoMeta;
+  source?: ISource;
+  general?: IGeneral;
+  audio?: IAudioMeta | IAudioMeta[];
+  video?: IVideoMeta | IVideoMeta[];
+  filter?: IAudioFilter & IVideoFilter;
 }
 
 export interface IGeneral {
-  fileExtension: string;
-  format: string;
-  fileSize: string;
-  duration: string;
-  videoCount: string;
-  audioCount: string;
-  container: container;
+  fileExtension?: string;
+  format?: string;
+  fileSize?: string;
+  duration?: string;
+  videoCount?: string;
+  audioCount?: string;
+  container?: container;
 }
 
 type container = "mov" | "mxf" | "mp4" | "avi" | "flv";
@@ -40,8 +42,16 @@ export interface IFilter {
 }
 
 export interface ISource {
-  origin: string;
-  destiny: string;
+  origin?: IPath;
+  destiny?: IPath;
+}
+
+interface IPath {
+  fullPath?: string;
+  prefix?: string;
+  path?: string;
+  filename?: string;
+  extension?: string;
 }
 
 export interface ICustomConfig {
