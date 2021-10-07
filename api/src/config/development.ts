@@ -1,4 +1,9 @@
 const configuration = {
+  dataBase: {
+    mongo: {
+      url: "mongodb://soporte:Support@127.0.0.1:27017/lntv",
+    },
+  },
   server: {
     host: "localhost",
     port: process.env.PORT || 3002,

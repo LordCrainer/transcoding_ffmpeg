@@ -13,6 +13,7 @@ export interface IVideoMeta {
   profile?: profile;
   level?: string;
   preset?: preset;
+  target?: "xdcamhd422" | "dvcprohd" | "dvcpro" | "";
   tune?: tune;
   pixFmt?: "yuv420p";
   qscale?: number;

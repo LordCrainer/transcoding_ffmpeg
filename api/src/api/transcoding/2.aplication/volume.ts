@@ -1,8 +1,9 @@
-import { IParams } from "../../params";
+import { IMetadata, IParams } from "../../params";
 import { handleData, execute } from "../../share/2.application";
 import { ffmpeg } from "../../programs/";
 import { fpFunctions } from "../../share/2.application";
 import { ISpawnCallBack } from "api/share/3.domain";
+import { INormalizeVolume } from "api/params/audio/audioFilter.interface";
 
 const getVolume = async (params: IParams, fn?: ISpawnCallBack) => {
   try {
@@ -45,16 +46,16 @@ const changeVolumen = (fn?: ISpawnCallBack) => async (commands: string) => {
     const { status, stderr } = await execute.commands(commands, /\s+/)(fn);
     return { status, stderr };
   } catch (error) {
-    throw new Error(error);
+    throw new Error(`${error}`);
   }
 };
 
 const verifyVolume = async (
   currentVolume: number,
-  normalizeVolume: IParams["filter"]["fAudio"]["normalizeVolume"]
+  normalize: INormalizeVolume
 ) => {
-  const { marginError, threshold } = normalizeVolume;
   try {
+    const { marginError = 1, threshold } = normalize;
     const isCorrect = fpFunctions.onRange(
       currentVolume,
       threshold - marginError,

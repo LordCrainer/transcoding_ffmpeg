@@ -65,5 +65,5 @@
   ],
   "include": [
     "./src/**/*.ts"
-  ],
+, "src/api/testing/transcoding.test.js"  ],
 }

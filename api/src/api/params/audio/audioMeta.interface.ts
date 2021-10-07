@@ -1,5 +1,6 @@
 export interface IAudioMeta {
   codec?: codec;
+  skip?: boolean,
   format?: string;
   frameRate?: frameRate;
   bitRate?: string;

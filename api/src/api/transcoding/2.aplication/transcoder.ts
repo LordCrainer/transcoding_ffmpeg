@@ -1,16 +1,15 @@
 import { predefined } from ".";
-import { IParams, paramsService } from "../../params";
+import { IParams } from "../../params";
 import volume from "./volume";
+import utils from "../../../utils/path.utils";
 
 const oneTranscoding = async (params: IParams) => {
-  const {
-    metadata: { general },
-  } = params;
-  let transcoding;
   try {
-    const { basename, dirname, extension } = paramsService.getPropPath(
-      params.destiny
-    );
+    const {
+      metadata: { general },
+    } = params;
+    let transcoding;
+    const { basename, dirname, extension } = utils.getPropPath(params.destiny);
 
     let tempSource = { ...params };
     tempSource.destiny = `./data/temp/normalize.${basename}`;
@@ -19,8 +18,8 @@ const oneTranscoding = async (params: IParams) => {
     tempSource.origin = normalizedAuido.destiny;
     tempSource.destiny = params.origin;
 
-    const selected = await predefined.listPredefined(general.profile);
-    const transcoding = await selected(tempSource);
+    // const selected = await predefined.listPredefined(general.profile);
+    // const transcoding = await selected(tempSource);
     // const { audio, audioFilter, video, videoFilter } = metadata;
     // Filtrar: Mapear y ejecutar cada filtro seleccionado
     // Transcoding: Convertir el archivo al codec de audio y video respectivo
@@ -29,7 +28,7 @@ const oneTranscoding = async (params: IParams) => {
   } catch (error) {
     console.log(error);
 
-    throw new Error(error);
+    throw new Error(`${error}`);
   }
 };
 
@@ -40,7 +39,7 @@ const exceuteManyTranscoding = async (params: IParams[]) => {
     );
     return data;
   } catch (error) {
-    throw new Error(error);
+    throw new Error(`${error}`);
   }
 };
 

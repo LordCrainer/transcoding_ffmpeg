@@ -1,9 +1,9 @@
-interface IVolume {
+export interface IVolume {
   value: number;
   unit: "dB";
 }
 
-interface INormalizeVolume {
+export interface INormalizeVolume {
   threshold: number;
   marginError?: 1;
   max?: 1;

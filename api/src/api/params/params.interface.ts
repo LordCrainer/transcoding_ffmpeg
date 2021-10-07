@@ -10,11 +10,6 @@ export interface IParams {
   filter: IFilter;
 }
 
-export interface INewParams {
-  metadata: IMetadata;
-  filter?: IFilter;
-}
-
 export interface IMetadata {
   source?: ISource;
   general?: IGeneral;
@@ -30,7 +25,7 @@ export interface IGeneral {
   duration?: string;
   videoCount?: string;
   audioCount?: string;
-  container?: container;
+  container: container;
 }
 
 type container = "mov" | "mxf" | "mp4" | "avi" | "flv";
