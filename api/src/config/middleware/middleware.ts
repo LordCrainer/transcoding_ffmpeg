@@ -1,4 +1,3 @@
-import { IexpressConfig } from "types/IServer";
 import express from "express";
 import compress from "compression";
 import methodOverride from "method-override";

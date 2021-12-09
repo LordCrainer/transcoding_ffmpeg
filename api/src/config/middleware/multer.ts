@@ -6,7 +6,7 @@ export interface IMulter {
   fileSize: number;
 }
 
-const multerHandler = (multerConf: IMulter) => {
+const configuration = (multerConf: IMulter) => {
   const storage = multer.diskStorage({
     destination: (req, res, cb) => {
       cb(null, multerConf.destiny);
@@ -24,6 +24,27 @@ const multerHandler = (multerConf: IMulter) => {
   });
   return upload;
 };
-const handle = multerHandler(enviroments.multer);
 
-export default { handle };
+const setStorage = (destiny: string, format?: string) =>
+  multer.diskStorage({
+    destination: (req, res, cb) => {
+      cb(null, destiny);
+    },
+    filename: (req, metadata, cb) => {
+      cb(null, format || metadata.filename);
+    },
+  });
+
+const setOptions = ({ storage, limits }: multer.Options) =>
+  multer({
+    storage,
+    limits,
+  });
+
+const setLimits = (options: IMulter): multer.Options["limits"] => ({
+  fieldSize: options.fileSize,
+});
+
+const handle = configuration(enviroments.multer);
+
+export default { handle, configuration, setStorage, setLimits };

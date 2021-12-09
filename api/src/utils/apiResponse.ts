@@ -1,4 +1,4 @@
-import { IOverrideRequest } from "types/utils/IapiResponse";
+import { IOverrideRequest } from "Shared/domain/apiReponse.interface";
 import { Response } from "express";
 import httpStatusCodes from "http-status-codes";
 

@@ -7,7 +7,7 @@ import swaggerRouter from "./swaggerRouter";
 const init = (app: express.Application) => {
   const router: express.Router = express.Router();
 
-  app.use("v1/transcoding", transcodingRouter());
+  app.use("v1/transcoding", transcodingRouter);
 
   app.use("v1/upload", uploadRouter());
 
@@ -17,7 +17,9 @@ const init = (app: express.Application) => {
     res.status(404).send(http.STATUS_CODES[404]);
   });
 
-
+  /**
+   * @constructs all routes
+   */
   app.use(router);
 };
 

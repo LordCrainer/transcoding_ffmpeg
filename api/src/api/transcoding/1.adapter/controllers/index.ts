@@ -1,4 +1,4 @@
-import { IController } from "../../../../types/IController";
+import { IController } from "../../../../Shared/domain/controller.interface";
 import apiResponse from "../../../../utils/apiResponse";
 import httpStatusCodes from "http-status-codes";
 import { executeProgram, transcoder } from "../../2.aplication";
@@ -29,13 +29,9 @@ const executeAnyProgram: IController = async (req, res) => {
       body: { params },
     } = req;
     const data = await executeProgram(params);
-    const response = await apiResponse.result(
-      res,
-      { status: data.status },
-      httpStatusCodes.OK
-    );
+    apiResponse.result(res, { status: data.status }, httpStatusCodes.OK);
   } catch (error) {
-    await apiResponse.error(res, 400, error);
+    apiResponse.error(res, 400, error);
   }
 };
 const executeProgramUploaded: IController = async (req, res) => {
