@@ -1,4 +1,4 @@
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 const envFound = dotenv.config();
 if (envFound.error) {
   // This error should crash whole process

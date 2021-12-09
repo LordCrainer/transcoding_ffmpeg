@@ -3,20 +3,20 @@ declare global {
   export interface Promise<T> extends Bluebird<T> {}
 }
 
-import app from "./1.infraestructure/server/express";
-import apiRouter from "./2.adapter/routes/index";
-
-import config from "./config";
-import appConfig from "./config/app";
-import Logger from "./1.infraestructure/middleware/logger";
-import mongo from "./1.infraestructure/db/mongo"
+import app from "./config/server/";
+import * as http from "http";
+import enviroments from "./config/enviroments";
+import Logger from "./config/middleware/logger";
+import mongo from "./config/db/mongo";
+const server: http.Server = http.createServer(app);
 
 const main = async () => {
-  mongo.connect(config.dataBase.mongo.url)
-  await (await app(appConfig, apiRouter)).listen(config.server.port);
-  Logger.info(
-    `SERVER START: http://${config.server.host}:${config.server.port}`
+  await mongo.connect(enviroments.dataBase.mongo.url);
+
+  await server.listen(app.get("port"), () =>
+    Logger.info(
+      `SERVER START: http://${enviroments.server.host}:${app.get("port")}`
+    )
   );
 };
-
 main();

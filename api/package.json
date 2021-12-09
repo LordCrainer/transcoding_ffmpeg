@@ -4,7 +4,7 @@
   "description": "Una API RESTFUL con Node.js para manipular contenido multimedia.",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon ./src/index.ts --watch ./",
+    "dev": "cross-env NODE_ENV=development nodemon .",
     "build": "tsc",
     "start": "npm run build && node ./dist/index.js",
     "comment": "Windows set DEBUG, Linux DEBUG",

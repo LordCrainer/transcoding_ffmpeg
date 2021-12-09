@@ -1,0 +1,471 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TEMPLATE API",
+    "version": "1.0.2",
+    "description": "A sample API"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/v1/"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/copouns/": {
+      "get": {
+        "description": "Get all stored copouns in DB",
+        "tags": [
+          "copouns"
+        ],
+        "security": [
+          {
+            "api-token-jwt": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "An array of copouns",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/CopounSchema"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CopounNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Crete a copoun in DB",
+        "tags": [
+          "copouns"
+        ],
+        "security": [
+          {
+            "api-token-jwt": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "An array of copouns",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/CopounSchema"
+                    }
+                  ]
+                },
+                "example": {
+                  "userId": "618dfcd3712fc38c45c7f2dd",
+                  "type": "free_shipping",
+                  "amount": 100,
+                  "applies_to": {
+                    "ids": [
+                      "618dfcd3712fc38c45c7f2dd"
+                    ],
+                    "entity": "Products"
+                  },
+                  "brand": {
+                    "_id": "618dfcd3712fc38c45c7f2d",
+                    "image": {
+                      "url": ""
+                    },
+                    "name": "Pediatra"
+                  },
+                  "enabled": true
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CopounNotFound"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup/": {
+      "post": {
+        "description": "sign up user to application",
+        "tags": [
+          "auth"
+        ],
+        "requestBody": {
+          "description": "sign up body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSchema"
+              },
+              "example": {
+                "email": "test.user@mail.com",
+                "password": "test_test"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "user successfuly signed in",
+            "content": {
+              "appication/json": {
+                "example": {
+                  "status": 200,
+                  "logged": true,
+                  "message": "Sign in successfull!!"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "sign in failed",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 400,
+                  "logged": false,
+                  "message": "Email already exists"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login/": {
+      "post": {
+        "description": "Login user to application",
+        "tags": [
+          "auth"
+        ],
+        "requestBody": {
+          "description": "login body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSchema"
+              },
+              "example": {
+                "email": "test.user@mail.com",
+                "password": "test_test"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "user successfuly logged",
+            "content": {
+              "appication/json": {
+                "example": {
+                  "status": 200,
+                  "logged": true,
+                  "message": "Successfully logged!"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Not logged, invalid credentials",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 401,
+                  "logged": false,
+                  "message": "Invalid credentials"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "description": "Get all stored users in Database",
+        "tags": [
+          "users"
+        ],
+        "security": [
+          {
+            "api-token-jwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/UserSchema"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersNotFound"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create new User",
+        "tags": [
+          "users"
+        ],
+        "security": [
+          {
+            "api-token-jwt": []
+          }
+        ],
+        "requestBody": {
+          "description": "user creation request body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSchema"
+              },
+              "example": {
+                "name": "userName",
+                "email": "test.user@mail.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "return created user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/UserSchema"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserNotFound"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "description": "Get user by userId",
+        "tags": [
+          "users"
+        ],
+        "security": [
+          {
+            "api-token-jwt": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "the unique userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "return user by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/UserSchema"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete user by userId",
+        "tags": [
+          "users"
+        ],
+        "security": [
+          {
+            "api-token-jwt": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "the unique userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "return deleted user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/UserSchema"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api-token-jwt": {
+        "type": "apiKey",
+        "name": "access-token",
+        "in": "header",
+        "description": "API TOKEN"
+      }
+    },
+    "schemas": {
+      "CopounSchema": {
+        "type": "object",
+        "properties": {
+          "counter": {
+            "type": "number",
+            "description": "the auto-generated id of Copouns"
+          },
+          "type": {
+            "type": "string",
+            "description": "the auto-generated id of Copouns"
+          },
+          "amount": {
+            "type": "string",
+            "description": "the auto-generated id of Copouns"
+          }
+        }
+      },
+      "CopounNotFound": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A message for the not found Copounss"
+          }
+        },
+        "example": {
+          "message": "Copouns not found"
+        }
+      },
+      "UserSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "the auto-generated id of User"
+          },
+          "email": {
+            "type": "string",
+            "description": "the auto-generated id of User"
+          },
+          "name": {
+            "type": "string",
+            "description": "the auto-generated id of User"
+          },
+          "lastname": {
+            "type": "string",
+            "description": "the auto-generated id of User"
+          }
+        }
+      },
+      "UsersNotFound": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A message for the not found Users"
+          }
+        },
+        "example": {
+          "message": "Users not found"
+        }
+      },
+      "UserNotFound": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "A message for the not found Users"
+          }
+        },
+        "example": {
+          "message": "Users not found"
+        }
+      }
+    }
+  },
+  "tags": []
+}
