@@ -1,7 +1,7 @@
 import { predefined } from ".";
 import { IParams } from "../../params";
 import volume from "./volume";
-import utils from "../../../utils/path.utils";
+import utils from "../../../Shared/utils/path.utils";
 
 const oneTranscoding = async (params: IParams) => {
   try {

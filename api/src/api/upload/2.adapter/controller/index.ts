@@ -1,4 +1,4 @@
-import apiResponse from "../../../../utils/apiResponse";
+import apiResponse from "../../../../Shared/utils/apiResponse";
 import { IController } from "../../../../Shared/domain/controller.interface";
 import httpStatusCodes from "http-status-codes";
 import { multerService } from "../../3.application";

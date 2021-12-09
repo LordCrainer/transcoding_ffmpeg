@@ -3,7 +3,7 @@ import compress from "compression";
 import methodOverride from "method-override";
 // import cors from "cors";
 import helmet from "helmet";
-import apiResponse from "../../utils/apiResponse";
+import apiResponse from "../../Shared/utils/apiResponse";
 import morganMiddleware from "./morganMiddleware";
 import cors from "./cors";
 

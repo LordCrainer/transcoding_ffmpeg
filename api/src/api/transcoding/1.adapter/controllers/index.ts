@@ -1,5 +1,5 @@
 import { IController } from "../../../../Shared/domain/controller.interface";
-import apiResponse from "../../../../utils/apiResponse";
+import apiResponse from "../../../../Shared/utils/apiResponse";
 import httpStatusCodes from "http-status-codes";
 import { executeProgram, transcoder } from "../../2.aplication";
 import axios from "axios";
