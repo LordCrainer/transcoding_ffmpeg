@@ -1,4 +1,4 @@
-import { fpFunctions } from "api/share/2.application";
+import { fpFunctions } from "api/shared/2.application";
 import { IParams } from "./../../params/params.interface";
 
 const ajustVolume = (

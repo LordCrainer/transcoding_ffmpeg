@@ -1,4 +1,4 @@
-import { IParams } from "../api/share/3.domain";
+import { IParams } from "../api/shared/3.domain";
 import { volume, predefined } from "../api/transcoding/2.aplication";
 jest.setTimeout(30000);
 

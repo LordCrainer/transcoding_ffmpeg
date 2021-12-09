@@ -1,5 +1,5 @@
 import { IMetadata } from "api/params";
-import { execute } from "api/share/2.application";
+import { execute } from "api/shared/2.application";
 import exp from "constants";
 
 type Program = "ffmbc" | "ffmpeg";

@@ -1,6 +1,6 @@
 import transcdoingMock from "./transcoding.mock";
 import transcdoingService from "./transcoding.services";
-import { hashSortCoerce, hasher } from "../share/object-hash/node-object-hash";
+import { hashSortCoerce, hasher } from "../shared/object-hash/node-object-hash";
 import { Process, Workflow } from "./transcoding.interface";
 
 const addHashtopProcess = (data: Process) => {

@@ -1,6 +1,6 @@
 import { Workflow } from "../profile/workflow/workflow.interface";
 import { Profile } from "../profile/profile.interface";
-import { hashSortCoerce, hasher } from "../share/object-hash/node-object-hash";
+import { hashSortCoerce, hasher } from "../shared/object-hash/node-object-hash";
 
 
 const isObject = (obj: Object) =>

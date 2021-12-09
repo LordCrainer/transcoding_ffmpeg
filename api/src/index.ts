@@ -8,15 +8,14 @@ import * as http from "http";
 import enviroments from "./config/enviroments";
 import Logger from "./config/middleware/logger";
 import mongo from "./config/db/mongo";
-const server: http.Server = http.createServer(app);
 
 const main = async () => {
   await mongo.connect(enviroments.dataBase.mongo.url);
 
+  const server: http.Server = http.createServer(app);
+
   await server.listen(app.get("port"), () =>
-    Logger.info(
-      `SERVER START: http://${enviroments.server.host}:${app.get("port")}`
-    )
+    Logger.info(`💻 http://${enviroments.server.host}:${app.get("port")}`)
   );
 };
 main();

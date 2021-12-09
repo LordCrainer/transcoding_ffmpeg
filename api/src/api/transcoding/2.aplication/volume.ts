@@ -1,8 +1,8 @@
 import { IMetadata, IParams } from "../../params";
-import { handleData, execute } from "../../share/2.application";
+import { handleData, execute } from "../../shared/2.application";
 import { ffmpeg } from "../../programs/";
-import { fpFunctions } from "../../share/2.application";
-import { ISpawnCallBack } from "api/share/3.domain";
+import { fpFunctions } from "../../shared/2.application";
+import { ISpawnCallBack } from "api/shared/3.domain";
 import { INormalizeVolume } from "api/params/audio/audioFilter.interface";
 
 const getVolume = async (params: IParams, fn?: ISpawnCallBack) => {
