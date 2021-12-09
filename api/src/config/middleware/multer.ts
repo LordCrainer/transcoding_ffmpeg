@@ -1,4 +1,4 @@
-import * as multer from "multer";
+import multer from "multer";
 import enviroments from "../enviroments";
 
 export interface IMulter {
